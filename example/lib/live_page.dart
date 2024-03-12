@@ -42,7 +42,7 @@ class LivePageState extends State<LivePage> {
           children: [
             Icon(
               Icons.access_time_filled_outlined,
-              size: 150,
+              size: 50,
             )
           ],
         ),

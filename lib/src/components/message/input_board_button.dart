@@ -40,6 +40,7 @@ class _ZegoLiveAudioRoomInRoomMessageInputBoardButtonState
   @override
   Widget build(BuildContext context) {
     return ZegoTextIconButton(
+
       onPressed: () {
         final key = DateTime.now().millisecondsSinceEpoch;
         widget.onSheetPopUp?.call(key);
@@ -59,7 +60,7 @@ class _ZegoLiveAudioRoomInRoomMessageInputBoardButtonState
         });
       },
       icon: ButtonIcon(
-        icon: ZegoLiveAudioRoomImage.asset(ZegoLiveAudioRoomIconUrls.im),
+        icon: ZegoLiveAudioRoomImage.asset(ZegoLiveAudioRoomIconUrls.im,),
       ),
       iconSize: widget.iconSize ?? Size(72.zR, 72.zR),
       buttonSize: widget.buttonSize ?? Size(96.zR, 96.zR),

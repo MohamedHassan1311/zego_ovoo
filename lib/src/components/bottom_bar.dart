@@ -211,12 +211,12 @@ class _ZegoLiveAudioRoomBottomBarState
               icon: ButtonIcon(
                 icon: ZegoLiveAudioRoomImage.asset(
                     ZegoLiveAudioRoomIconUrls.toolbarMore),
-                backgroundColor: Colors.transparent,
+                backgroundColor: Colors.blue,
               ),
               onSheetPopUp: (int key) {
                 widget.popUpManager.addAPopUpSheet(key);
               },
-              onSheetPop: (int key) {
+            onSheetPop: (int key) {
                 widget.popUpManager.removeAPopUpSheet(key);
               },
             ),

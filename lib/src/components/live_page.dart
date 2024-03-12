@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:core';
 
 // Flutter imports:
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -382,10 +383,12 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
       left: 0,
       right: 0,
       top: 10,
-      child: LiveDurationTimeBoard(
-        config: widget.config.duration,
-        events: widget.events.duration,
-        manager: widget.liveDurationManager,
+      child: SafeArea(
+        child: LiveDurationTimeBoard(
+          config: widget.config.duration,
+          events: widget.events.duration,
+          manager: widget.liveDurationManager,
+        ),
       ),
     );
   }
