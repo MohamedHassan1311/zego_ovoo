@@ -67,6 +67,7 @@ class _ZegoLiveAudioRoomTopBarState extends State<ZegoLiveAudioRoomTopBar> {
         children: [
           minimizingButton(),
           const Expanded(child: SizedBox()),
+
           closeButton(),
           SizedBox(width: 34.zR),
         ],

@@ -10,6 +10,8 @@ import 'package:zego_uikit_prebuilt_live_audio_room/src/config.defines.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/defines.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/inner_text.dart';
 
+import 'components/components.dart';
+
 /// Configuration for initializing the Live Audio Room.
 /// This class is used as the [config] parameter for the constructor of [ZegoUIKitPrebuiltLiveAudioRoom].
 class ZegoUIKitPrebuiltLiveAudioRoomConfig {
@@ -313,9 +315,17 @@ class ZegoLiveAudioRoomTopMenuBarConfig {
   /// These buttons will displayed on the menu bar, order by the list
   /// only support [minimizingButton] right now
   List<ZegoLiveAudioRoomMenuBarButtonName> buttons;
+  bool showCloseButton ;
+  ButtonIcon closeButtonTheme =ButtonIcon(
+    icon: ZegoLiveAudioRoomImage.asset(ZegoLiveAudioRoomIconUrls.topQuit),
+    backgroundColor: Colors.white,
+  );
 
   ZegoLiveAudioRoomTopMenuBarConfig({
     this.buttons = const [],
+    this.showCloseButton = true,
+
+
   });
 }
 

@@ -29,14 +29,17 @@ class LivePageState extends State<LivePage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+
       child: ZegoUIKitPrebuiltLiveAudioRoom(
         appID: 00 /*input your AppID*/,
         appSign: "yourAppSign" /*input your AppSign*/,
         userID: localUserID,
+        topPaading: 90,
         userName: 'user_$localUserID',
         roomID: widget.roomID,
         events: events,
         config: config,
+
       ),
     );
   }
@@ -51,6 +54,7 @@ class LivePageState extends State<LivePage> {
         ..layout = getLayoutConfig())
       ..background = background()
       ..foreground = foreground()
+
       ..topMenuBar.buttons = [
         ZegoLiveAudioRoomMenuBarButtonName.minimizingButton
       ]
@@ -229,6 +233,7 @@ class LivePageState extends State<LivePage> {
   }
 
   ZegoLiveAudioRoomLayoutConfig getLayoutConfig() {
+
     final config = ZegoLiveAudioRoomLayoutConfig();
     switch (widget.layoutMode) {
       case LayoutMode.defaultLayout:
@@ -301,6 +306,14 @@ class LivePageState extends State<LivePage> {
         break;
       case LayoutMode.fourPeoples:
         config.rowConfigs = [
+          ZegoLiveAudioRoomLayoutRowConfig(
+            count: 2,
+            alignment: ZegoLiveAudioRoomLayoutAlignment.center,
+          ),
+          ZegoLiveAudioRoomLayoutRowConfig(
+            count: 4,
+            alignment: ZegoLiveAudioRoomLayoutAlignment.spaceBetween,
+          ),
           ZegoLiveAudioRoomLayoutRowConfig(
             count: 4,
             alignment: ZegoLiveAudioRoomLayoutAlignment.spaceBetween,

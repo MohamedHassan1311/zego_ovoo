@@ -50,6 +50,7 @@ class ZegoLiveAudioRoomPage extends StatefulWidget {
     required this.liveDurationManager,
     required this.minimizeData,
     this.plugins,
+    this.topPaading,
   }) : super(key: key);
 
   final int appID;
@@ -73,6 +74,7 @@ class ZegoLiveAudioRoomPage extends StatefulWidget {
   final ZegoLiveAudioRoomDurationManager liveDurationManager;
   final ZegoUIKitPrebuiltLiveAudioRoomController? prebuiltController;
   final ZegoLiveAudioRoomPlugins? plugins;
+  final double? topPaading;
 
   final ZegoUIKitPrebuiltLiveAudioRoomMinimizeData minimizeData;
 
@@ -133,16 +135,23 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
                 return Stack(
                   children: [
                     background(context, constraints.maxHeight),
-                    audioVideoContainer(
-                      constraints.maxWidth,
-                      constraints.maxHeight,
-                    ),
                     durationTimeBoard(),
-                    topBar(),
+                    Column(
+                      children: [
+                        SizedBox(height: widget.topPaading,),
+                        topBar(),
+                        SizedBox(height: widget.topPaading??0/4,),
+                        audioVideoContainer(
+                          constraints.maxWidth,
+                          constraints.maxHeight,
+                        ),
+
+
+                        emptyArea(constraints.maxHeight),
+                        foreground(context, constraints.maxHeight),
+                      ],
+                    ), messageList(),
                     bottomBar(),
-                    messageList(),
-                    emptyArea(constraints.maxHeight),
-                    foreground(context, constraints.maxHeight),
                   ],
                 );
               }),
@@ -259,19 +268,15 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
       showSoundWavesInAudioMode: widget.config.seat.showSoundWaveInAudioMode,
     );
 
-    return Positioned(
-      top: 169.zR,
-      left: 35.zW,
-      child: SizedBox(
-        width: null != scrollDirection ? containerWidth : tempMaxWidth,
-        height: containerHeight,
-        child: null != scrollDirection
-            ? SingleChildScrollView(
-                scrollDirection: scrollDirection,
-                child: seatContainer,
-              )
-            : seatContainer,
-      ),
+    return SizedBox(
+      width: null != scrollDirection ? containerWidth : tempMaxWidth,
+      height: containerHeight,
+      child: null != scrollDirection
+          ? SingleChildScrollView(
+              scrollDirection: scrollDirection,
+              child: seatContainer,
+            )
+          : seatContainer,
     );
   }
 
@@ -280,25 +285,19 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
   }
 
   Widget topBar() {
-    return Positioned(
-      left: 0,
-      right: 0,
-      top: 64.zR,
-      child: ValueListenableBuilder<ZegoUIKitRoomState>(
-        valueListenable: ZegoUIKit().getRoomStateStream(),
-        builder: (context, roomState, _) {
-          return ZegoLiveAudioRoomTopBar(
-            config: widget.config,
-            events: widget.events,
-            defaultEndAction: widget.defaultEndAction,
-            defaultLeaveConfirmationAction:
-                widget.defaultLeaveConfirmationAction,
-            seatManager: widget.seatManager,
-            connectManager: widget.connectManager,
-            translationText: widget.config.innerText,
-          );
-        },
-      ),
+    return ValueListenableBuilder<ZegoUIKitRoomState>(
+      valueListenable: ZegoUIKit().getRoomStateStream(),
+      builder: (context, roomState, _) {
+        return ZegoLiveAudioRoomTopBar(
+          config: widget.config,
+          events: widget.events,
+          defaultEndAction: widget.defaultEndAction,
+          defaultLeaveConfirmationAction: widget.defaultLeaveConfirmationAction,
+          seatManager: widget.seatManager,
+          connectManager: widget.connectManager,
+          translationText: widget.config.innerText,
+        );
+      },
     );
   }
 

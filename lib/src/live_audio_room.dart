@@ -45,6 +45,7 @@ class ZegoUIKitPrebuiltLiveAudioRoom extends StatefulWidget {
     required this.roomID,
     required this.config,
     this.events,
+     this.topPaading,
   }) : super(key: key);
 
   /// You can create a project and obtain an appID from the [ZEGOCLOUD Admin Console](https://console.zegocloud.com).
@@ -74,6 +75,8 @@ class ZegoUIKitPrebuiltLiveAudioRoom extends StatefulWidget {
 
   /// Initialize the event for the voice chat room.
   final ZegoUIKitPrebuiltLiveAudioRoomEvents? events;
+
+  final double? topPaading;
 
   @override
   State<ZegoUIKitPrebuiltLiveAudioRoom> createState() =>
@@ -305,6 +308,7 @@ class _ZegoUIKitPrebuiltLiveAudioRoomState
       liveID: widget.roomID,
       config: widget.config,
       events: events,
+      topPaading: widget.topPaading,
       defaultEndAction: defaultEndAction,
       defaultLeaveConfirmationAction: defaultLeaveConfirmationAction,
       plugins: ZegoLiveAudioRoomManagers().plugins,
