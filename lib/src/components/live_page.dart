@@ -49,6 +49,7 @@ class ZegoLiveAudioRoomPage extends StatefulWidget {
     required this.popUpManager,
     required this.liveDurationManager,
     required this.minimizeData,
+    required this.icons,required this.userAvtarName,
     this.plugins,
     this.topPaading,
   }) : super(key: key);
@@ -63,6 +64,8 @@ class ZegoLiveAudioRoomPage extends StatefulWidget {
 
   final ZegoUIKitPrebuiltLiveAudioRoomConfig config;
   final ZegoUIKitPrebuiltLiveAudioRoomEvents events;
+  final List<Widget> icons;
+  final Widget userAvtarName;
   final void Function(ZegoLiveAudioRoomEndEvent event) defaultEndAction;
   final Future<bool> Function(
     ZegoLiveAudioRoomLeaveConfirmationEvent event,
@@ -295,7 +298,7 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
           defaultLeaveConfirmationAction: widget.defaultLeaveConfirmationAction,
           seatManager: widget.seatManager,
           connectManager: widget.connectManager,
-          translationText: widget.config.innerText,
+          translationText: widget.config.innerText, icons: widget.icons, userAvtarName: widget.userAvtarName,
         );
       },
     );

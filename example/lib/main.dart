@@ -20,10 +20,10 @@ Widget liveAudioRoomPage({required bool isHost}) {
     roomID: 'room id',
     config: isHost
         ? ZegoUIKitPrebuiltLiveAudioRoomConfig.host()
-        : ZegoUIKitPrebuiltLiveAudioRoomConfig.audience(), topPaading: 100,
+        : ZegoUIKitPrebuiltLiveAudioRoomConfig.audience(),
+    topPaading: 100,
   );
 }
-
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -59,13 +59,6 @@ class MyAppState extends State<MyApp> {
         return Stack(
           children: [
             child!,
-
-            /// support minimizing
-            ZegoUIKitPrebuiltLiveAudioRoomMiniOverlayPage(
-              contextQuery: () {
-                return widget.navigatorKey.currentState!.context;
-              },
-            ),
           ],
         );
       },

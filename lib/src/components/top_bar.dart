@@ -28,6 +28,8 @@ class ZegoLiveAudioRoomTopBar extends StatefulWidget {
   final ZegoLiveAudioRoomSeatManager seatManager;
   final ZegoLiveAudioRoomConnectManager connectManager;
   final ZegoUIKitPrebuiltLiveAudioRoomInnerText translationText;
+  final List<Widget> icons;
+  final Widget userAvtarName;
 
   const ZegoLiveAudioRoomTopBar({
     Key? key,
@@ -38,6 +40,8 @@ class ZegoLiveAudioRoomTopBar extends StatefulWidget {
     required this.seatManager,
     required this.connectManager,
     required this.translationText,
+    required this.icons,
+    required this.userAvtarName,
   }) : super(key: key);
 
   @override
@@ -65,10 +69,11 @@ class _ZegoLiveAudioRoomTopBarState extends State<ZegoLiveAudioRoomTopBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          minimizingButton(),
-          const Expanded(child: SizedBox()),
 
+          widget.userAvtarName,
+          minimizingButton(),
           closeButton(),
+         ... widget.icons,
           SizedBox(width: 34.zR),
         ],
       ),
@@ -88,7 +93,7 @@ class _ZegoLiveAudioRoomTopBarState extends State<ZegoLiveAudioRoomTopBar> {
     return ZegoLiveAudioRoomLeaveButton(
       buttonSize: Size(52.zR, 52.zR),
       iconSize: Size(24.zR, 24.zR),
-      icon: ButtonIcon(
+      icon:widget.config.topMenuBar.closeButtonTheme?? ButtonIcon(
         icon: ZegoLiveAudioRoomImage.asset(ZegoLiveAudioRoomIconUrls.topQuit),
         backgroundColor: Colors.white,
       ),

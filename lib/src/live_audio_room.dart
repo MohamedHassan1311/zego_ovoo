@@ -316,7 +316,7 @@ class _ZegoUIKitPrebuiltLiveAudioRoomState
       connectManager: ZegoLiveAudioRoomManagers().connectManager!,
       popUpManager: ZegoLiveAudioRoomManagers().popUpManager,
       liveDurationManager: ZegoLiveAudioRoomManagers().liveDurationManager!,
-      minimizeData: minimizeData,
+      minimizeData: minimizeData, icons: [], userAvtarName: Container(),
     );
   }
 
