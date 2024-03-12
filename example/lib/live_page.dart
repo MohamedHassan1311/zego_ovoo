@@ -36,7 +36,16 @@ class LivePageState extends State<LivePage> {
         userName: 'user_$localUserID',
         roomID: widget.roomID,
         events: events,
-        config: config, icons: [], userAvtarName: Container(),
+        config: config,
+        icons: [],
+        userAvtarName: Row(
+          children: [
+            Icon(
+              Icons.access_time_filled_outlined,
+              size: 150,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -58,7 +67,7 @@ class LivePageState extends State<LivePage> {
           ),
           backgroundColor: Colors.transparent)
       ..topMenuBar.buttons = [
-        ZegoLiveAudioRoomMenuBarButtonName.minimizingButton
+        // ZegoLiveAudioRoomMenuBarButtonName.minimizingButton
       ]
       ..userAvatarUrl = 'https://robohash.org/$localUserID.png';
   }

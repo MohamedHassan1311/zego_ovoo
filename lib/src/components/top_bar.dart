@@ -71,6 +71,7 @@ class _ZegoLiveAudioRoomTopBarState extends State<ZegoLiveAudioRoomTopBar> {
         children: [
 
           widget.userAvtarName,
+          Spacer(),
           minimizingButton(),
           closeButton(),
          ... widget.icons,
