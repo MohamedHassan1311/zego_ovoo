@@ -36,7 +36,7 @@ class LivePageState extends State<LivePage> {
         userName: 'user_$localUserID',
         roomID: widget.roomID,
         events: events,
-        config: config,
+        config: config, icons: [], userAvtarName: Container(),
       ),
     );
   }

@@ -45,7 +45,7 @@ class ZegoUIKitPrebuiltLiveAudioRoom extends StatefulWidget {
     required this.roomID,
     required this.config,
     this.events,
-     this.topPaading,
+     this.topPaading, required this.icons, required this.userAvtarName,
   }) : super(key: key);
 
   /// You can create a project and obtain an appID from the [ZEGOCLOUD Admin Console](https://console.zegocloud.com).
@@ -77,6 +77,11 @@ class ZegoUIKitPrebuiltLiveAudioRoom extends StatefulWidget {
   final ZegoUIKitPrebuiltLiveAudioRoomEvents? events;
 
   final double? topPaading;
+
+  final List<Widget> icons;
+  final Widget userAvtarName;
+
+
 
   @override
   State<ZegoUIKitPrebuiltLiveAudioRoom> createState() =>
@@ -316,7 +321,7 @@ class _ZegoUIKitPrebuiltLiveAudioRoomState
       connectManager: ZegoLiveAudioRoomManagers().connectManager!,
       popUpManager: ZegoLiveAudioRoomManagers().popUpManager,
       liveDurationManager: ZegoLiveAudioRoomManagers().liveDurationManager!,
-      minimizeData: minimizeData, icons: [], userAvtarName: Container(),
+      minimizeData: minimizeData, icons: widget.icons, userAvtarName: widget.userAvtarName,
     );
   }
 
