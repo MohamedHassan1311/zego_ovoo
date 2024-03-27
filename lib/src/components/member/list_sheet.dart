@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -249,6 +250,7 @@ class _ZegoLiveAudioRoomMemberListSheetState
           user.name,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
+
             fontSize: 32.0.zR,
             // color: const Color(0xffffffff),
             decoration: TextDecoration.none,

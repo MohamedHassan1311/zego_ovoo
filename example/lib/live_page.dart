@@ -340,20 +340,20 @@ class LivePageState extends State<LivePage> {
 
   void onMemberListMoreButtonPressed(ZegoUIKitUser user) {
     showModalBottomSheet(
-      backgroundColor: const Color(0xff111014),
+
       context: context,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(32.0),
-          topRight: Radius.circular(32.0),
+          topLeft: Radius.circular(24.0),
+          topRight: Radius.circular(24.0),
         ),
       ),
       isDismissible: true,
       isScrollControlled: true,
       builder: (BuildContext context) {
         const textStyle = TextStyle(
-          color: Colors.white,
-          fontSize: 12,
+          color: Colors.black,
+          fontSize: 16,
           fontWeight: FontWeight.w500,
         );
         final listMenu = ZegoUIKitPrebuiltLiveAudioRoomController()
