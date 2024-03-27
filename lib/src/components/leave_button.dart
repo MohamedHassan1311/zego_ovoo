@@ -25,7 +25,7 @@ class ZegoLiveAudioRoomLeaveButton extends StatefulWidget {
   final ZegoLiveAudioRoomSeatManager seatManager;
   final ZegoUIKitPrebuiltLiveAudioRoomConfig config;
   final ZegoUIKitPrebuiltLiveAudioRoomEvents events;
-
+  final VoidCallback? onPress;
   final void Function(ZegoLiveAudioRoomEndEvent event) defaultEndAction;
   final Future<bool> Function(
     ZegoLiveAudioRoomLeaveConfirmationEvent event,
@@ -38,6 +38,7 @@ class ZegoLiveAudioRoomLeaveButton extends StatefulWidget {
     required this.events,
     required this.defaultEndAction,
     required this.defaultLeaveConfirmationAction,
+    required this.onPress,
     this.icon,
     this.iconSize,
     this.buttonSize,
@@ -86,6 +87,7 @@ class _ZegoLiveAudioRoomLeaveButtonState
           /// take off seat when leave room
           await widget.seatManager.leaveSeat(showDialog: false);
           widget.seatManager.isLeavingRoom = true;
+          widget.onPress!();
         }
 
         return canLeave;
@@ -98,6 +100,7 @@ class _ZegoLiveAudioRoomLeaveButtonState
         );
         defaultAction() {
           widget.defaultEndAction(endEvent);
+
         }
 
         if (widget.events.onEnded != null) {

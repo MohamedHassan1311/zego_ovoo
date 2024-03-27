@@ -316,12 +316,14 @@ class ZegoLiveAudioRoomTopMenuBarConfig {
   /// only support [minimizingButton] right now
   List<ZegoLiveAudioRoomMenuBarButtonName> buttons;
   bool showCloseButton ;
+   VoidCallback? onPress;
   ButtonIcon closeButtonTheme =ButtonIcon(
     icon: ZegoLiveAudioRoomImage.asset(ZegoLiveAudioRoomIconUrls.topQuit),
     backgroundColor: Colors.white,
   );
 
   ZegoLiveAudioRoomTopMenuBarConfig({
+    this.onPress,
     this.buttons = const [],
     this.showCloseButton = true,
 

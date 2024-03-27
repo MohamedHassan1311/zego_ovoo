@@ -60,6 +60,10 @@ class LivePageState extends State<LivePage> {
         ..layout = getLayoutConfig())
       ..background = background()
       ..foreground = foreground()
+
+      ..topMenuBar.onPress =() {
+      print("hiii");
+      }
       ..topMenuBar.closeButtonTheme = ButtonIcon(
           icon: const Icon(
             Icons.power_settings_new,

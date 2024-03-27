@@ -44,7 +44,7 @@ class ZegoLiveAudioRoomBottomBar extends StatefulWidget {
   final ZegoAvatarBuilder? avatarBuilder;
 
   final ZegoUIKitPrebuiltLiveAudioRoomMinimizeData minimizeData;
-
+  final VoidCallback? onPress;
   const ZegoLiveAudioRoomBottomBar({
     Key? key,
     this.avatarBuilder,
@@ -59,7 +59,7 @@ class ZegoLiveAudioRoomBottomBar extends StatefulWidget {
     required this.prebuiltController,
     required this.height,
     required this.buttonSize,
-    required this.minimizeData,
+    required this.minimizeData, this.onPress,
   }) : super(key: key);
 
   @override
@@ -371,7 +371,7 @@ class _ZegoLiveAudioRoomBottomBarState
           events: widget.events,
           defaultEndAction: widget.defaultEndAction,
           defaultLeaveConfirmationAction: widget.defaultLeaveConfirmationAction,
-          seatManager: widget.seatManager,
+          seatManager: widget.seatManager, onPress: widget.onPress,
         );
       case ZegoLiveAudioRoomMenuBarButtonName.soundEffectButton:
         return ZegoLiveAudioRoomSoundEffectButton(
