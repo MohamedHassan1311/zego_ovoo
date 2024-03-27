@@ -102,7 +102,7 @@ class _ZegoLiveAudioRoomTopBarState extends State<ZegoLiveAudioRoomTopBar> {
       events: widget.events,
       defaultEndAction: widget.defaultEndAction,
       defaultLeaveConfirmationAction: widget.defaultLeaveConfirmationAction,
-      seatManager: widget.seatManager, onPress: widget.config.topMenuBar.onPress,
+      seatManager: widget.seatManager, onPress: widget.config.topMenuBar.onCloseButtonPressed,
     );
   }
 }
