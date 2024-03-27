@@ -95,7 +95,7 @@ class _ZegoLiveAudioRoomSoundEffectSheetState
               width: 70.zR,
               height: 70.zR,
               child:
-                  ZegoLiveAudioRoomImage.asset(ZegoLiveAudioRoomIconUrls.back),
+                  Icon(Icons.close)
             ),
           ),
           SizedBox(width: 10.zR),
@@ -103,7 +103,7 @@ class _ZegoLiveAudioRoomSoundEffectSheetState
             widget.innerText.audioEffectTitle,
             style: TextStyle(
               fontSize: 36.0.zR,
-              color: const Color(0xffffffff),
+              // color: const Color(0xffffffff),
               decoration: TextDecoration.none,
             ),
           ),
@@ -259,7 +259,7 @@ void showSoundEffectSheet(
 
   showModalBottomSheet(
     barrierColor: ZegoUIKitDefaultTheme.viewBarrierColor,
-    backgroundColor: ZegoUIKitDefaultTheme.viewBackgroundColor,
+    // backgroundColor: ZegoUIKitDefaultTheme.viewBackgroundColor,
     context: context,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(

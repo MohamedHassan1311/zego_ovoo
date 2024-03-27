@@ -29,7 +29,7 @@ Future<bool> showLiveDialog({
           leftButtonText,
           style: TextStyle(
             fontSize: 32.zR,
-            color: Colors.white,
+            // color: Colors.white,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -40,7 +40,7 @@ Future<bool> showLiveDialog({
           rightButtonText,
           style: TextStyle(
             fontSize: 32.zR,
-            color: Colors.white,
+            // color: Colors.white,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -49,12 +49,12 @@ Future<bool> showLiveDialog({
     titleStyle: TextStyle(
       fontSize: 32.0.zR,
       fontWeight: FontWeight.w600,
-      color: Colors.white,
+      // color: Colors.white,
     ),
     contentStyle: TextStyle(
       fontSize: 28.0.zR,
       fontWeight: FontWeight.w400,
-      color: Colors.white,
+      // color: Colors.white,
     ),
     actionsAlignment: MainAxisAlignment.spaceEvenly,
     backgroundColor: const Color(0xff111014).withOpacity(0.8),

@@ -353,7 +353,7 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
 
     var listSize = Size(
       widget.config.inRoomMessage.width ?? 540.zR,
-      widget.config.inRoomMessage.height ?? 400.zR,
+      widget.config.inRoomMessage.height ?? 500.zR,
     );
     if (listSize.width < 54.zR) {
       listSize = Size(54.zR, listSize.height);

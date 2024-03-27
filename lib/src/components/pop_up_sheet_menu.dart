@@ -184,7 +184,7 @@ void showPopUpSheet({
 
   showModalBottomSheet(
     barrierColor: ZegoUIKitDefaultTheme.viewBarrierColor,
-    backgroundColor: const Color(0xff111014),
+    backgroundColor: Colors.white,
     //ZegoUIKitDefaultTheme.viewBackgroundColor,
     context: context,
     shape: RoundedRectangleBorder(

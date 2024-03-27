@@ -211,7 +211,7 @@ class _ZegoLiveAudioRoomMemberListSheetState
               width: 70.zR,
               height: 70.zR,
               child:
-                  ZegoLiveAudioRoomImage.asset(ZegoLiveAudioRoomIconUrls.back),
+                 Icon(Icons.close)
             ),
           ),
           SizedBox(width: 10.zR),
@@ -222,7 +222,7 @@ class _ZegoLiveAudioRoomMemberListSheetState
                   '${widget.innerText.memberListTitle} (${ZegoUIKit().getAllUsers().length})',
                   style: TextStyle(
                     fontSize: 36.0.zR,
-                    color: const Color(0xffffffff),
+                    // color: const Color(0xffffffff),
                     decoration: TextDecoration.none,
                   ),
                 );
@@ -250,7 +250,7 @@ class _ZegoLiveAudioRoomMemberListSheetState
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
             fontSize: 32.0.zR,
-            color: const Color(0xffffffff),
+            // color: const Color(0xffffffff),
             decoration: TextDecoration.none,
           ),
         ),
@@ -320,7 +320,7 @@ class _ZegoLiveAudioRoomMemberListSheetState
         controlButton(
             text: widget.innerText.memberListAgreeButton,
             gradient: const LinearGradient(
-              colors: [Color(0xffA754FF), Color(0xff510DF1)],
+              colors: [Color(0xFFB18A66), Color(0xFFB18A66)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -469,8 +469,8 @@ void showMemberListSheet({
   popUpManager.addAPopUpSheet(key);
 
   showModalBottomSheet(
-    barrierColor: ZegoUIKitDefaultTheme.viewBarrierColor,
-    backgroundColor: ZegoUIKitDefaultTheme.viewBackgroundColor,
+    // barrierColor: ZegoUIKitDefaultTheme.viewBarrierColor,
+    // backgroundColor: ZegoUIKitDefaultTheme.viewBackgroundColor,
     context: context,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.only(

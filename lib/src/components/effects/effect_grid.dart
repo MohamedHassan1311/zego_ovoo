@@ -95,7 +95,7 @@ class _ZegoLiveAudioRoomEffectGridState
             style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 26.zR,
-              color: Colors.white,
+
             ),
           );
   }
@@ -161,14 +161,14 @@ class _ZegoLiveAudioRoomEffectGridState
           : item.icon,
       iconBorderColor: widget.withBorderColor
           ? (item.id == widget.model.selectedID.value
-              ? const Color(0xffA653FF)
+              ? const Color(0xFFB18A66)
               : Colors.transparent)
           : Colors.transparent,
       text: item.iconText,
       textStyle: TextStyle(
         color: item.id == widget.model.selectedID.value
-            ? const Color(0xffA653FF)
-            : const Color(0xffCCCCCC),
+            ? const Color(0xFFB18A66)
+            :  Colors.black.withOpacity(.4),
         fontSize: 24.zR,
         fontWeight: FontWeight.w500,
       ),
