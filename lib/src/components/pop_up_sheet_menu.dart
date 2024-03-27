@@ -147,7 +147,7 @@ class _ZegoLiveAudioRoomPopUpSheetMenuState
             style: TextStyle(
               fontSize: 28.zR,
               fontWeight: FontWeight.w400,
-              color: Colors.white,
+              // color: Colors.white,
             ),
           ),
         ),
