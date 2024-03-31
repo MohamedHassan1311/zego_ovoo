@@ -269,6 +269,7 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
       },
       sortAudioVideo: audioVideoViewSorter,
       avatarBuilder: widget.config.seat.avatarBuilder,
+      soundWaveColor: widget.config.seat.soundWaveColor,
       showSoundWavesInAudioMode: widget.config.seat.showSoundWaveInAudioMode,
     );
 

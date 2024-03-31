@@ -57,9 +57,11 @@ class LivePageState extends State<LivePage> {
       ..seat = (getSeatConfig()
         ..takeIndexWhenJoining = widget.isHost ? getHostSeatIndex() : -1
         ..hostIndexes = getLockSeatIndex()
+        ..soundWaveColor =Colors.black
         ..layout = getLayoutConfig())
       ..background = background()
       ..foreground = foreground()
+
 
 
       ..topMenuBar.onCloseButtonPressed =() {
@@ -216,7 +218,7 @@ class LivePageState extends State<LivePage> {
     }
 
     return ZegoLiveAudioRoomSeatConfig(
-        // avatarBuilder: avatarBuilder,
+        avatarBuilder: avatarBuilder,
         );
   }
 

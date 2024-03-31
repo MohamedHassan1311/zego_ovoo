@@ -24,7 +24,7 @@ class ZegoLiveAudioRoomLayout extends StatefulWidget {
     this.showSoundWavesInAudioMode = true,
     this.usersItemIndex = const {},
     this.foregroundBuilder,
-    this.backgroundBuilder,
+    this.backgroundBuilder, this.soundWaveColor,
   }) : super(key: key);
 
   final List<ZegoUIKitUser> userList;
@@ -32,12 +32,14 @@ class ZegoLiveAudioRoomLayout extends StatefulWidget {
   final ZegoLiveAudioRoomLayoutConfig layoutConfig;
 
   final Color? backgroundColor;
+  final Color? soundWaveColor;
   final double? borderRadius;
   final bool showSoundWavesInAudioMode;
 
   final ZegoAudioVideoViewForegroundBuilder? foregroundBuilder;
   final ZegoAudioVideoViewBackgroundBuilder? backgroundBuilder;
   final ZegoAvatarBuilder? avatarBuilder;
+
 
   @override
   State<ZegoLiveAudioRoomLayout> createState() =>
@@ -125,7 +127,8 @@ class _ZegoLiveAudioRoomLayoutState extends State<ZegoLiveAudioRoomLayout> {
               valueListenable:
                   ZegoUIKit().getMicrophoneStateNotifier(targetUser?.id ?? ''),
               builder: (context, isMicrophoneEnabled, _) {
-                return ZegoAudioVideoView(
+                return
+                  ZegoAudioVideoView(
                   user: targetUser,
                   borderRadius: widget.borderRadius,
                   borderColor: Colors.transparent,
@@ -136,7 +139,7 @@ class _ZegoLiveAudioRoomLayoutState extends State<ZegoLiveAudioRoomLayout> {
                     showInAudioMode: true,
                     showSoundWavesInAudioMode: widget.showSoundWavesInAudioMode,
                     builder: widget.avatarBuilder,
-                    soundWaveColor: const Color(0xFFB18A66),
+                    soundWaveColor:widget.soundWaveColor?? const Color(0xFFB18A66),
                     size: Size(seatIconWidth, seatIconHeight),
                     verticalAlignment: ZegoAvatarAlignment.start,
                   ),
