@@ -61,6 +61,7 @@ class LivePageState extends State<LivePage> {
       ..background = background()
       ..foreground = foreground()
 
+
       ..topMenuBar.onCloseButtonPressed =() {
       print("hiii");
       }
@@ -73,6 +74,7 @@ class LivePageState extends State<LivePage> {
       ..topMenuBar.buttons = [
         // ZegoLiveAudioRoomMenuBarButtonName.minimizingButton
       ]
+
       ..userAvatarUrl = 'https://robohash.org/$localUserID.png';
   }
 
@@ -101,11 +103,12 @@ class LivePageState extends State<LivePage> {
           );
         },
 
+
         /// WARNING: will override prebuilt logic
-        // onClicked:(int index, ZegoUIKitUser? user) {
-        //   debugPrint(
-        //       'on seat clicked, index:$index, user:${user.toString()}');
-        // },
+        onClicked:(int index, ZegoUIKitUser? user) {
+          debugPrint(
+              'on seat clicked, index:$index, user:${user.toString()}');
+        },
         host: ZegoLiveAudioRoomSeatHostEvents(
           onTakingRequested: (ZegoUIKitUser audience) {
             debugPrint('on seat taking requested, audience:$audience');

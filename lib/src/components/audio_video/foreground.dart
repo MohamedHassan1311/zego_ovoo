@@ -56,7 +56,8 @@ class _ZegoLiveAudioRoomSeatForegroundState
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onClicked,
+      onTap:onClicked ,
+      onDoubleTap: onDoubleClicked,
       child: Container(
         color: Colors.transparent,
         child: Stack(
@@ -120,7 +121,7 @@ class _ZegoLiveAudioRoomSeatForegroundState
     );
   }
 
-  void onClicked() {
+  void onDoubleClicked() {
     final index =
         int.tryParse(widget.extraInfo[layoutGridItemIndexKey].toString()) ?? -1;
     if (-1 == index) {
@@ -132,14 +133,14 @@ class _ZegoLiveAudioRoomSeatForegroundState
       return;
     }
 
-    if (widget.events.seat.onClicked != null) {
+    if (widget.events.seat.onDoubleClicked != null) {
       ZegoLoggerService.logInfo(
         'ERROR!!! click seat event is deal outside',
         tag: 'audio room',
         subTag: 'foreground',
       );
 
-      widget.events.seat.onClicked!.call(index, widget.user);
+      widget.events.seat.onDoubleClicked!.call(index, widget.user);
       return;
     }
 
@@ -262,6 +263,31 @@ class _ZegoLiveAudioRoomSeatForegroundState
       popUpManager: widget.popUpManager,
       innerText: widget.config.innerText,
     );
+  }
+  void onClicked() {
+
+    final index =
+        int.tryParse(widget.extraInfo[layoutGridItemIndexKey].toString()) ?? -1;
+    if (-1 == index) {
+      ZegoLoggerService.logInfo(
+        'ERROR!!! click seat index is invalid',
+        tag: 'audio room',
+        subTag: 'foreground',
+      );
+      return;
+    }
+
+
+      ZegoLoggerService.logInfo(
+        'ERROR!!! click seat event is deal outside',
+        tag: 'audio room',
+        subTag: 'foreground',
+      );
+
+      widget.events.seat.onClicked!.call(index, widget.user);
+      return;
+
+
   }
 
   Widget hostFlag(BuildContext context, double maxWidth) {

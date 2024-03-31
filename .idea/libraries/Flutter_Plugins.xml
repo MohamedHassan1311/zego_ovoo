@@ -2,7 +2,6 @@
   <library name="Flutter Plugins" type="FlutterPluginsLibraryType">
     <CLASSES>
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/wakelock_plus-1.1.4" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit-2.18.8" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler-11.3.0" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_express_engine-3.12.5" />
@@ -20,6 +19,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/package_info_plus-5.0.1" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_zim-2.13.1" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.1" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit-2.19.0" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -479,7 +479,7 @@ class ZegoLiveAudioRoomInRoomMessageConfig {
 ///
 /// If you want to use a custom member list item view, you can set the [ZegoLiveAudioRoomMemberListConfig.itemBuilder] property, and pass your custom view's builder function to it.
 ///
-/// In addition, you can listen for item click events through [onClicked].
+/// In addition, you can listen for item click events through [onDoubleClicked].
 class ZegoLiveAudioRoomMemberListConfig {
   /// Custom member list item view.
   ///

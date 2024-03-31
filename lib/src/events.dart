@@ -136,7 +136,7 @@ class ZegoLiveAudioRoomSeatEvents {
   /// You need to handle it yourself.
   /// You can refer to the usage of [ZegoUIKitPrebuiltLiveAudioRoomController] for reference.
   void Function(int index, ZegoUIKitUser? user)? onClicked;
-
+  void Function(int index, ZegoUIKitUser? user)? onDoubleClicked;
   /// A callback function that is called when someone gets on/off/switches seat
   ///
   /// The [takenSeats] parameter is a map that maps the index of each taken seat to the user who is currently sitting in that seat.
@@ -150,6 +150,7 @@ class ZegoLiveAudioRoomSeatEvents {
     this.onClosed,
     this.onOpened,
     this.onClicked,
+    this.onDoubleClicked,
     this.onChanged,
     ZegoLiveAudioRoomSeatHostEvents? host,
     ZegoLiveAudioRoomSeatAudienceEvents? audience,
