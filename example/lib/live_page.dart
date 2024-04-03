@@ -77,6 +77,7 @@ class LivePageState extends State<LivePage> {
         // ZegoLiveAudioRoomMenuBarButtonName.minimizingButton
       ]
 
+
       ..userAvatarUrl = 'https://robohash.org/$localUserID.png';
   }
 
@@ -219,6 +220,7 @@ class LivePageState extends State<LivePage> {
 
     return ZegoLiveAudioRoomSeatConfig(
         avatarBuilder: avatarBuilder,
+
         );
   }
 

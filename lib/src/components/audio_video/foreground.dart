@@ -330,17 +330,34 @@ class _ZegoLiveAudioRoomSeatForegroundState
 
   Widget microphoneOffFlag() {
     return widget.user?.microphone.value ?? false
-        ? Container()
+        ? Positioned(
+      // top: avatarPosTop,
+      left: 0,
+      right: -90.zR,
+      bottom: 40.zR,
+      child: Container(
+        width: seatIconWidth/2.5,
+        height: seatIconWidth/2.5,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Color(0xFFB18A66).withOpacity(0.9),
+        ),
+        child: ZegoLiveAudioRoomImage.asset(
+          ZegoLiveAudioRoomIconUrls.seatMicrophoneOn,
+        ),
+      ),
+    )
         : Positioned(
-            top: avatarPosTop,
+            // top: avatarPosTop,
             left: 0,
-            right: 0,
+            right: -90.zR,
+            bottom: 40.zR,
             child: Container(
-              width: seatIconWidth,
-              height: seatIconWidth,
+              width: seatIconWidth/2.5,
+              height: seatIconWidth/2.5,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.black.withOpacity(0.5),
+                color: Color(0xFFB18A66).withOpacity(0.9),
               ),
               child: ZegoLiveAudioRoomImage.asset(
                 ZegoLiveAudioRoomIconUrls.seatMicrophoneOff,

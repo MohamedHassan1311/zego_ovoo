@@ -70,4 +70,5 @@ class ZegoLiveAudioRoomIconUrls {
   static const String seatCoHost = 'assets/icons/seat_cohost.png';
   static const String seatLock = 'assets/icons/seat_lock.png';
   static const String seatMicrophoneOff = 'assets/icons/seat_mic_off.png';
+  static const String seatMicrophoneOn = 'assets/icons/seat_mic_on.png';
 }
