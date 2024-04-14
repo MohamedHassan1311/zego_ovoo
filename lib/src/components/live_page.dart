@@ -154,7 +154,8 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
                         emptyArea(constraints.maxHeight),
                         foreground(context, constraints.maxHeight),
                       ],
-                    ), messageList(),
+                    ),
+                    messageList(),
                     bottomBar(),
                   ],
                 );

@@ -15,7 +15,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  zego_uikit: ^2.20.0
+  zego_uikit: ^2.21.5
   zego_uikit_signaling_plugin: ^2.7.6
   zego_plugin_adapter: ^2.11.5
   file_picker: ^6.0.0
@@ -35,6 +35,7 @@ dev_dependencies:
   import_sorter: ^4.6.0 # run 'flutter pub run import_sorter:main'
   dart_code_metrics: any
   lints: ^3.0.0
+
 
 flutter:
   assets:
