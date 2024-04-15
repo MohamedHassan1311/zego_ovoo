@@ -47,6 +47,12 @@ class MyAppState extends State<MyApp> {
         return Stack(
           children: [
             child!,
+            ZegoUIKitPrebuiltLiveAudioRoomMiniOverlayPage(
+              contextQuery: () {
+                return widget.navigatorKey
+                    .currentState!.context;
+              },
+            ),
           ],
         );
       },

@@ -2,6 +2,7 @@
 import 'dart:core';
 
 // Project imports:
+import 'package:flutter/cupertino.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/config.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/controller.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/events.dart';
@@ -15,6 +16,7 @@ class ZegoUIKitPrebuiltLiveAudioRoomMinimizeData {
     required this.userID,
     required this.userName,
     required this.config,
+    required this.userAvtarName,
     required this.events,
     required this.isPrebuiltFromMinimizing,
     this.controller,
@@ -40,6 +42,7 @@ class ZegoUIKitPrebuiltLiveAudioRoomMinimizeData {
   final ZegoUIKitPrebuiltLiveAudioRoomConfig config;
 
   final ZegoUIKitPrebuiltLiveAudioRoomEvents events;
+  final Widget userAvtarName;
 
   final bool isPrebuiltFromMinimizing;
 

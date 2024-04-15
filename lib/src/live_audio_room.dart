@@ -114,7 +114,7 @@ class _ZegoUIKitPrebuiltLiveAudioRoomState
       config: widget.config,
       events: events,
       isPrebuiltFromMinimizing: ZegoLiveAudioRoomMiniOverlayPageState.idle !=
-          ZegoLiveAudioRoomInternalMiniOverlayMachine().state(),
+          ZegoLiveAudioRoomInternalMiniOverlayMachine().state(), userAvtarName: widget.userAvtarName,
     );
 
     WidgetsBinding.instance.addObserver(this);

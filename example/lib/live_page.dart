@@ -37,12 +37,13 @@ class LivePageState extends State<LivePage> {
         roomID: widget.roomID,
         events: events,
         config: config,
+
         icons: [],
         userAvtarName: Row(
           children: [
             Icon(
               Icons.access_time_filled_outlined,
-              size: 50,
+              size: 0,
             )
           ],
         ),
@@ -58,6 +59,7 @@ class LivePageState extends State<LivePage> {
         ..takeIndexWhenJoining = widget.isHost ? getHostSeatIndex() : -1
         ..hostIndexes = getLockSeatIndex()
         ..soundWaveColor =Colors.black
+
         ..layout = getLayoutConfig())
       ..background = background()
       ..foreground = foreground()
@@ -67,6 +69,9 @@ class LivePageState extends State<LivePage> {
       ..topMenuBar.onCloseButtonPressed =() {
       print("hiii");
       }
+      ..topMenuBar.buttons = [
+        ZegoLiveAudioRoomMenuBarButtonName.minimizingButton
+      ]
       ..topMenuBar.closeButtonTheme = ButtonIcon(
           icon: const Icon(
             Icons.power_settings_new,
