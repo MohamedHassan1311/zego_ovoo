@@ -114,7 +114,9 @@ class _ZegoUIKitPrebuiltLiveAudioRoomState
       config: widget.config,
       events: events,
       isPrebuiltFromMinimizing: ZegoLiveAudioRoomMiniOverlayPageState.idle !=
-          ZegoLiveAudioRoomInternalMiniOverlayMachine().state(), userAvtarName: widget.userAvtarName,
+          ZegoLiveAudioRoomInternalMiniOverlayMachine().state(),
+      userAvtarName: widget.userAvtarName,
+      icons: widget.icons, topPaading: widget.topPaading,
     );
 
     WidgetsBinding.instance.addObserver(this);
@@ -313,6 +315,7 @@ class _ZegoUIKitPrebuiltLiveAudioRoomState
       liveID: widget.roomID,
       config: widget.config,
       events: events,
+
       topPaading: widget.topPaading,
       defaultEndAction: defaultEndAction,
       defaultLeaveConfirmationAction: defaultLeaveConfirmationAction,
@@ -321,6 +324,7 @@ class _ZegoUIKitPrebuiltLiveAudioRoomState
       connectManager: ZegoLiveAudioRoomManagers().connectManager!,
       popUpManager: ZegoLiveAudioRoomManagers().popUpManager,
       liveDurationManager: ZegoLiveAudioRoomManagers().liveDurationManager!,
+
       minimizeData: minimizeData, icons: widget.icons, userAvtarName: widget.userAvtarName,
     );
   }

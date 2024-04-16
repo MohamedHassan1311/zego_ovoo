@@ -114,7 +114,7 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       body: WillPopScope(
         onWillPop: () async {
           final endConfirmationEvent = ZegoLiveAudioRoomLeaveConfirmationEvent(

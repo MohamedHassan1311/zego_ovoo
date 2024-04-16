@@ -79,7 +79,7 @@ class LivePageState extends State<LivePage> {
           ),
           backgroundColor: Colors.transparent)
       ..topMenuBar.buttons = [
-        // ZegoLiveAudioRoomMenuBarButtonName.minimizingButton
+        ZegoLiveAudioRoomMenuBarButtonName.minimizingButton
       ]
 
 

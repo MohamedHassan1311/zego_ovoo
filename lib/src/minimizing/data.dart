@@ -17,7 +17,9 @@ class ZegoUIKitPrebuiltLiveAudioRoomMinimizeData {
     required this.userName,
     required this.config,
     required this.userAvtarName,
+    required this.icons,
     required this.events,
+    required this.topPaading,
     required this.isPrebuiltFromMinimizing,
     this.controller,
   });
@@ -43,6 +45,8 @@ class ZegoUIKitPrebuiltLiveAudioRoomMinimizeData {
 
   final ZegoUIKitPrebuiltLiveAudioRoomEvents events;
   final Widget userAvtarName;
+  final List<Widget> icons;
+  final double? topPaading;
 
   final bool isPrebuiltFromMinimizing;
 

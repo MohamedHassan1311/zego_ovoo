@@ -69,7 +69,10 @@ class ZegoLiveAudioRoomControllerMinimizingImpl
             userName: minimizeData.userName,
             roomID: minimizeData.roomID,
             config: minimizeData.config,
-            events: minimizeData.events, icons: [], userAvtarName:minimizeData.userAvtarName,
+            topPaading: minimizeData.topPaading,
+            events: minimizeData.events,
+            icons: minimizeData.icons,
+            userAvtarName: minimizeData.userAvtarName,
           );
           return withSafeArea
               ? SafeArea(
