@@ -50,7 +50,8 @@ class ZegoLiveAudioRoomPage extends StatefulWidget {
     required this.popUpManager,
     required this.liveDurationManager,
     required this.minimizeData,
-    required this.icons,required this.userAvtarName,
+    required this.icons,
+    required this.userAvtarName,
     this.plugins,
     this.topPaading,
   }) : super(key: key);
@@ -100,6 +101,22 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
     subscriptions.add(ZegoUIKit()
         .getTurnOnYourMicrophoneRequestStream()
         .listen(onTurnOnYourMicrophoneRequest));
+    if (widget.config.coHostIDSList != null) {
+      widget.config.coHostIDSList!.forEach((element) {
+        Future.delayed(const Duration(seconds: 1), () {
+          final targetSeatIndex = widget.seatManager.getNearestEmptyIndex();
+          widget.seatManager.takeOnSeat(
+            targetSeatIndex,
+            isForce: true,
+            isDeleteAfterOwnerLeft: true,
+          );
+          widget.seatManager.assignCoHost(
+            roomID: widget.seatManager.roomID,
+            targetUser: ZegoUIKit().getUser(element),
+          );
+        });
+      });
+    }
   }
 
   @override
@@ -142,15 +159,17 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
                     durationTimeBoard(),
                     Column(
                       children: [
-                        SizedBox(height: widget.topPaading,),
+                        SizedBox(
+                          height: widget.topPaading,
+                        ),
                         topBar(),
-                        SizedBox(height: widget.topPaading??0/4,),
+                        SizedBox(
+                          height: widget.topPaading ?? 0 / 4,
+                        ),
                         audioVideoContainer(
                           constraints.maxWidth,
                           constraints.maxHeight,
                         ),
-
-
                         emptyArea(constraints.maxHeight),
                         foreground(context, constraints.maxHeight),
                       ],
@@ -242,6 +261,8 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
         ZegoUIKitUser? user,
         Map<String, dynamic> extraInfo,
       ) {
+        // widget.config.seat.soundWaveColor=Colors.brown;
+
         return ZegoLiveAudioRoomSeatForeground(
           user: user,
           extraInfo: extraInfo,
@@ -301,7 +322,9 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
           defaultLeaveConfirmationAction: widget.defaultLeaveConfirmationAction,
           seatManager: widget.seatManager,
           connectManager: widget.connectManager,
-          translationText: widget.config.innerText, icons: widget.icons, userAvtarName: widget.userAvtarName,
+          translationText: widget.config.innerText,
+          icons: widget.icons,
+          userAvtarName: widget.userAvtarName,
         );
       },
     );

@@ -83,7 +83,7 @@ class ZegoLiveAudioRoomManagers {
       events: events,
       innerText: config.innerText,
       popUpManager: popUpManager,
-      kickOutNotifier: kickOutNotifier,
+      kickOutNotifier: kickOutNotifier, coHostIDSList:config.coHostIDSList ,
     );
     connectManager = ZegoLiveAudioRoomConnectManager(
       config: config,

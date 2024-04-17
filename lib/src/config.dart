@@ -118,6 +118,8 @@ class ZegoUIKitPrebuiltLiveAudioRoomConfig {
   /// subsequent instances of [Navigator].
   bool rootNavigator;
 
+   List<String>? coHostIDSList;
+
   /// Set advanced engine configuration, Used to enable advanced functions.
   /// For details, please consult ZEGO technical support.
   Map<String, String> advanceConfigs;
@@ -202,8 +204,10 @@ class ZegoUIKitPrebuiltLiveAudioRoomConfig {
     this.foreground,
     this.background,
     this.userAvatarUrl,
+     this.coHostIDSList,
     this.userInRoomAttributes = const {},
     this.advanceConfigs = const {},
+
     ZegoUIKitPrebuiltLiveAudioRoomInnerText? translationText,
     ZegoLiveAudioRoomSeatConfig? seat,
     ZegoLiveAudioRoomTopMenuBarConfig? topMenuBar,

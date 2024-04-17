@@ -330,6 +330,7 @@ class _ZegoUIKitPrebuiltLiveAudioRoomState
   }
 
   void correctConfigValue() {
+
     if (widget.config.bottomMenuBar.maxCount > 5) {
       widget.config.bottomMenuBar.maxCount = 5;
       ZegoLoggerService.logInfo(

@@ -33,6 +33,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     this.contextQuery,
     required this.localUserID,
     required this.roomID,
+     this.coHostIDSList,
     required this.plugins,
     required this.config,
     required this.events,
@@ -62,6 +63,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
 
   final String localUserID;
   final String roomID;
+  final List<String>? coHostIDSList;
   final ZegoLiveAudioRoomPlugins plugins;
   final ZegoUIKitPrebuiltLiveAudioRoomConfig config;
   final ZegoUIKitPrebuiltLiveAudioRoomEvents events;
