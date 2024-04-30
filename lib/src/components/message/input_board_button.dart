@@ -60,7 +60,11 @@ class _ZegoLiveAudioRoomInRoomMessageInputBoardButtonState
         });
       },
       icon: ButtonIcon(
-        icon: ZegoLiveAudioRoomImage.asset(ZegoLiveAudioRoomIconUrls.im,),
+        icon: ZegoLiveAudioRoomImage.asset(ZegoLiveAudioRoomIconUrls.im,
+        color: Colors.white,
+          scale: .8
+        ),
+        backgroundColor: Colors.white.withOpacity(.2)
       ),
       iconSize: widget.iconSize ?? Size(72.zR, 72.zR),
       buttonSize: widget.buttonSize ?? Size(96.zR, 96.zR),

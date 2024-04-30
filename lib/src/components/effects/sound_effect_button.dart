@@ -75,7 +75,9 @@ class _ZegoLiveAudioRoomSoundEffectButtonState
           size: sizeBoxSize,
           child: widget.icon?.icon ??
               ZegoLiveAudioRoomImage.asset(
-                  ZegoLiveAudioRoomIconUrls.toolbarSoundEffect),
+                  ZegoLiveAudioRoomIconUrls.toolbarSoundEffect,
+
+              ),
         ),
       ),
     );

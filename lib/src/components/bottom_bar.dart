@@ -59,7 +59,8 @@ class ZegoLiveAudioRoomBottomBar extends StatefulWidget {
     required this.prebuiltController,
     required this.height,
     required this.buttonSize,
-    required this.minimizeData, this.onPress,
+    required this.minimizeData,
+    this.onPress,
   }) : super(key: key);
 
   @override
@@ -209,14 +210,16 @@ class _ZegoLiveAudioRoomBottomBarState
                 return buttonList;
               },
               icon: ButtonIcon(
-                icon: ZegoLiveAudioRoomImage.asset(
-                    ZegoLiveAudioRoomIconUrls.toolbarMore),
-                backgroundColor: Colors.blue,
+                icon: Icon(
+                  Icons.settings,
+                  color: Colors.white,
+                ),
+                backgroundColor: Colors.white.withOpacity(.2),
               ),
               onSheetPopUp: (int key) {
                 widget.popUpManager.addAPopUpSheet(key);
               },
-            onSheetPop: (int key) {
+              onSheetPop: (int key) {
                 widget.popUpManager.removeAPopUpSheet(key);
               },
             ),
@@ -316,8 +319,12 @@ class _ZegoLiveAudioRoomBottomBarState
           iconSize: iconSize,
           icon: ButtonIcon(
             icon: ZegoLiveAudioRoomImage.asset(
-                ZegoLiveAudioRoomIconUrls.toolbarMember),
-            backgroundColor: Colors.white,
+                ZegoLiveAudioRoomIconUrls.toolbarMember,
+              color: Colors.white
+
+
+            ),
+            backgroundColor: Colors.white.withOpacity(.2),
           ),
           avatarBuilder: widget.avatarBuilder,
           itemBuilder: widget.config.memberList.itemBuilder,
@@ -346,14 +353,22 @@ class _ZegoLiveAudioRoomBottomBarState
           buttonSize: buttonSize,
           iconSize: iconSize,
           normalIcon: ButtonIcon(
-            icon: ZegoLiveAudioRoomImage.asset(
-                ZegoLiveAudioRoomIconUrls.toolbarMicNormal),
-            backgroundColor: Colors.white,
+            icon: Center(
+              child: ZegoLiveAudioRoomImage.asset(
+
+                  ZegoLiveAudioRoomIconUrls.toolbarMicNormal,
+                  scale: 3.9,
+                  color: Colors.white),
+            ),
+            backgroundColor: Colors.white.withOpacity(.2),
           ),
           offIcon: ButtonIcon(
             icon: ZegoLiveAudioRoomImage.asset(
-                ZegoLiveAudioRoomIconUrls.toolbarMicOff),
-            backgroundColor: Colors.white,
+                ZegoLiveAudioRoomIconUrls.toolbarMicOff,
+
+                scale: 3.9,
+                color: Colors.white),
+            backgroundColor: Colors.white.withOpacity(.2),
           ),
           defaultOn: microphoneDefaultOn,
           muteMode: true,
@@ -371,7 +386,8 @@ class _ZegoLiveAudioRoomBottomBarState
           events: widget.events,
           defaultEndAction: widget.defaultEndAction,
           defaultLeaveConfirmationAction: widget.defaultLeaveConfirmationAction,
-          seatManager: widget.seatManager, onPress: widget.onPress,
+          seatManager: widget.seatManager,
+          onPress: widget.onPress,
         );
       case ZegoLiveAudioRoomMenuBarButtonName.soundEffectButton:
         return ZegoLiveAudioRoomSoundEffectButton(
@@ -380,10 +396,11 @@ class _ZegoLiveAudioRoomBottomBarState
           reverbEffect: widget.config.audioEffect.reverbEffect,
           buttonSize: buttonSize,
           iconSize: iconSize,
+          
           icon: ButtonIcon(
             icon: ZegoLiveAudioRoomImage.asset(
-                ZegoLiveAudioRoomIconUrls.toolbarSoundEffect),
-            backgroundColor: Colors.white,
+                ZegoLiveAudioRoomIconUrls.toolbarSoundEffect,color: Colors.white),
+            backgroundColor: Colors.white.withOpacity(.2),
           ),
           rootNavigator: widget.config.rootNavigator,
           popUpManager: widget.popUpManager,

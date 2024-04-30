@@ -156,6 +156,8 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
                 return Stack(
                   children: [
                     background(context, constraints.maxHeight),
+                    Container(color: Colors.black26,),
+
                     durationTimeBoard(),
                     Column(
                       children: [

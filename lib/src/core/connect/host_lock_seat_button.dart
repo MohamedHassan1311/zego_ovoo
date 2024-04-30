@@ -45,8 +45,8 @@ class _ZegoLiveAudioRoomHostLockSeatButtonState
       child: Container(
         width: containerSize.width,
         height: containerSize.height,
-        decoration: const BoxDecoration(
-          color: Colors.white,
+        decoration:  BoxDecoration(
+          color: Colors.white.withOpacity(.2),
           shape: BoxShape.circle,
         ),
         child: SizedBox.fromSize(
@@ -55,9 +55,11 @@ class _ZegoLiveAudioRoomHostLockSeatButtonState
               valueListenable: widget.seatManager.isRoomSeatLockedNotifier,
               builder: (context, isRoomSeatLocked, _) {
                 return ZegoLiveAudioRoomImage.asset(
+
                   isRoomSeatLocked
                       ? ZegoLiveAudioRoomIconUrls.toolbarHostUnLockSeat
                       : ZegoLiveAudioRoomIconUrls.toolbarHostLockSeat,
+                  color: Colors.white,
                 );
               }),
         ),

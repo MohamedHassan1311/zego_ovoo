@@ -27,26 +27,24 @@ class LivePage extends StatefulWidget {
 class LivePageState extends State<LivePage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: ZegoUIKitPrebuiltLiveAudioRoom(
-        appID: 1090819666 /*input your AppID*/,
-        appSign: "e71e996631cf04ddcd545e9c06a44d693d71f5559a5ae8c3f94900bc1312a3a2" /*input your AppSign*/,
-        userID: localUserID,
-        topPaading: 90,
-        userName: 'user_$localUserID',
-        roomID: widget.roomID,
-        events: events,
-        config: config,
+    return ZegoUIKitPrebuiltLiveAudioRoom(
+      appID: 1435623513 /*input your AppID*/,
+      appSign: "e276bd2e0eea30e1e27efaead6967e385f2006870f7c32ebce38e05b8300cdec" /*input your AppSign*/,
+      userID: localUserID,
+      topPaading: 90,
+      userName: 'user_$localUserID',
+      roomID: widget.roomID,
+      events: events,
+      config: config,
 
-        icons: [],
-        userAvtarName: Row(
-          children: [
-            Icon(
-              Icons.access_time_filled_outlined,
-              size: 0,
-            )
-          ],
-        ),
+      icons: [],
+      userAvtarName: Row(
+        children: [
+          Icon(
+            Icons.access_time_filled_outlined,
+            size: 0,
+          )
+        ],
       ),
     );
   }
@@ -59,11 +57,15 @@ class LivePageState extends State<LivePage> {
       ..seat = (getSeatConfig()
         ..takeIndexWhenJoining = widget.isHost ? getHostSeatIndex() : -1
         ..hostIndexes = getLockSeatIndex()
-        ..soundWaveColor =Colors.black
+        ..soundWaveColor =Colors.red
 
         ..layout = getLayoutConfig())
       ..background = background()
       ..foreground = foreground()
+      ..userInRoomAttributes = {
+      "soundWave": ""
+      }
+      // ..coHostIDSList=[]
 
 
 
@@ -72,6 +74,11 @@ class LivePageState extends State<LivePage> {
       }
       ..topMenuBar.buttons = [
         ZegoLiveAudioRoomMenuBarButtonName.minimizingButton
+      ]
+      ..bottomMenuBar.hostExtendButtons = [
+        ///GiftButton
+        Icon(Icons.add),
+        Icon(Icons.add),
       ]
       ..topMenuBar.closeButtonTheme = ButtonIcon(
           icon: const Icon(

@@ -48,6 +48,7 @@ class MyAppState extends State<MyApp> {
           children: [
             child!,
             ZegoUIKitPrebuiltLiveAudioRoomMiniOverlayPage(
+              navigatorWithSafeArea: false,
               contextQuery: () {
                 return widget.navigatorKey
                     .currentState!.context;
