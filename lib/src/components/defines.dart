@@ -36,7 +36,7 @@ class ZegoLiveAudioRoomPopupItem {
 class ZegoLiveAudioRoomImage {
   static Image asset(String name, {color,scale}) {
     return Image.asset(name,color: color,
-        scale: scale,
+        // scale: scale,
         package: 'zego_uikit_prebuilt_live_audio_room');
   }
 
