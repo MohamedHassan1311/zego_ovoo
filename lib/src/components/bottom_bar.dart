@@ -357,7 +357,7 @@ class _ZegoLiveAudioRoomBottomBarState
               child: ZegoLiveAudioRoomImage.asset(
 
                   ZegoLiveAudioRoomIconUrls.toolbarMicNormal,
-                  scale: 3.9,
+
                   color: Colors.white),
             ),
             backgroundColor: Colors.white.withOpacity(.2),
@@ -366,7 +366,7 @@ class _ZegoLiveAudioRoomBottomBarState
             icon: ZegoLiveAudioRoomImage.asset(
                 ZegoLiveAudioRoomIconUrls.toolbarMicOff,
 
-                scale: 3.9,
+
                 color: Colors.white),
             backgroundColor: Colors.white.withOpacity(.2),
           ),
