@@ -50,6 +50,7 @@ class LivePageState extends State<LivePage> {
   }
 
   ZegoUIKitPrebuiltLiveAudioRoomConfig get config {
+    print("rebild");
     return (widget.isHost
         ? ZegoUIKitPrebuiltLiveAudioRoomConfig.host()
         : ZegoUIKitPrebuiltLiveAudioRoomConfig.audience())

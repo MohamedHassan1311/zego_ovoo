@@ -88,7 +88,7 @@ class ZegoLiveAudioRoomPage extends StatefulWidget {
 }
 
 class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin,AutomaticKeepAliveClientMixin {
   /// had sort the host be first
   bool audioVideoContainerHostHadSorted = false;
 
@@ -451,4 +451,7 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
       ZegoUIKit().turnMicrophoneOn(true);
     }
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
