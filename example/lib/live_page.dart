@@ -1,6 +1,5 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:zego_uikit/zego_uikit.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/zego_uikit_prebuilt_live_audio_room.dart';
@@ -26,17 +25,22 @@ class LivePage extends StatefulWidget {
 
 class LivePageState extends State<LivePage> {
   @override
+  void initState() {
+
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return ZegoUIKitPrebuiltLiveAudioRoom(
       appID: 1435623513 /*input your AppID*/,
-      appSign: "e276bd2e0eea30e1e27efaead6967e385f2006870f7c32ebce38e05b8300cdec" /*input your AppSign*/,
+      appSign:
+          "e276bd2e0eea30e1e27efaead6967e385f2006870f7c32ebce38e05b8300cdec" /*input your AppSign*/,
       userID: localUserID,
       topPaading: 90,
       userName: 'user_$localUserID',
       roomID: widget.roomID,
       events: events,
       config: config,
-
       icons: [],
       userAvtarName: Row(
         children: [
@@ -50,28 +54,24 @@ class LivePageState extends State<LivePage> {
   }
 
   ZegoUIKitPrebuiltLiveAudioRoomConfig get config {
-    print("rebild");
+    print("object");
     return (widget.isHost
         ? ZegoUIKitPrebuiltLiveAudioRoomConfig.host()
         : ZegoUIKitPrebuiltLiveAudioRoomConfig.audience())
-    // ..coHostIDSList=[localUserID,]
+      // ..coHostIDSList=[localUserID,]
       ..seat = (getSeatConfig()
         ..takeIndexWhenJoining = widget.isHost ? getHostSeatIndex() : -1
         ..hostIndexes = getLockSeatIndex()
-        ..soundWaveColor =Colors.red
-
+        ..soundWaveColor = Colors.red
         ..layout = getLayoutConfig())
+      ..advanceConfigs={"avtar":"xxx"}
       ..background = background()
       ..foreground = foreground()
-      ..userInRoomAttributes = {
-      "soundWave": ""
-      }
+      ..userInRoomAttributes = {"soundWave": ""}
       // ..coHostIDSList=[]
 
-
-
-      ..topMenuBar.onCloseButtonPressed =() {
-      print("hiii");
+      ..topMenuBar.onCloseButtonPressed = () {
+        print("hiii");
       }
       ..topMenuBar.buttons = [
         ZegoLiveAudioRoomMenuBarButtonName.minimizingButton
@@ -90,9 +90,8 @@ class LivePageState extends State<LivePage> {
       ..topMenuBar.buttons = [
         ZegoLiveAudioRoomMenuBarButtonName.minimizingButton
       ]
-
-
-      ..userAvatarUrl = 'https://robohash.org/$localUserID.png';
+      // ..userAvatarUrl = 'https://robohash.org/$localUserID.png'
+    ;
   }
 
   ZegoUIKitPrebuiltLiveAudioRoomEvents get events {
@@ -120,11 +119,9 @@ class LivePageState extends State<LivePage> {
           );
         },
 
-
         /// WARNING: will override prebuilt logic
-        onClicked:(int index, ZegoUIKitUser? user) {
-          debugPrint(
-              'on seat clicked, index:$index, user:${user.toString()}');
+        onClicked: (int index, ZegoUIKitUser? user) {
+          debugPrint('on seat clicked, index:$index, user:${user.toString()}');
         },
         host: ZegoLiveAudioRoomSeatHostEvents(
           onTakingRequested: (ZegoUIKitUser audience) {
@@ -219,6 +216,7 @@ class LivePageState extends State<LivePage> {
   }
 
   ZegoLiveAudioRoomSeatConfig getSeatConfig() {
+
     if (widget.layoutMode == LayoutMode.hostTopCenter) {
       return ZegoLiveAudioRoomSeatConfig(
         backgroundBuilder: (
@@ -233,9 +231,8 @@ class LivePageState extends State<LivePage> {
     }
 
     return ZegoLiveAudioRoomSeatConfig(
-        avatarBuilder: avatarBuilder,
-
-        );
+      avatarBuilder: avatarBuilder,
+    );
   }
 
   Widget avatarBuilder(
@@ -244,11 +241,12 @@ class LivePageState extends State<LivePage> {
     ZegoUIKitUser? user,
     Map<String, dynamic> extraInfo,
   ) {
+    print("avatarBuilder");
     return CircleAvatar(
       maxRadius: size.width,
-      backgroundImage: Image.asset(
-              "assets/avatars/avatar_${((int.tryParse(user?.id ?? "") ?? 0) % 6)}.png")
-          .image,
+      backgroundImage:
+          Image.network("https://ovoo.app/public/admin/660b276b78992.gif")
+              .image,
     );
   }
 
@@ -361,7 +359,6 @@ class LivePageState extends State<LivePage> {
 
   void onMemberListMoreButtonPressed(ZegoUIKitUser user) {
     showModalBottomSheet(
-
       context: context,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
