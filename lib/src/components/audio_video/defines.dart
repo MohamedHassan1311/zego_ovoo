@@ -8,7 +8,7 @@ final seatItemWidth = 180.zW;
 final seatItemHeight = 220.zR;
 
 /// @nodoc
-final seatItemRowSpacing = 7.5.zW;
+final seatItemRowSpacing = 2.5.zW;
 
 /// @nodoc
 final seatItemColumnSpacing = 2.zR;

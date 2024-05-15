@@ -224,7 +224,7 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
   }
 
   Widget audioVideoContainer(double maxWidth, double maxHeight) {
-    final containerHorizontalSpacing = 35.zW;
+    final containerHorizontalSpacing = 15.zW;
 
     final tempMaxWidth = maxWidth - containerHorizontalSpacing * 2;
     var tempMaxHeight = maxHeight - 169.zR; // top position
