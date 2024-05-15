@@ -63,7 +63,7 @@ class _ZegoSeatForegroundState extends State<ZegoLiveAudioRoomSeatBackground> {
       top: avatarPosTop,
       left: avatarPosLeft,
       child: Container(
-          width: seatIconWidth,
+          width: seatIconWidth ,
           height: seatIconWidth,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
