@@ -73,6 +73,7 @@ class _ZegoLiveAudioRoomTopBarState extends State<ZegoLiveAudioRoomTopBar> {
           widget.userAvtarName,
           Spacer(),
           minimizingButton(),
+          if(widget.config.topMenuBar.showCloseButton)
           closeButton(),
          ... widget.icons,
           SizedBox(width: 34.zR),

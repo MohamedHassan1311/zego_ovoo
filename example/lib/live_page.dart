@@ -63,6 +63,7 @@ class LivePageState extends State<LivePage> {
         ..takeIndexWhenJoining = widget.isHost ? getHostSeatIndex() : -1
         ..hostIndexes = getLockSeatIndex()
         ..soundWaveColor = Colors.red
+        ..showSoundWaveInAudioMode=true
         ..layout = getLayoutConfig())
       ..advanceConfigs={"avtar":"xxx"}
       ..background = background()

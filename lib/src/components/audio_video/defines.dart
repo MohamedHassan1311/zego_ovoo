@@ -2,22 +2,22 @@
 import 'package:zego_uikit/zego_uikit.dart';
 
 /// @nodoc
-final seatItemWidth = 180.zW;
+final seatItemWidth = 160.zW;
 
 /// @nodoc
-final seatItemHeight = 190.zR;
+final seatItemHeight = 160.zR;
 
 /// @nodoc
 final seatItemRowSpacing = 7.5.zW;
 
 /// @nodoc
-final seatItemColumnSpacing = 2.zR;
+final seatItemColumnSpacing = 32.zR;
 
 /// @nodoc
-final seatIconWidth = 115.zR;
+final seatIconWidth = 108.zR;
 
 /// @nodoc
-final seatIconHeight = 130.zR;
+final seatIconHeight = 108.zR;
 
 /// @nodoc
 final seatUserNameFontSize = 22.0.zR;
