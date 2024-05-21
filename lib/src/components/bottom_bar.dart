@@ -88,36 +88,39 @@ class _ZegoLiveAudioRoomBottomBarState
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(color: Colors.transparent),
-      height: widget.height,
-      child: Stack(
-        children: [
-          rightToolbar(context),
-          if (widget.config.bottomMenuBar.showInRoomMessageButton)
-            SizedBox(
-              height: 124.zR,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  zegoLiveButtonPadding,
-                  ZegoLiveAudioRoomInRoomMessageInputBoardButton(
-                    innerText: widget.config.innerText,
-                    rootNavigator: widget.config.rootNavigator,
-                    onSheetPopUp: (int key) {
-                      widget.popUpManager.addAPopUpSheet(key);
-                    },
-                    onSheetPop: (int key) {
-                      widget.popUpManager.removeAPopUpSheet(key);
-                    },
-                  ),
-                ],
-              ),
-            )
-          else
-            const SizedBox(),
-        ],
+    return Padding(
+      padding: EdgeInsets.only(bottom: 10),
+      child: Container(
+        decoration: const BoxDecoration(color: Colors.transparent),
+        height: widget.height,
+        child: Stack(
+          children: [
+            rightToolbar(context),
+            if (widget.config.bottomMenuBar.showInRoomMessageButton)
+              SizedBox(
+                height: 124.zR,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    zegoLiveButtonPadding,
+                    ZegoLiveAudioRoomInRoomMessageInputBoardButton(
+                      innerText: widget.config.innerText,
+                      rootNavigator: widget.config.rootNavigator,
+                      onSheetPopUp: (int key) {
+                        widget.popUpManager.addAPopUpSheet(key);
+                      },
+                      onSheetPop: (int key) {
+                        widget.popUpManager.removeAPopUpSheet(key);
+                      },
+                    ),
+                  ],
+                ),
+              )
+            else
+              const SizedBox(),
+          ],
+        ),
       ),
     );
   }
@@ -320,10 +323,7 @@ class _ZegoLiveAudioRoomBottomBarState
           icon: ButtonIcon(
             icon: ZegoLiveAudioRoomImage.asset(
                 ZegoLiveAudioRoomIconUrls.toolbarMember,
-              color: Colors.white
-
-
-            ),
+                color: Colors.white),
             backgroundColor: Colors.white.withOpacity(.2),
           ),
           avatarBuilder: widget.avatarBuilder,
@@ -355,9 +355,7 @@ class _ZegoLiveAudioRoomBottomBarState
           normalIcon: ButtonIcon(
             icon: Center(
               child: ZegoLiveAudioRoomImage.asset(
-
                   ZegoLiveAudioRoomIconUrls.toolbarMicNormal,
-
                   color: Colors.white),
             ),
             backgroundColor: Colors.white.withOpacity(.2),
@@ -365,8 +363,6 @@ class _ZegoLiveAudioRoomBottomBarState
           offIcon: ButtonIcon(
             icon: ZegoLiveAudioRoomImage.asset(
                 ZegoLiveAudioRoomIconUrls.toolbarMicOff,
-
-
                 color: Colors.white),
             backgroundColor: Colors.white.withOpacity(.2),
           ),
@@ -396,10 +392,10 @@ class _ZegoLiveAudioRoomBottomBarState
           reverbEffect: widget.config.audioEffect.reverbEffect,
           buttonSize: buttonSize,
           iconSize: iconSize,
-          
           icon: ButtonIcon(
             icon: ZegoLiveAudioRoomImage.asset(
-                ZegoLiveAudioRoomIconUrls.toolbarSoundEffect,color: Colors.white),
+                ZegoLiveAudioRoomIconUrls.toolbarSoundEffect,
+                color: Colors.white),
             backgroundColor: Colors.white.withOpacity(.2),
           ),
           rootNavigator: widget.config.rootNavigator,
