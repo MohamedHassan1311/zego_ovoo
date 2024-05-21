@@ -111,6 +111,7 @@ class _ZegoLiveAudioRoomAudienceConnectButtonState
       invitees: invitees,
       data: '',
       icon: buttonIcon,
+
       buttonSize: Size(330.zR, 72.zR),
       iconSize: Size(48.zR, 48.zR),
       iconTextSpacing: 12.zR,
@@ -139,7 +140,7 @@ class _ZegoLiveAudioRoomAudienceConnectButtonState
         //
       },
       clickableTextColor: Colors.white,
-      clickableBackgroundColor: const Color(0xff1E2740).withOpacity(0.4),
+      clickableBackgroundColor:  Colors.white.withOpacity(0.2),
     );
   }
 
