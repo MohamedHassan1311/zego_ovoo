@@ -9,12 +9,16 @@ import 'package:zego_uikit_prebuilt_live_audio_room/src/components/defines.dart'
 import 'package:zego_uikit_prebuilt_live_audio_room/src/components/message/input_board.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/inner_text.dart';
 
+import '../../../zego_uikit_prebuilt_live_audio_room.dart';
+
 /// @nodoc
 class ZegoLiveAudioRoomInRoomMessageInputBoardButton extends StatefulWidget {
   final Size? iconSize;
   final Size? buttonSize;
   final ZegoUIKitPrebuiltLiveAudioRoomInnerText innerText;
   final bool rootNavigator;
+  final ZegoLiveAudioRoomInRoomMessageConfig inRoomMessage;
+  final ZegoAvatarBuilder? avatarBuilder;
 
   final Function(int)? onSheetPopUp;
   final Function(int)? onSheetPop;
@@ -26,7 +30,7 @@ class ZegoLiveAudioRoomInRoomMessageInputBoardButton extends StatefulWidget {
     this.iconSize,
     this.buttonSize,
     this.onSheetPopUp,
-    this.onSheetPop,
+    this.onSheetPop, required this.inRoomMessage, this.avatarBuilder,
   }) : super(key: key);
 
   @override
@@ -52,7 +56,8 @@ class _ZegoLiveAudioRoomInRoomMessageInputBoardButtonState
             .push(
           ZegoLiveAudioRoomInRoomMessageInputBoard(
             innerText: widget.innerText,
-            rootNavigator: widget.rootNavigator,
+            rootNavigator: widget.rootNavigator, inRoomMessage: widget.inRoomMessage,
+            avatarBuilder: widget.avatarBuilder
           ),
         )
             .then((value) {

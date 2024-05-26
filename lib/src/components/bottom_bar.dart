@@ -107,6 +107,8 @@ class _ZegoLiveAudioRoomBottomBarState
                     ZegoLiveAudioRoomInRoomMessageInputBoardButton(
                       innerText: widget.config.innerText,
                       rootNavigator: widget.config.rootNavigator,
+                      inRoomMessage: widget.config.inRoomMessage,
+                      avatarBuilder: widget.config.seat.avatarBuilder,
                       onSheetPopUp: (int key) {
                         widget.popUpManager.addAPopUpSheet(key);
                       },

@@ -3,18 +3,23 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:zego_uikit/zego_uikit.dart';
+import 'package:zego_uikit_prebuilt_live_audio_room/src/components/message/view.dart';
 
 // Project imports:
 import 'package:zego_uikit_prebuilt_live_audio_room/src/inner_text.dart';
 
+import '../../../zego_uikit_prebuilt_live_audio_room.dart';
+
 /// @nodoc
 class ZegoLiveAudioRoomInRoomMessageInputBoard extends ModalRoute<String> {
   ZegoLiveAudioRoomInRoomMessageInputBoard({
-    required this.innerText,
+    required this.innerText,required this.inRoomMessage, this.avatarBuilder,
     this.rootNavigator = false,
   }) : super();
 
   final ZegoUIKitPrebuiltLiveAudioRoomInnerText innerText;
+  final ZegoLiveAudioRoomInRoomMessageConfig inRoomMessage;
+  final ZegoAvatarBuilder? avatarBuilder;
   final bool rootNavigator;
 
   @override
@@ -42,10 +47,13 @@ class ZegoLiveAudioRoomInRoomMessageInputBoard extends ModalRoute<String> {
     Animation<double> secondaryAnimation,
   ) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.black54,
       body: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
+
           Expanded(
             child: GestureDetector(
               onTap: () => Navigator.of(
@@ -55,6 +63,10 @@ class ZegoLiveAudioRoomInRoomMessageInputBoard extends ModalRoute<String> {
               child: Container(color: Colors.transparent),
             ),
           ),
+          ZegoLiveAudioRoomInRoomLiveMessageView(
+            config: inRoomMessage,
+            avatarBuilder: avatarBuilder,
+          ),
           ZegoInRoomMessageInput(
             placeHolder: innerText.messageEmptyToast,
             backgroundColor: Colors.white,
@@ -63,10 +75,10 @@ class ZegoLiveAudioRoomInRoomMessageInputBoard extends ModalRoute<String> {
             textHintColor: const Color(0xff1B1B1B).withOpacity(0.5),
             buttonColor: const Color(0xff834D3D),
             onSubmit: () {
-              Navigator.of(
-                context,
-                rootNavigator: rootNavigator,
-              ).pop();
+              // Navigator.of(
+              //   context,
+              //   rootNavigator: rootNavigator,
+              // ).pop();
             },
           ),
         ],
