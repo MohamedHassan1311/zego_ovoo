@@ -63,9 +63,11 @@ class ZegoLiveAudioRoomInRoomMessageInputBoard extends ModalRoute<String> {
               child: Container(color: Colors.transparent),
             ),
           ),
-          ZegoLiveAudioRoomInRoomLiveMessageView(
-            config: inRoomMessage,
-            avatarBuilder: avatarBuilder,
+          Expanded(
+            child: ZegoLiveAudioRoomInRoomLiveMessageView(
+              config: inRoomMessage,
+              avatarBuilder: avatarBuilder,
+            ),
           ),
           ZegoInRoomMessageInput(
             placeHolder: innerText.messageEmptyToast,
