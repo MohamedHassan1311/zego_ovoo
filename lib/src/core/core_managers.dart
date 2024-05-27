@@ -21,7 +21,7 @@ class ZegoLiveAudioRoomManagers {
   ZegoLiveAudioRoomManagers._internal();
 
   static final ZegoLiveAudioRoomManagers _instance =
-      ZegoLiveAudioRoomManagers._internal();
+  ZegoLiveAudioRoomManagers._internal();
 
   void updateContextQuery(BuildContext Function() contextQuery) {
     ZegoLoggerService.logInfo(
@@ -83,7 +83,7 @@ class ZegoLiveAudioRoomManagers {
       events: events,
       innerText: config.innerText,
       popUpManager: popUpManager,
-      kickOutNotifier: kickOutNotifier, coHostIDSList:config.coHostIDSList ,
+      kickOutNotifier: kickOutNotifier,
     );
     connectManager = ZegoLiveAudioRoomConnectManager(
       config: config,

@@ -45,6 +45,24 @@ class ZegoLiveAudioRoomControllerSeatImpl
   ZegoUIKitUser? getUserByIndex(int targetIndex) =>
       private.seatManager?.getUserByIndex(targetIndex);
 
+  /// get seat index of target user
+  int getSeatIndexByUserID(String targetUserID) =>
+      private.seatManager?.getIndexByUserID(targetUserID) ?? -1;
+
+  /// get the currently empty seat
+  ///
+  /// set [includeHostSeats] to true if [ZegoLiveAudioRoomSeatConfig.hostIndexes] is included, default does not include
+  List<int> getEmptySeats({
+    bool includeHostSeats = false,
+  }) {
+    var emptySeats = private.seatManager?.getEmptySeats() ?? [];
+    if (!includeHostSeats) {
+      emptySeats.removeWhere(
+              (seatIndex) => private.seatManager?.isAHostSeat(seatIndex) ?? false);
+    }
+    return emptySeats;
+  }
+
   /// Is the current seat muted or not.
   /// Set [isLocally] to true to find out if it is muted locally.
   ///
@@ -53,13 +71,39 @@ class ZegoLiveAudioRoomControllerSeatImpl
   /// [muteLocallyByUserID]
   /// [ZegoLiveAudioRoomControllerSeatHostImpl.mute]
   /// [ZegoLiveAudioRoomControllerSeatHostImpl.muteByUserID]
+  ///
+  /// example:
+  ///
+  /// Display different icons according to the mute state change.
+  ///
+  /// ``` dart
+  /// ValueListenableBuilder<bool>(
+  ///   valueListenable: ZegoUIKitPrebuiltLiveAudioRoomController()
+  ///       .seat
+  ///       .muteStateNotifier(
+  ///         ZegoUIKitPrebuiltLiveAudioRoomController()
+  ///             .seat
+  ///             .getSeatIndexByUserID($targetUserID),
+  ///       ),
+  ///   builder: (context, isMuted, _) {
+  ///     return Icon(isMuted ? Icons.volume_mute : Icons.volume_up);
+  ///   },
+  /// )
+  /// ```
   ValueNotifier<bool> muteStateNotifier(
-    int targetIndex, {
-    bool isLocally = false,
-  }) {
+      int targetIndex, {
+        bool isLocally = false,
+      }) {
     final targetUser = ZegoUIKit()
         .getUser(private.seatManager?.getUserByIndex(targetIndex)?.id ?? '');
-    return isLocally ? targetUser.microphoneMuteMode : targetUser.microphone;
+    if (targetUser.isEmpty()) {
+      return ValueNotifier<bool>(false);
+    }
+
+    return isLocally
+        ? targetUser.microphoneMuteMode
+        : private.microphoneMuteNotifier
+        .getMicrophoneMuteStateNotifier(targetUser);
   }
 
   /// Mute the user at the [targetIndex] seat **locally**.
@@ -129,9 +173,9 @@ class ZegoLiveAudioRoomControllerSeatImpl
   ///  );
   /// ```
   Future<bool> muteLocallyByUserID(
-    String targetUserID, {
-    bool muted = true,
-  }) async {
+      String targetUserID, {
+        bool muted = true,
+      }) async {
     ZegoLoggerService.logInfo(
       'muteLocalByUserID, targetUserID:$targetUserID, muted:$muted',
       tag: 'audio room',
@@ -159,9 +203,9 @@ class ZegoLiveAudioRoomControllerSeatHostImpl
     );
 
     return await private.seatManager?.lockSeat(
-          false,
-          targetIndex: targetIndex,
-        ) ??
+      false,
+      targetIndex: targetIndex,
+    ) ??
         false;
   }
 
@@ -179,14 +223,17 @@ class ZegoLiveAudioRoomControllerSeatHostImpl
     );
 
     return await private.seatManager?.lockSeat(
-          true,
-          targetIndex: targetIndex,
-        ) ??
+      true,
+      targetIndex: targetIndex,
+    ) ??
         false;
   }
 
   /// Removes the speaker with the user ID [userID] from the seat.
-  Future<void> removeSpeaker(String userID) async {
+  Future<void> removeSpeaker(
+      String userID, {
+        bool showDialogConfirm = true,
+      }) async {
     ZegoLoggerService.logInfo(
       'removeSpeaker, userID:$userID',
       tag: 'live audio',
@@ -194,7 +241,10 @@ class ZegoLiveAudioRoomControllerSeatHostImpl
     );
 
     final index = private.seatManager?.getIndexByUserID(userID) ?? -1;
-    return private.seatManager?.kickSeat(index);
+    return private.seatManager?.kickSeat(
+      index,
+      showDialogConfirm: showDialogConfirm,
+    );
   }
 
   /// The host accepts the seat request from the audience with the ID [audienceUserID].
@@ -284,7 +334,7 @@ class ZegoLiveAudioRoomControllerSeatHostImpl
     );
 
     return await private.connectManager
-            ?.inviteAudienceConnect(ZegoUIKit().getUser(userID)) ??
+        ?.inviteAudienceConnect(ZegoUIKit().getUser(userID)) ??
         false;
   }
 
@@ -312,9 +362,9 @@ class ZegoLiveAudioRoomControllerSeatHostImpl
     );
 
     return await private.seatManager?.muteSeat(
-          targetIndex,
-          muted: muted,
-        ) ??
+      targetIndex,
+      muted: muted,
+    ) ??
         false;
   }
 
@@ -333,9 +383,9 @@ class ZegoLiveAudioRoomControllerSeatHostImpl
   /// [ZegoLiveAudioRoomControllerSeatImpl.getUserByIndex]
   /// [ZegoLiveAudioRoomAudioVideoEvents.onMicrophoneTurnOnByOthersConfirmation]
   Future<bool> muteByUserID(
-    String targetUserID, {
-    bool muted = true,
-  }) async {
+      String targetUserID, {
+        bool muted = true,
+      }) async {
     ZegoLoggerService.logInfo(
       'muteByUserID, targetUserID:$targetUserID, muted:$muted',
       tag: 'audio room',
@@ -355,9 +405,9 @@ class ZegoLiveAudioRoomControllerSeatHostImpl
     }
 
     return await private.seatManager?.muteSeat(
-          targetIndex,
-          muted: muted,
-        ) ??
+      targetIndex,
+      muted: muted,
+    ) ??
         false;
   }
 }
@@ -366,7 +416,10 @@ class ZegoLiveAudioRoomControllerSeatHostImpl
 class ZegoLiveAudioRoomControllerSeatAudienceImpl
     with ZegoLiveAudioRoomControllerSeatRolePrivate {
   /// Assigns the audience to the seat with the specified [index], where the index represents the seat number starting from 0.
-  Future<bool> take(int index) async {
+  Future<bool> take(
+      int index, {
+        bool isForce = false,
+      }) async {
     ZegoLoggerService.logInfo(
       'take, index:$index',
       tag: 'audio room',
@@ -374,11 +427,11 @@ class ZegoLiveAudioRoomControllerSeatAudienceImpl
     );
 
     return await private.seatManager?.takeOnSeat(
-          index,
-          isForce: true,
-          isUpdateOwner: true,
-          isDeleteAfterOwnerLeft: true,
-        ) ??
+      index,
+      isForce: isForce,
+      isUpdateOwner: true,
+      isDeleteAfterOwnerLeft: true,
+    ) ??
         false;
   }
 
@@ -407,19 +460,19 @@ class ZegoLiveAudioRoomControllerSeatAudienceImpl
     return ZegoUIKit()
         .getSignalingPlugin()
         .sendInvitation(
-          inviterID: ZegoUIKit().getLocalUser().id,
-          inviterName: ZegoUIKit().getLocalUser().name,
-          invitees: private.seatManager?.hostsNotifier.value ?? [],
-          timeout: 60,
-          type: ZegoLiveAudioRoomInvitationType.requestTakeSeat.value,
-          data: '',
-        )
+      inviterID: ZegoUIKit().getLocalUser().id,
+      inviterName: ZegoUIKit().getLocalUser().name,
+      invitees: private.seatManager?.hostsNotifier.value ?? [],
+      timeout: 60,
+      type: ZegoLiveAudioRoomInvitationType.requestTakeSeat.value,
+      data: '',
+    )
         .then((ZegoSignalingPluginSendInvitationResult result) {
       ZegoLoggerService.logInfo(
         'apply to take seat finished, code:${result.error?.code}, '
-        'message:${result.error?.message}, '
-        'invitationID:${result.invitationID}, '
-        'errorInvitees:${result.errorInvitees.keys.toList()}',
+            'message:${result.error?.message}, '
+            'invitationID:${result.invitationID}, '
+            'errorInvitees:${result.errorInvitees.keys.toList()}',
         tag: 'audio room',
         subTag: 'controller.seat',
       );
@@ -467,9 +520,9 @@ class ZegoLiveAudioRoomControllerSeatAudienceImpl
     return ZegoUIKit()
         .getSignalingPlugin()
         .acceptInvitation(
-          inviterID: private.seatManager?.hostsNotifier.value.first ?? '',
-          data: '',
-        )
+      inviterID: private.seatManager?.hostsNotifier.value.first ?? '',
+      data: '',
+    )
         .then((result) async {
       ZegoLoggerService.logInfo(
         'accept host take seat invitation, result:$result',
@@ -497,18 +550,18 @@ class ZegoLiveAudioRoomControllerSeatAudienceImpl
       ).then((_) async {
         /// agree host's host, take seat, find the nearest seat index
         return await private.seatManager
-                ?.takeOnSeat(
-              private.seatManager?.getNearestEmptyIndex() ?? -1,
-              isForce: true,
-              isDeleteAfterOwnerLeft: true,
-            )
-                .then((result) async {
-              if (result) {
-                ZegoUIKit().turnMicrophoneOn(true);
-              }
+            ?.takeOnSeat(
+          private.seatManager?.getNearestEmptyIndex() ?? -1,
+          isForce: true,
+          isDeleteAfterOwnerLeft: true,
+        )
+            .then((result) async {
+          if (result) {
+            ZegoUIKit().turnMicrophoneOn(true);
+          }
 
-              return result;
-            }) ??
+          return result;
+        }) ??
             false;
       });
     });

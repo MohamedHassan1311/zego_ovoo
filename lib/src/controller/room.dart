@@ -56,11 +56,11 @@ class ZegoLiveAudioRoomControllerRoomImpl
 
     ZegoLoggerService.logInfo(
       'updateProperties, '
-      'roomID:$roomID, '
-      'roomProperties:$roomProperties, '
-      'isForce:$isForce, '
-      'isDeleteAfterOwnerLeft:$isDeleteAfterOwnerLeft, '
-      'isUpdateOwner:$isUpdateOwner, ',
+          'roomID:$roomID, '
+          'roomProperties:$roomProperties, '
+          'isForce:$isForce, '
+          'isDeleteAfterOwnerLeft:$isDeleteAfterOwnerLeft, '
+          'isUpdateOwner:$isUpdateOwner, ',
       tag: 'audio room',
       subTag: 'controller.room',
     );
@@ -68,12 +68,12 @@ class ZegoLiveAudioRoomControllerRoomImpl
     return ZegoUIKit()
         .getSignalingPlugin()
         .updateRoomProperties(
-          roomID: roomID,
-          roomProperties: roomProperties,
-          isForce: isForce,
-          isDeleteAfterOwnerLeft: isDeleteAfterOwnerLeft,
-          isUpdateOwner: isUpdateOwner,
-        )
+      roomID: roomID,
+      roomProperties: roomProperties,
+      isForce: isForce,
+      isDeleteAfterOwnerLeft: isDeleteAfterOwnerLeft,
+      isUpdateOwner: isUpdateOwner,
+    )
         .then((result) {
       if (null != result.error) {
         ZegoLoggerService.logInfo(
@@ -107,9 +107,9 @@ class ZegoLiveAudioRoomControllerRoomImpl
 
     ZegoLoggerService.logInfo(
       'deleteRoomProperties, '
-      'roomID:$roomID, '
-      'keys:$keys, '
-      'isForce:$isForce, ',
+          'roomID:$roomID, '
+          'keys:$keys, '
+          'isForce:$isForce, ',
       tag: 'audio room',
       subTag: 'controller.room',
     );
@@ -117,10 +117,10 @@ class ZegoLiveAudioRoomControllerRoomImpl
     return ZegoUIKit()
         .getSignalingPlugin()
         .deleteRoomProperties(
-          roomID: roomID,
-          keys: keys,
-          isForce: isForce,
-        )
+      roomID: roomID,
+      keys: keys,
+      isForce: isForce,
+    )
         .then((result) {
       if (null != result.error) {
         ZegoLoggerService.logInfo(
@@ -152,7 +152,7 @@ class ZegoLiveAudioRoomControllerRoomImpl
 
     ZegoLoggerService.logInfo(
       'queryProperties, '
-      'roomID:$roomID, ',
+          'roomID:$roomID, ',
       tag: 'audio room',
       subTag: 'controller.room',
     );
@@ -160,8 +160,8 @@ class ZegoLiveAudioRoomControllerRoomImpl
     return ZegoUIKit()
         .getSignalingPlugin()
         .queryRoomProperties(
-          roomID: roomID,
-        )
+      roomID: roomID,
+    )
         .then((result) {
       if (null != result.error) {
         ZegoLoggerService.logInfo(
@@ -193,6 +193,13 @@ class ZegoLiveAudioRoomControllerRoomImpl
   }
 
   /// send room command
+  ///
+  /// string encoded in UTF-8 and convert to Uint8List
+  ///
+  /// import 'dart:convert';
+  /// import 'dart:typed_data';
+  ///
+  /// Uint8List dataBytes = Uint8List.fromList(utf8.encode(commandString));
   Future<bool> sendCommand({
     required String roomID,
     required Uint8List command,
@@ -209,7 +216,7 @@ class ZegoLiveAudioRoomControllerRoomImpl
 
     ZegoLoggerService.logInfo(
       'sendCommand, '
-      'roomID:$roomID, ',
+          'roomID:$roomID, ',
       tag: 'audio room',
       subTag: 'controller.room',
     );
@@ -217,9 +224,9 @@ class ZegoLiveAudioRoomControllerRoomImpl
     return ZegoUIKit()
         .getSignalingPlugin()
         .sendInRoomCommandMessage(
-          roomID: roomID,
-          message: command,
-        )
+      roomID: roomID,
+      message: command,
+    )
         .then((result) {
       if (null != result.error) {
         ZegoLoggerService.logInfo(
@@ -235,8 +242,16 @@ class ZegoLiveAudioRoomControllerRoomImpl
   }
 
   /// room command stream notify
+  ///
+  /// If you have a string encoded in UTF-8 and want to convert a Uint8List
+  /// to that string, you can use the following method:
+  ///
+  /// import 'dart:convert';
+  /// import 'dart:typed_data';
+  ///
+  /// Uint8List dataBytes = Uint8List.fromList(utf8.encode(commandString));
   Stream<ZegoSignalingPluginInRoomCommandMessageReceivedEvent>
-      commandReceivedStream() {
+  commandReceivedStream() {
     if (null == ZegoUIKit().getPlugin(ZegoUIKitPluginType.signaling)) {
       ZegoLoggerService.logInfo(
         'commandReceivedStream, signaling is null',
@@ -250,5 +265,20 @@ class ZegoLiveAudioRoomControllerRoomImpl
     return ZegoUIKit()
         .getSignalingPlugin()
         .getInRoomCommandMessageReceivedEventStream();
+  }
+
+  /// remove user from live, kick out
+  ///
+  /// @return Error code, please refer to the error codes document https://docs.zegocloud.com/en/5548.html for details.
+  ///
+  /// @return A `Future` that representing whether the request was successful.
+  Future<bool> removeUser(List<String> userIDs) async {
+    ZegoLoggerService.logInfo(
+      'remove user:$userIDs',
+      tag: 'audio room',
+      subTag: 'controller.room',
+    );
+
+    return ZegoUIKit().removeUserFromRoom(userIDs);
   }
 }

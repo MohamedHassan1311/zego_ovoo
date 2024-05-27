@@ -13,8 +13,8 @@ import 'package:zego_uikit_prebuilt_live_audio_room/src/minimizing/defines.dart'
 
 /// @nodoc
 typedef LiveAudioRoomMiniOverlayMachineStateChanged = void Function(
-  ZegoLiveAudioRoomMiniOverlayPageState,
-);
+    ZegoLiveAudioRoomMiniOverlayPageState,
+    );
 
 class ZegoLiveAudioRoomInternalMiniOverlayMachine {
   factory ZegoLiveAudioRoomInternalMiniOverlayMachine() => _instance;
@@ -107,6 +107,7 @@ class ZegoLiveAudioRoomInternalMiniOverlayMachine {
     ZegoUIKitPrebuiltLiveAudioRoomController().private.uninitByPrebuilt();
     ZegoUIKitPrebuiltLiveAudioRoomController().seat.private.uninitByPrebuilt();
     ZegoUIKitPrebuiltLiveAudioRoomController().room.private.uninitByPrebuilt();
+    ZegoUIKitPrebuiltLiveAudioRoomController().user.private.uninitByPrebuilt();
     ZegoUIKitPrebuiltLiveAudioRoomController()
         .minimize
         .private
@@ -123,11 +124,11 @@ class ZegoLiveAudioRoomInternalMiniOverlayMachine {
         ?.events
         .onEnded
         ?.call(
-            ZegoLiveAudioRoomEndEvent(
-              reason: ZegoLiveAudioRoomEndReason.kickOut,
-              isFromMinimizing: true,
-              kickerUserID: fromUserID,
-            ), () {
+        ZegoLiveAudioRoomEndEvent(
+          reason: ZegoLiveAudioRoomEndReason.kickOut,
+          isFromMinimizing: true,
+          kickerUserID: fromUserID,
+        ), () {
       /// now is minimizing state, not need to navigate, just switch to idle
       ZegoUIKitPrebuiltLiveAudioRoomController().minimize.hide();
     });
@@ -140,11 +141,11 @@ class ZegoLiveAudioRoomInternalMiniOverlayMachine {
   }
 
   static final ZegoLiveAudioRoomInternalMiniOverlayMachine _instance =
-      ZegoLiveAudioRoomInternalMiniOverlayMachine._internal();
+  ZegoLiveAudioRoomInternalMiniOverlayMachine._internal();
 
   final _machine = sm.Machine<ZegoLiveAudioRoomMiniOverlayPageState>();
   final List<LiveAudioRoomMiniOverlayMachineStateChanged>
-      _onStateChangedListeners = [];
+  _onStateChangedListeners = [];
 
   StreamSubscription<dynamic>? kickOutSubscription;
 

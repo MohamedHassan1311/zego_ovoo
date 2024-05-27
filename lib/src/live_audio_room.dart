@@ -165,6 +165,9 @@ class _ZegoUIKitPrebuiltLiveAudioRoomState
             connectManager: ZegoLiveAudioRoomManagers().connectManager,
             seatManager: ZegoLiveAudioRoomManagers().seatManager,
           );
+      ZegoUIKitPrebuiltLiveAudioRoomController().user.private.initByPrebuilt(
+        config: widget.config,
+      );
       ZegoUIKitPrebuiltLiveAudioRoomController().room.private.initByPrebuilt(
             config: widget.config,
             events: events,
@@ -254,6 +257,10 @@ class _ZegoUIKitPrebuiltLiveAudioRoomState
       ZegoUIKitPrebuiltLiveAudioRoomController().private.uninitByPrebuilt();
       ZegoUIKitPrebuiltLiveAudioRoomController()
           .seat
+          .private
+          .uninitByPrebuilt();
+      ZegoUIKitPrebuiltLiveAudioRoomController()
+          .user
           .private
           .uninitByPrebuilt();
       ZegoUIKitPrebuiltLiveAudioRoomController()
