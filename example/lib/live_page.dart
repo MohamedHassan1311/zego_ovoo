@@ -32,9 +32,9 @@ class LivePageState extends State<LivePage> {
   @override
   Widget build(BuildContext context) {
     return ZegoUIKitPrebuiltLiveAudioRoom(
-      appID: 1435623513 /*input your AppID*/,
+      appID: 1983963847 /*input your AppID*/,
       appSign:
-          "e276bd2e0eea30e1e27efaead6967e385f2006870f7c32ebce38e05b8300cdec" /*input your AppSign*/,
+          "3a6bf8bd41c108117f04ea8cf3481f556e94bfca7dc7441f1dd395ce59c4fe7d" /*input your AppSign*/,
       userID: localUserID,
       topPaading: 90,
       userName: 'user_$localUserID',

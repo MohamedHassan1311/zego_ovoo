@@ -60,22 +60,12 @@ class _ZegoLiveAudioRoomSeatForegroundState
       onDoubleTap: onDoubleClicked,
       child: Container(
         color: Colors.transparent,
-        child: Stack(
-          children: [
-            widget.config.seat.foregroundBuilder?.call(
-                  context,
-                  widget.size,
-                  ZegoUIKit().getUser(widget.user?.id ?? ''),
-                  widget.extraInfo,
-                ) ??
-                foreground(
-                  context,
-                  widget.size,
-                  ZegoUIKit().getUser(widget.user?.id ?? ''),
-                  widget.extraInfo,
-                ),
-          ],
-        ),
+        child: foreground(
+        context,
+        widget.size,
+        ZegoUIKit().getUser(widget.user?.id ?? ''),
+        widget.extraInfo,
+      ),
       ),
     );
   }
