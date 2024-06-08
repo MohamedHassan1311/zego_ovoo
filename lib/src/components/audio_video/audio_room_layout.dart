@@ -121,8 +121,8 @@ class _ZegoLiveAudioRoomLayoutState extends State<ZegoLiveAudioRoomLayout> {
       (int index) {
         final targetUser = users.elementAt(index);
         return SizedBox(
-          width: seatItemWidth,
-          height: seatItemHeight,
+          width: seatItemWidth*1.1,
+          height: seatItemHeight*1.15,
           child: ValueListenableBuilder<bool>(
               valueListenable:
                   ZegoUIKit().getMicrophoneStateNotifier(targetUser?.id ?? ''),
@@ -140,7 +140,7 @@ class _ZegoLiveAudioRoomLayoutState extends State<ZegoLiveAudioRoomLayout> {
                     showSoundWavesInAudioMode: widget.showSoundWavesInAudioMode,
                     builder: widget.avatarBuilder,
                     soundWaveColor:widget.soundWaveColor?? const Color(0xFFB18A66),
-                    size: Size(seatIconWidth, seatIconHeight),
+                    size: Size(seatIconWidth*1.15, seatIconHeight*1.15),
                     verticalAlignment: ZegoAvatarAlignment.start,
                   ),
                 );
