@@ -168,7 +168,7 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
                         ),
                         topBar(),
                         SizedBox(
-                          height: widget.topPaading! / 4 ?? 0 / 5,
+                          height: widget.topPaading! / 2.5 ?? 0 / 5,
                         ),
                         audioVideoContainer(
                           constraints.maxWidth,
