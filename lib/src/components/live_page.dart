@@ -88,7 +88,7 @@ class ZegoLiveAudioRoomPage extends StatefulWidget {
 }
 
 class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
-    with SingleTickerProviderStateMixin,AutomaticKeepAliveClientMixin {
+    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   /// had sort the host be first
   bool audioVideoContainerHostHadSorted = false;
 
@@ -157,8 +157,9 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
                 return Stack(
                   children: [
                     background(context, constraints.maxHeight),
-                    Container(color: Colors.black45,),
-
+                    Container(
+                      color: Colors.black45,
+                    ),
                     durationTimeBoard(),
                     Column(
                       children: [
@@ -167,7 +168,7 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
                         ),
                         topBar(),
                         SizedBox(
-                          height: widget.topPaading ?? 0 / 4,
+                          height: widget.topPaading! / 4 ?? 0 / 5,
                         ),
                         audioVideoContainer(
                           constraints.maxWidth,
@@ -300,7 +301,7 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
 
     return SizedBox(
       width: null != scrollDirection ? containerWidth : tempMaxWidth,
-      height: containerHeight*1.15,
+      height: containerHeight * 1.15,
       child: null != scrollDirection
           ? SingleChildScrollView(
               scrollDirection: scrollDirection,
