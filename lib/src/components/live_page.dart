@@ -130,6 +130,7 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       body: WillPopScope(
