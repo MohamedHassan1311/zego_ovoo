@@ -467,7 +467,7 @@ class _ZegoUIKitPrebuiltLiveAudioRoomState
     )
         .then((_) async {
       await ZegoUIKit().setAdvanceConfigs(widget.config.advanceConfigs);
-
+      widget.config.isRoomStart!.call(true);
       onContextInit();
     });
   }

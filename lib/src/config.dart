@@ -120,6 +120,9 @@ class ZegoUIKitPrebuiltLiveAudioRoomConfig {
 
    List<String>? coHostIDSList;
 
+
+   ValueChanged<bool?>? isRoomStart;
+
   /// Set advanced engine configuration, Used to enable advanced functions.
   /// For details, please consult ZEGO technical support.
   Map<String, String> advanceConfigs;
