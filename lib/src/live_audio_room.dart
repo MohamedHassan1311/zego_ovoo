@@ -314,25 +314,28 @@ class _ZegoUIKitPrebuiltLiveAudioRoomState
 
   @override
   Widget build(BuildContext context) {
-    return ZegoLiveAudioRoomPage(
-      appID: widget.appID,
-      appSign: widget.appSign,
-      userID: widget.userID,
-      userName: widget.userName,
-      liveID: widget.roomID,
-      config: widget.config,
-      events: events,
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: ZegoLiveAudioRoomPage(
+        appID: widget.appID,
+        appSign: widget.appSign,
+        userID: widget.userID,
+        userName: widget.userName,
+        liveID: widget.roomID,
+        config: widget.config,
+        events: events,
 
-      topPaading: widget.topPaading,
-      defaultEndAction: defaultEndAction,
-      defaultLeaveConfirmationAction: defaultLeaveConfirmationAction,
-      plugins: ZegoLiveAudioRoomManagers().plugins,
-      seatManager: ZegoLiveAudioRoomManagers().seatManager!,
-      connectManager: ZegoLiveAudioRoomManagers().connectManager!,
-      popUpManager: ZegoLiveAudioRoomManagers().popUpManager,
-      liveDurationManager: ZegoLiveAudioRoomManagers().liveDurationManager!,
+        topPaading: widget.topPaading,
+        defaultEndAction: defaultEndAction,
+        defaultLeaveConfirmationAction: defaultLeaveConfirmationAction,
+        plugins: ZegoLiveAudioRoomManagers().plugins,
+        seatManager: ZegoLiveAudioRoomManagers().seatManager!,
+        connectManager: ZegoLiveAudioRoomManagers().connectManager!,
+        popUpManager: ZegoLiveAudioRoomManagers().popUpManager,
+        liveDurationManager: ZegoLiveAudioRoomManagers().liveDurationManager!,
 
-      minimizeData: minimizeData, icons: widget.icons, userAvtarName: widget.userAvtarName,
+        minimizeData: minimizeData, icons: widget.icons, userAvtarName: widget.userAvtarName,
+      ),
     );
   }
 
