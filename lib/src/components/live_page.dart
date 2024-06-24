@@ -391,7 +391,7 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
       listSize = Size(listSize.width, 40.zR);
     }
     return Positioned(
-      right: 10,
+      right: 0,
       left: widget.config.inRoomMessage.bottomLeft?.dx ?? 0,
       bottom: 124.zR + (widget.config.inRoomMessage.bottomLeft?.dy ?? 0),
       child: ConstrainedBox(
