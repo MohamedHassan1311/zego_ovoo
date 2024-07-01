@@ -127,7 +127,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     if (_initialized) {
       ZegoLoggerService.logInfo(
         'had already init',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
 
@@ -138,7 +138,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
 
     ZegoLoggerService.logInfo(
       'init',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
@@ -160,7 +160,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     if (!_initialized) {
       ZegoLoggerService.logInfo(
         'not init before',
-        tag: 'live audio',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
 
@@ -171,7 +171,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
 
     ZegoLoggerService.logInfo(
       'uninit',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
@@ -199,7 +199,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
   void setConnectManager(ZegoLiveAudioRoomConnectManager value) {
     ZegoLoggerService.logInfo(
       'set connect manager',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
@@ -229,7 +229,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         'only host or co-host can ${isLocked ? 'lock' : 'unlock'} seat, '
             'local role:${localRole.value}, host:${hostsNotifier.value}, '
             'has co-host:${haveCoHost()}',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       return false;
@@ -238,7 +238,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     final isRoomLocked = targetIndexes.isEmpty;
     ZegoLoggerService.logInfo(
       'try ${isLocked ? 'lock' : 'unlock'} ${isRoomLocked ? 'audio room' : '$targetIndexes'}',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
@@ -246,7 +246,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       if (isLocked == isRoomSeatLockedNotifier.value) {
         ZegoLoggerService.logInfo(
           '${isLocked ? 'lock' : 'unlock'} status($isLocked) is same',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
         return true;
@@ -267,13 +267,13 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         if (result.error != null) {
           ZegoLoggerService.logError(
             '${isLocked ? 'lock' : 'unlock'} seat is failed, ${result.error} ',
-            tag: 'audio room',
+            tag: 'audio-room-seat',
             subTag: 'seat manager',
           );
         } else {
           ZegoLoggerService.logInfo(
             '${isLocked ? 'lock' : 'unlock'} seat success',
-            tag: 'audio room',
+            tag: 'audio-room-seat',
             subTag: 'seat manager',
           );
         }
@@ -288,7 +288,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       'ready ${isLocked ? 'lock' : 'unlock'} seats, '
           'targetIndexes:$targetIndexes, seats had locked:$targetLockSeats, '
           'seats not empty:${seatsUserMapNotifier.value}',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
     if (isLocked) {
@@ -305,7 +305,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       if (targetIndexes.isEmpty) {
         ZegoLoggerService.logInfo(
           'after remove seat not empty and already locked, target indexes is empty',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
 
@@ -321,7 +321,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       if (targetIndexes.isEmpty) {
         ZegoLoggerService.logInfo(
           'after remove seat already unlocked, target indexes is empty',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
 
@@ -345,7 +345,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       if (result.error != null) {
         ZegoLoggerService.logError(
           '${isLocked ? 'lock' : 'unlock'} seats $targetIndexes is failed, ${result.error} ',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
       } else {
@@ -353,7 +353,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
 
         ZegoLoggerService.logInfo(
           '${isLocked ? 'lock' : 'unlock'} seats $targetIndexes success, now lock seats is:$targetLockSeats',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
       }
@@ -368,7 +368,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
   }) async {
     ZegoLoggerService.logInfo(
       'query init users in-room attributes, next flag:$nextFlag',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
     return ZegoUIKit()
@@ -381,13 +381,13 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       final success = result.error == null;
       ZegoLoggerService.logInfo(
         'query finish, result:$result',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
 
       ZegoLoggerService.logInfo(
         'query finish, result:$result, nextFlag: ${result.nextFlag}',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       if (success) {
@@ -396,7 +396,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         if (result.nextFlag.isNotEmpty) {
           ZegoLoggerService.logInfo(
             'query has next flag, query next..',
-            tag: 'audio room',
+            tag: 'audio-room-seat',
             subTag: 'seat manager',
           );
 
@@ -425,11 +425,12 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         localRole.value == ZegoLiveAudioRoomRole.speaker) {
       ZegoLoggerService.logInfo(
         'try init seat ${config.seat.takeIndexWhenJoining}',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       await takeOnSeat(
         config.seat.takeIndexWhenJoining,
+        ignoreLocked: true,
         isForce: true,
         isUpdateOwner: true,
         isDeleteAfterOwnerLeft: true,
@@ -438,14 +439,14 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
 
         ZegoLoggerService.logInfo(
           "[live audio room] init seat index ${success ? "success" : "failed"}",
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
         if (success) {
           if (localRole.value == ZegoLiveAudioRoomRole.host) {
             ZegoLoggerService.logInfo(
               '[live audio room] try init role ${localRole.value}',
-              tag: 'audio room',
+              tag: 'audio-room-seat',
               subTag: 'seat manager',
             );
             await setRoleAttribute(
@@ -454,13 +455,13 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
             ).then((success) async {
               ZegoLoggerService.logInfo(
                 "[live audio room] init role ${success ? "success" : "failed"}",
-                tag: 'audio room',
+                tag: 'audio-room-seat',
                 subTag: 'seat manager',
               );
               if (!success) {
                 ZegoLoggerService.logInfo(
                   '[live audio room] reset to audience and take off seat ${config.seat.takeIndexWhenJoining}',
-                  tag: 'audio room',
+                  tag: 'audio-room-seat',
                   subTag: 'seat manager',
                 );
 
@@ -485,7 +486,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
   void onRoleChanged() {
     ZegoLoggerService.logInfo(
       'local user role changed to ${localRole.value}',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
@@ -501,7 +502,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       ).then((value) {
         ZegoLoggerService.logInfo(
           'local is speaker now, turn on microphone',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
         ZegoUIKit().turnMicrophoneOn(true);
@@ -509,7 +510,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     } else {
       ZegoLoggerService.logInfo(
         'local is audience now, turn off microphone',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       ZegoUIKit().turnMicrophoneOn(false);
@@ -519,7 +520,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       if (isLeaveSeatDialogVisible) {
         ZegoLoggerService.logInfo(
           'close leave seat dialog',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
         isLeaveSeatDialogVisible = false;
@@ -531,7 +532,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       if (_isPopUpSheetVisible) {
         ZegoLoggerService.logInfo(
           'close pop up sheet',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
         _isPopUpSheetVisible = false;
@@ -546,14 +547,14 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
   void onSeatUsersChanged() {
     ZegoLoggerService.logInfo(
       'seat users changed to ${seatsUserMapNotifier.value}',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
     if (!seatsUserMapNotifier.value.values.contains(localUserID)) {
       ZegoLoggerService.logInfo(
         'local is not on seat now, turn off microphone',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       ZegoUIKit().turnMicrophoneOn(false);
@@ -570,7 +571,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       if (needLockedSeats.isNotEmpty) {
         ZegoLoggerService.logInfo(
           'room seat is locked, auto lock the seats which available:$needLockedSeats',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
 
@@ -588,7 +589,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     )) {
       ZegoLoggerService.logInfo(
         'close kick seat dialog',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       kickSeatDialogInfo.clear();
@@ -658,7 +659,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       if (result.error != null) {
         ZegoLoggerService.logError(
           'update lock seats failed, ${result.error} ',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
       } else {
@@ -666,7 +667,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
 
         ZegoLoggerService.logInfo(
           'update lock seats success, now lock seats is:${lockedSeatNotifier.value}',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
       }
@@ -678,7 +679,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
   void onLockedSeatsChanged() {
     ZegoLoggerService.logInfo(
       'onLockedSeatsChanged, now lock seats is:${lockedSeatNotifier.value}',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
   }
@@ -711,7 +712,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
   }) async {
     ZegoLoggerService.logInfo(
       '$targetUserID set role in-room attribute: $role',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
@@ -725,13 +726,13 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       if (success) {
         ZegoLoggerService.logInfo(
           'host set in-room attribute result success',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
       } else {
         ZegoLoggerService.logError(
           'host set in-room attribute result failed, error:${result.error}',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
 
@@ -743,6 +744,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
 
   Future<bool> takeOnSeat(
       int index, {
+        bool ignoreLocked = false,
         bool isForce = false,
         bool isUpdateOwner = false,
         bool isDeleteAfterOwnerLeft = false,
@@ -750,16 +752,16 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     if (index < 0) {
       ZegoLoggerService.logInfo(
         'take on seat $index, but seat $index is not valid',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       return false;
     }
 
-    if (!isForce && lockedSeatNotifier.value.contains(index)) {
+    if (!ignoreLocked && lockedSeatNotifier.value.contains(index)) {
       ZegoLoggerService.logInfo(
         'switch seat $index, but seat index is locked:${lockedSeatNotifier.value}',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       return false;
@@ -768,7 +770,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     if (!isForce && !isTargetSeatEmpty(index)) {
       ZegoLoggerService.logInfo(
         'take on seat $index, but seat $index is not empty',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       return false;
@@ -777,7 +779,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     if (-1 != getIndexByUserID(localUserID)) {
       ZegoLoggerService.logInfo(
         'take on seat $index, but user is on seat, switch to $index',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       return switchToSeat(index, isForce: isForce);
@@ -786,7 +788,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     if (_isRoomAttributesBatching) {
       ZegoLoggerService.logInfo(
         'take on seat $index, room attribute is batching, ignore',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       return false;
@@ -796,7 +798,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       'local user take on seat $index, target room attribute:${{
         index.toString(): localUserID
       }}',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
@@ -818,13 +820,13 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       if (result.error != null) {
         ZegoLoggerService.logError(
           'take on $index seat is failed, ${result.error}',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
       } else {
         ZegoLoggerService.logInfo(
           'local user take on seat $index success',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
       }
@@ -838,7 +840,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       if (result.error != null) {
         ZegoLoggerService.logError(
           'take on seat $index result, error:${result.error}',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
         showDebugToast('take on seat $index error, ${result.error}');
@@ -851,7 +853,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
 
         ZegoLoggerService.logInfo(
           'room attribute batch success finished',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
       }
@@ -867,7 +869,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     if (!isForce && lockedSeatNotifier.value.contains(index)) {
       ZegoLoggerService.logInfo(
         'switch seat $index, but seat index is locked:${lockedSeatNotifier.value}',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       return false;
@@ -877,7 +879,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     if (oldSeatIndex == index) {
       ZegoLoggerService.logInfo(
         'local user is on seat $index, not need to switch.',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
 
@@ -887,7 +889,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     if (_isRoomAttributesBatching) {
       ZegoLoggerService.logInfo(
         'switch seat $index, room attribute is batching, ignore',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       return false;
@@ -896,7 +898,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     ZegoLoggerService.logInfo(
       'local user switch on seat from $oldSeatIndex to $index, '
           'target room attributes:${{index.toString(): localUserID}}',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
@@ -918,7 +920,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         ZegoLoggerService.logError(
           'switch seat $index, '
               'updateRoomProperty failed, error:${result.error}',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
 
@@ -928,7 +930,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         ZegoLoggerService.logInfo(
           'switch seat $index '
               'updateRoomProperty success',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
       }
@@ -941,7 +943,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         ZegoLoggerService.logError(
           'switch seat $index, '
               'deleteRoomProperties failed, error:${result.error}',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
 
@@ -951,7 +953,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         ZegoLoggerService.logInfo(
           'switch seat $index '
               'deleteRoomProperties success',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
       }
@@ -963,7 +965,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       _isRoomAttributesBatching = false;
       ZegoLoggerService.logInfo(
         'switch seat $index, room attribute batch is finished',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
 
@@ -971,7 +973,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         ZegoLoggerService.logError(
           'switch seat $index, '
               'endRoomPropertiesBatchOperation failed, error:${result.error}',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
 
@@ -981,7 +983,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         ZegoLoggerService.logInfo(
           'switch seat $index '
               'endRoomPropertiesBatchOperation success',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
       }
@@ -998,7 +1000,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     if (null == targetUser) {
       ZegoLoggerService.logInfo(
         'kick seat $index user id is empty',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       return;
@@ -1009,7 +1011,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
           'index:$index, '
           'user:$targetUser, '
           'showDialogConfirm:$showDialogConfirm, ',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
@@ -1022,7 +1024,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     if (kickSeatDialogInfo.isNotEmpty) {
       ZegoLoggerService.logInfo(
         'kick seat $index, dialog is visible',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       return;
@@ -1062,7 +1064,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
   Future<bool> leaveSeat({bool showDialog = true}) async {
     ZegoLoggerService.logInfo(
       'leave seat, showDialog:$showDialog',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
@@ -1071,7 +1073,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     if (-1 == localSeatIndex) {
       ZegoLoggerService.logInfo(
         'local is not on seat, not need to leave',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       return false;
@@ -1080,7 +1082,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     if (showDialog && isLeaveSeatDialogVisible) {
       ZegoLoggerService.logInfo(
         'leave seat, dialog is visible',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       return false;
@@ -1088,7 +1090,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
 
     ZegoLoggerService.logInfo(
       'local is on seat $localSeatIndex, leaving..',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
@@ -1138,7 +1140,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     if (null == targetUser) {
       ZegoLoggerService.logInfo(
         'take off seat $index user id is empty',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       return false;
@@ -1146,14 +1148,14 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
 
     ZegoLoggerService.logInfo(
       'take off seat, index:$index, isForce:$isForce, user:$targetUser',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
     if (_isRoomAttributesBatching) {
       ZegoLoggerService.logInfo(
         'take off seat $index, room attribute is batching, ignore',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       return false;
@@ -1172,14 +1174,14 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         ZegoLoggerService.logInfo(
           'take off ${targetUser.name} from $index seat '
               ' failed, ${result.error}',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
       } else {
         ZegoLoggerService.logInfo(
           'take off $targetUser from seat '
               '$index success',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
       }
@@ -1191,14 +1193,14 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       _isRoomAttributesBatching = false;
       ZegoLoggerService.logInfo(
         'take off seat $index, room attribute batch is finished',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
 
       if (result.error != null) {
         ZegoLoggerService.logError(
           'take off seat $index failed, error: ${result.error}',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
         showDebugToast('take off seat failed, error: ${result.error}');
@@ -1206,7 +1208,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         if (isCoHost(targetUser)) {
           ZegoLoggerService.logInfo(
             'revoke co-host after take off seat $index success',
-            tag: 'audio room',
+            tag: 'audio-room-seat',
             subTag: 'seat manager',
           );
           revokeCoHost(roomID: roomID, targetUser: targetUser);
@@ -1219,7 +1221,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
 
         ZegoLoggerService.logInfo(
           'take off seat $index success',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
       }
@@ -1236,7 +1238,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     if (null == targetUser) {
       ZegoLoggerService.logInfo(
         'mute seat $index user id is empty',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
       return false;
@@ -1244,7 +1246,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
 
     ZegoLoggerService.logInfo(
       'mute seat, index:$index, user:$targetUser, muted:$muted',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
@@ -1321,7 +1323,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       ZegoSignalingPluginUsersInRoomAttributesUpdatedEvent event) {
     ZegoLoggerService.logInfo(
       'onUsersAttributesUpdated $event',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
@@ -1333,7 +1335,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
   void updateRoleFromUserAttributes(Map<String, Map<String, String>> infos) {
     ZegoLoggerService.logInfo(
       'updateUserAttributes:$infos',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
@@ -1344,7 +1346,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         ZegoLoggerService.logInfo(
           'updateUserAttributes, but user($updateUserID) '
               'is not exist, deal when user enter',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
         return;
@@ -1362,7 +1364,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
 
           ZegoLoggerService.logInfo(
             'update local role:${localRole.value}',
-            tag: 'audio room',
+            tag: 'audio-room-seat',
             subTag: 'seat manager',
           );
         }
@@ -1397,7 +1399,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     hostsNotifier.value = currentHosts;
     ZegoLoggerService.logInfo(
       'hosts is:${hostsNotifier.value}',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
@@ -1405,7 +1407,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         isCoHost(ZegoUIKit().getLocalUser())) {
       ZegoLoggerService.logInfo(
         "host enter, remove co-host's host data ",
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
 
@@ -1420,7 +1422,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         ZegoLoggerService.logInfo(
           'exist pending user attribute, user '
               'id: $userID, attributes: $userAttributes',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
 
@@ -1450,7 +1452,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       ) {
     ZegoLoggerService.logInfo(
       'onRoomAttributesUpdated $propertiesData',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
     updateSeatUsersByRoomAttributes(
@@ -1471,7 +1473,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       ZegoSignalingPluginRoomPropertiesBatchUpdatedEvent propertiesData) {
     ZegoLoggerService.logInfo(
       'onRoomBatchAttributesUpdated, $propertiesData}',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
     updateSeatUsersByRoomAttributes(
@@ -1525,7 +1527,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
           /// old seat user
           ZegoLoggerService.logInfo(
             'user($seatUserId) has old data $seatsUsersMap, clear it',
-            tag: 'audio room',
+            tag: 'audio-room-seat',
             subTag: 'seat manager',
           );
           seatsUsersMap.removeWhere(
@@ -1540,7 +1542,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         if (kickSeatDialogInfo.isExist(userIndex: seatIndex)) {
           ZegoLoggerService.logInfo(
             'close kick seat dialog',
-            tag: 'audio room',
+            tag: 'audio-room-seat',
             subTag: 'seat manager',
           );
           kickSeatDialogInfo.clear();
@@ -1560,7 +1562,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       if (_hostSeatAttributeInitialed) {
         ZegoLoggerService.logInfo(
           "host's seat is been take off, set host to an audience",
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
 
@@ -1575,7 +1577,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
                 : ZegoLiveAudioRoomRole.audience;
             ZegoLoggerService.logInfo(
               "local host's role change by room attribute: ${localRole.value}",
-              tag: 'audio room',
+              tag: 'audio-room-seat',
               subTag: 'seat manager',
             );
           }
@@ -1589,7 +1591,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
             : ZegoLiveAudioRoomRole.audience;
         ZegoLoggerService.logInfo(
           'local user role change by room attribute: ${localRole.value}',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'seat manager',
         );
       }
@@ -1597,7 +1599,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
 
     ZegoLoggerService.logInfo(
       'seats users is: ${seatsUserMapNotifier.value}',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
   }
@@ -1605,7 +1607,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
   void setPopUpSheetVisible(bool isShow) {
     ZegoLoggerService.logInfo(
       'set pop up sheet visible:$isShow',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
@@ -1615,7 +1617,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
   void setKickSeatDialogInfo(KickSeatDialogInfo kickSeatDialogInfo) {
     ZegoLoggerService.logInfo(
       'set kick set dialog info:$kickSeatDialogInfo',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
 
@@ -1625,7 +1627,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
   Future<bool> queryRoomAllAttributes({bool withToast = true}) async {
     ZegoLoggerService.logInfo(
       'query room all attributes',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
     return ZegoUIKit()
@@ -1635,7 +1637,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       final success = result.error == null;
       ZegoLoggerService.logInfo(
         'query room all attributes finish, result: $result',
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
 
@@ -1669,7 +1671,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
   Future<bool> initLocalAvatarAttribute() async {
     ZegoLoggerService.logInfo(
       'set local user avatar attribute: ${config.userAvatarUrl ?? ''}',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'prebuilt',
     );
 
@@ -1683,13 +1685,13 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       if (success) {
         ZegoLoggerService.logInfo(
           'set local user avatar attribute result success',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'prebuilt',
         );
       } else {
         ZegoLoggerService.logError(
           'set local user avatar attribute result failed, error:${result.error}',
-          tag: 'audio room',
+          tag: 'audio-room-seat',
           subTag: 'prebuilt',
         );
 
@@ -1703,7 +1705,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
   Future<void> initLocalInRoomAttributes() async {
     ZegoLoggerService.logInfo(
       'init local user in-room attributes: ${config.userInRoomAttributes}',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'prebuilt',
     );
 
@@ -1718,13 +1720,13 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         if (success) {
           ZegoLoggerService.logInfo(
             'init local user in-room attributes{$key, $value}: result success',
-            tag: 'audio room',
+            tag: 'audio-room-seat',
             subTag: 'prebuilt',
           );
         } else {
           ZegoLoggerService.logError(
             'init local user in-room attributes{$key, $value}: result failed, error:${result.error}',
-            tag: 'audio room',
+            tag: 'audio-room-seat',
             subTag: 'prebuilt',
           );
 
@@ -1766,7 +1768,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
     if (selfIsCoHostBefore && !selfIsCoHostNow) {
       ZegoLoggerService.logInfo(
         "self's co-host had removed",
-        tag: 'audio room',
+        tag: 'audio-room-seat',
         subTag: 'seat manager',
       );
 
@@ -1776,7 +1778,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
 
     ZegoLoggerService.logInfo(
       'co-hosts is:${coHostsNotifier.value}',
-      tag: 'audio room',
+      tag: 'audio-room-seat',
       subTag: 'seat manager',
     );
   }

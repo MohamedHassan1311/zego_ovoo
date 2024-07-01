@@ -252,6 +252,10 @@ class ZegoLiveAudioRoomSeatConfig {
   /// This is only valid when the role is set to host or speaker.
   int takeIndexWhenJoining;
 
+  /// When the audience take on seat, do you want specify a seat? If so,
+  /// return to the seat you want to specify
+  int Function(ZegoUIKitUser user)? takeIndexWhenAudienceRequesting;
+
   /// Specifies whether to lock the seat automatically after entering the room.
   /// It only takes effect when set by the host
   /// The default value is `true`.
@@ -307,6 +311,7 @@ class ZegoLiveAudioRoomSeatConfig {
   ZegoLiveAudioRoomSeatConfig({
     ZegoLiveAudioRoomLayoutConfig? layout,
     this.takeIndexWhenJoining = -1,
+    this.takeIndexWhenAudienceRequesting,
     this.closeWhenJoining = true,
     this.hostIndexes = const [0],
     this.openIcon,

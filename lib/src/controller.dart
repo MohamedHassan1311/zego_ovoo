@@ -24,6 +24,7 @@ import 'package:zego_uikit_prebuilt_live_audio_room/src/minimizing/data.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/minimizing/defines.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/minimizing/overlay_machine.dart';
 import 'components/dialogs.dart';
+import 'core/protocol.dart';
 
 part 'controller/media.dart';
 

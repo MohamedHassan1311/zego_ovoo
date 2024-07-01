@@ -1,5 +1,3 @@
-// Dart imports:
-
 // Flutter imports:
 import 'package:flutter/material.dart';
 
@@ -11,6 +9,7 @@ import 'package:zego_uikit_prebuilt_live_audio_room/src/components/components.da
 import 'package:zego_uikit_prebuilt_live_audio_room/src/components/toast.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/core/connect/connect_manager.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/core/connect/defines.dart';
+import 'package:zego_uikit_prebuilt_live_audio_room/src/core/protocol.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/core/seat/seat_manager.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/defines.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/inner_text.dart';
@@ -36,16 +35,16 @@ class ZegoLiveAudioRoomAudienceConnectButton extends StatefulWidget {
 class _ZegoLiveAudioRoomAudienceConnectButtonState
     extends State<ZegoLiveAudioRoomAudienceConnectButton> {
   ButtonIcon get buttonIcon => ButtonIcon(
-        icon: ZegoLiveAudioRoomImage.asset(
-            ZegoLiveAudioRoomIconUrls.toolbarAudienceConnect),
-        backgroundColor: Colors.transparent,
-      );
+    icon: ZegoLiveAudioRoomImage.asset(
+        ZegoLiveAudioRoomIconUrls.toolbarAudienceConnect),
+    backgroundColor: Colors.transparent,
+  );
 
   TextStyle get buttonTextStyle => TextStyle(
-        color: Colors.white,
-        fontSize: 26.zR,
-        fontWeight: FontWeight.w500,
-      );
+    color: Colors.white,
+    fontSize: 26.zR,
+    fontWeight: FontWeight.w500,
+  );
 
   @override
   void initState() {
@@ -80,7 +79,7 @@ class _ZegoLiveAudioRoomAudienceConnectButtonState
                           valueListenable: widget.seatManager.coHostsNotifier,
                           builder: (context, coHosts, _) {
                             return ValueListenableBuilder<
-                                    ZegoLiveAudioRoomConnectState>(
+                                ZegoLiveAudioRoomConnectState>(
                                 valueListenable: widget.connectManager
                                     .audienceLocalConnectStateNotifier,
                                 builder: (context, connectState, _) {
@@ -88,10 +87,10 @@ class _ZegoLiveAudioRoomAudienceConnectButtonState
                                     case ZegoLiveAudioRoomConnectState.idle:
                                       return requestConnectButton();
                                     case ZegoLiveAudioRoomConnectState
-                                          .connecting:
+                                        .connecting:
                                       return cancelRequestConnectButton();
                                     case ZegoLiveAudioRoomConnectState
-                                          .connected:
+                                        .connected:
                                       return Container();
                                   }
                                 });
@@ -106,12 +105,19 @@ class _ZegoLiveAudioRoomAudienceConnectButtonState
         ? widget.seatManager.hostsNotifier.value
         : widget.seatManager.coHostsNotifier.value;
 
+    final targetIndex = widget
+        .connectManager.config.seat.takeIndexWhenAudienceRequesting
+        ?.call(ZegoUIKit().getLocalUser());
     return ZegoStartInvitationButton(
       invitationType: ZegoLiveAudioRoomInvitationType.requestTakeSeat.value,
       invitees: invitees,
-      data: '',
+      data: null == targetIndex
+          ? ''
+          : ZegoAudioRoomAudienceRequestConnectProtocol(
+        user: ZegoUIKit().getLocalUser(),
+        targetIndex: targetIndex,
+      ).toJsonString(), //
       icon: buttonIcon,
-
       buttonSize: Size(330.zR, 72.zR),
       iconSize: Size(48.zR, 48.zR),
       iconTextSpacing: 12.zR,
@@ -120,11 +126,19 @@ class _ZegoLiveAudioRoomAudienceConnectButtonState
       verticalLayout: false,
       onWillPressed: checkHostAndCoHostExist,
       onPressed: (
-        String code,
-        String message,
-        String invitationID,
-        List<String> errorInvitees,
-      ) {
+          String code,
+          String message,
+          String invitationID,
+          List<String> errorInvitees,
+          ) {
+        ZegoLoggerService.logInfo(
+          'result, code:$code, message:$message, '
+              'invitationID:$invitationID, '
+              'errorInvitees:$errorInvitees, ',
+          tag: 'audio-room-seat',
+          subTag: 'requestConnectButton',
+        );
+
         if (code.isNotEmpty) {
           widget.connectManager.events.seat.audience?.onTakingRequestFailed
               ?.call();
@@ -137,10 +151,9 @@ class _ZegoLiveAudioRoomAudienceConnectButtonState
           widget.connectManager.updateAudienceConnectState(
               ZegoLiveAudioRoomConnectState.connecting);
         }
-        //
       },
       clickableTextColor: Colors.white,
-      clickableBackgroundColor:  Colors.white.withOpacity(0.2),
+      clickableBackgroundColor: const Color(0xff1E2740).withOpacity(0.4),
     );
   }
 
@@ -159,6 +172,13 @@ class _ZegoLiveAudioRoomAudienceConnectButtonState
       textStyle: buttonTextStyle,
       verticalLayout: false,
       onPressed: (String code, String message, List<String> errorInvitees) {
+        ZegoLoggerService.logInfo(
+          'result, code:$code, message:$message, '
+              'errorInvitees:$errorInvitees, ',
+          tag: 'audio-room-seat',
+          subTag: 'cancelRequestConnectButton',
+        );
+
         widget.connectManager
             .updateAudienceConnectState(ZegoLiveAudioRoomConnectState.idle);
         //
@@ -185,6 +205,13 @@ class _ZegoLiveAudioRoomAudienceConnectButtonState
       if (withToast) {
         showDebugToast('Failed to apply for take seat, host is not exist');
       }
+
+      ZegoLoggerService.logInfo(
+        'checkHostAndCoHostExist, host is not exist',
+        tag: 'audio-room-seat',
+        subTag: 'requestConnectButton',
+      );
+
       return false;
     }
 
