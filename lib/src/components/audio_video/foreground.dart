@@ -88,7 +88,7 @@ class _ZegoLiveAudioRoomSeatForegroundState
               Positioned(
                 top: seatItemHeight -
                     seatUserNameFontSize -
-                    seatHostFlagHeight -
+
                     3.zR, //  spacing
                 child: hostFlag(context, constraints.maxWidth),
               )
@@ -98,7 +98,7 @@ class _ZegoLiveAudioRoomSeatForegroundState
               Positioned(
                 top: seatItemHeight -
                     seatUserNameFontSize -
-                    seatHostFlagHeight -
+                    // seatHostFlagHeight -
                     3.zR, //  spacing
                 child: coHostFlag(context, constraints.maxWidth),
               )
@@ -311,7 +311,8 @@ class _ZegoLiveAudioRoomSeatForegroundState
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
           fontSize: seatUserNameFontSize,
-          color: Colors.black,
+          color: Colors.white,
+
           decoration: TextDecoration.none,
         ),
       ),
