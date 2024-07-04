@@ -312,6 +312,7 @@ class _ZegoLiveAudioRoomSeatForegroundState
         style: TextStyle(
           fontSize: seatUserNameFontSize,
           color: Colors.white,
+          fontWeight: FontWeight.w900,
 
           decoration: TextDecoration.none,
         ),
