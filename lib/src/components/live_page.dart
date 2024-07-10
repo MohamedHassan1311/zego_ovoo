@@ -301,7 +301,7 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
 
     return SizedBox(
       width: null != scrollDirection ? containerWidth : tempMaxWidth,
-      height: containerHeight * 1.25,
+      height: containerHeight * 1.20,
       child: null != scrollDirection
           ? SingleChildScrollView(
               scrollDirection: scrollDirection,

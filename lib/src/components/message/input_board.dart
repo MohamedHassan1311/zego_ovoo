@@ -78,10 +78,10 @@ class ZegoLiveAudioRoomInRoomMessageInputBoard extends ModalRoute<String> {
             textHintColor: const Color(0xff1B1B1B).withOpacity(0.5),
             buttonColor: const Color(0xff834D3D),
             onSubmit: () {
-              // Navigator.of(
-              //   context,
-              //   rootNavigator: rootNavigator,
-              // ).pop();
+              Navigator.of(
+                context,
+                rootNavigator: rootNavigator,
+              ).pop();
             },
           ),
         ],
