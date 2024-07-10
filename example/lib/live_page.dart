@@ -26,9 +26,9 @@ class LivePage extends StatefulWidget {
 class LivePageState extends State<LivePage> {
   @override
   void initState() {
-
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return ZegoUIKitPrebuiltLiveAudioRoom(
@@ -56,44 +56,43 @@ class LivePageState extends State<LivePage> {
   ZegoUIKitPrebuiltLiveAudioRoomConfig get config {
     print("object");
     return (widget.isHost
-        ? ZegoUIKitPrebuiltLiveAudioRoomConfig.host()
-        : ZegoUIKitPrebuiltLiveAudioRoomConfig.audience())
-      // ..coHostIDSList=[localUserID,]
-      ..seat = (getSeatConfig()
-        ..takeIndexWhenJoining = widget.isHost ? getHostSeatIndex() : -1
-        ..hostIndexes = getLockSeatIndex()
-        ..soundWaveColor = Colors.red
-        ..showSoundWaveInAudioMode=true
-        ..layout = getLayoutConfig())
-      ..advanceConfigs={"avtar":"xxx"}
-      ..background = background()
-      ..foreground = foreground()
+            ? ZegoUIKitPrebuiltLiveAudioRoomConfig.host()
+            : ZegoUIKitPrebuiltLiveAudioRoomConfig.audience())
+          // ..coHostIDSList=[localUserID,]
+          ..seat = (getSeatConfig()
+            ..takeIndexWhenJoining = widget.isHost ? getHostSeatIndex() : -1
+            ..hostIndexes = getLockSeatIndex()
+            ..soundWaveColor = Colors.red
+            ..showSoundWaveInAudioMode = true
+            ..layout = getLayoutConfig())
+          ..advanceConfigs = {"avtar": "xxx"}
+          ..background = background()
+          ..foreground = foreground()
+          ..userInRoomAttributes = {"soundWave": ""}
+          // ..coHostIDSList=[]
 
-      ..userInRoomAttributes = {"soundWave": ""}
-      // ..coHostIDSList=[]
-
-      ..topMenuBar.onCloseButtonPressed = () {
-        print("hiii");
-      }
-      ..topMenuBar.buttons = [
-        ZegoLiveAudioRoomMenuBarButtonName.minimizingButton
-      ]
-      ..bottomMenuBar.hostExtendButtons = [
-        ///GiftButton
-        Icon(Icons.add),
-        Icon(Icons.add),
-      ]
-      ..topMenuBar.closeButtonTheme = ButtonIcon(
-          icon: const Icon(
-            Icons.power_settings_new,
-            color: Colors.blue,
-          ),
-          backgroundColor: Colors.transparent)
-      ..topMenuBar.buttons = [
-        ZegoLiveAudioRoomMenuBarButtonName.minimizingButton
-      ]
-      // ..userAvatarUrl = 'https://robohash.org/$localUserID.png'
-    ;
+          ..topMenuBar.onCloseButtonPressed = () {
+            print("hiii");
+          }
+          ..topMenuBar.buttons = [
+            ZegoLiveAudioRoomMenuBarButtonName.minimizingButton
+          ]
+          ..bottomMenuBar.hostExtendButtons = [
+            ///GiftButton
+            Icon(Icons.add),
+            Icon(Icons.add),
+          ]
+          ..topMenuBar.closeButtonTheme = ButtonIcon(
+              icon: const Icon(
+                Icons.power_settings_new,
+                color: Colors.blue,
+              ),
+              backgroundColor: Colors.transparent)
+          ..topMenuBar.buttons = [
+            ZegoLiveAudioRoomMenuBarButtonName.minimizingButton
+          ]
+        // ..userAvatarUrl = 'https://robohash.org/$localUserID.png'
+        ;
   }
 
   ZegoUIKitPrebuiltLiveAudioRoomEvents get events {
@@ -218,7 +217,6 @@ class LivePageState extends State<LivePage> {
   }
 
   ZegoLiveAudioRoomSeatConfig getSeatConfig() {
-
     if (widget.layoutMode == LayoutMode.hostTopCenter) {
       return ZegoLiveAudioRoomSeatConfig(
         backgroundBuilder: (
