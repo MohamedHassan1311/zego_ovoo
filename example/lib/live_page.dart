@@ -68,6 +68,7 @@ class LivePageState extends State<LivePage> {
       ..advanceConfigs={"avtar":"xxx"}
       ..background = background()
       ..foreground = foreground()
+
       ..userInRoomAttributes = {"soundWave": ""}
       // ..coHostIDSList=[]
 

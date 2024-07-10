@@ -259,7 +259,7 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
     final seatContainer = ZegoLiveAudioRoomSeatContainer(
       seatManager: widget.seatManager,
       layoutConfig: widget.config.seat.layout,
-      foregroundBuilder: (
+      foregroundBuilder:widget.config.seat.foregroundBuilder?? (
         BuildContext context,
         Size size,
         ZegoUIKitUser? user,
@@ -267,7 +267,7 @@ class _ZegoLiveAudioRoomPageState extends State<ZegoLiveAudioRoomPage>
       ) {
         // widget.config.seat.soundWaveColor=Colors.brown;
 
-        return ZegoLiveAudioRoomSeatForeground(
+        return  ZegoLiveAudioRoomSeatForeground(
           user: user,
           extraInfo: extraInfo,
           size: size,
