@@ -140,7 +140,7 @@ class _ZegoLiveAudioRoomLayoutState extends State<ZegoLiveAudioRoomLayout> {
                     showSoundWavesInAudioMode: widget.showSoundWavesInAudioMode,
                     builder: widget.avatarBuilder,
                     soundWaveColor:widget.soundWaveColor?? const Color(0xFFB18A66),
-                    size: Size(seatIconWidth*1.18, seatIconHeight*1.12),
+                    size: Size(seatIconWidth*1.20, seatIconHeight*1.15),
                     verticalAlignment: ZegoAvatarAlignment.start,
                   ),
                 );
