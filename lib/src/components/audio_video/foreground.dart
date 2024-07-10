@@ -305,16 +305,19 @@ class _ZegoLiveAudioRoomSeatForegroundState
   Widget userName(BuildContext context, double maxWidth) {
     return SizedBox(
       width: maxWidth,
-      child: Text(
-        widget.user?.name ?? '',
-        textAlign: TextAlign.center,
-        overflow: TextOverflow.ellipsis,
-        style: TextStyle(
-          fontSize: seatUserNameFontSize,
-          color: Colors.white,
-          fontWeight: FontWeight.w900,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 2),
+        child: Text(
+          widget.user?.name ?? '',
+          textAlign: TextAlign.center,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            fontSize: seatUserNameFontSize,
+            color: Colors.white,
+            fontWeight: FontWeight.w900,
 
-          decoration: TextDecoration.none,
+            decoration: TextDecoration.none,
+          ),
         ),
       ),
     );
