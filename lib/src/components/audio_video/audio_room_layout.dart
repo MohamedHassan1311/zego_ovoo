@@ -8,6 +8,8 @@ import 'package:zego_uikit/zego_uikit.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/components/audio_video/defines.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/config.defines.dart';
 
+import '../../../zego_uikit_prebuilt_live_audio_room.dart';
+
 /// @nodoc
 const layoutGridItemIndexKey = 'index';
 
@@ -128,22 +130,29 @@ class _ZegoLiveAudioRoomLayoutState extends State<ZegoLiveAudioRoomLayout> {
                   ZegoUIKit().getMicrophoneStateNotifier(targetUser?.id ?? ''),
               builder: (context, isMicrophoneEnabled, _) {
                 return
-                  ZegoAudioVideoView(
-                  user: targetUser,
-                  borderRadius: widget.borderRadius,
-                  borderColor: Colors.transparent,
-                  extraInfo: {layoutGridItemIndexKey: baseIndex + index},
-                  foregroundBuilder: widget.foregroundBuilder,
-                  backgroundBuilder: widget.backgroundBuilder,
-                  avatarConfig: ZegoAvatarConfig(
-                    showInAudioMode: true,
-                    showSoundWavesInAudioMode: widget.showSoundWavesInAudioMode,
-                    builder: widget.avatarBuilder,
-                    soundWaveColor:widget.soundWaveColor?? const Color(0xFFB18A66),
-                    size: Size(seatIconWidth*1.20, seatIconHeight*1.15),
-                    verticalAlignment: ZegoAvatarAlignment.start,
-                  ),
-                );
+                  Stack(
+                    children: [
+                      ZegoAudioVideoView(
+                      user: targetUser,
+                      borderRadius: widget.borderRadius,
+                      borderColor: Colors.transparent,
+                      extraInfo: {layoutGridItemIndexKey: baseIndex + index},
+                      foregroundBuilder: widget.foregroundBuilder,
+                      backgroundBuilder: widget.backgroundBuilder,
+                      avatarConfig: ZegoAvatarConfig(
+                        showInAudioMode: true,
+                        showSoundWavesInAudioMode: widget.showSoundWavesInAudioMode,
+                        builder: widget.avatarBuilder,
+                        soundWaveColor:widget.soundWaveColor?? const Color(0xFFB18A66),
+                        size: Size(seatIconWidth*1.20, seatIconHeight*1.15),
+                        verticalAlignment: ZegoAvatarAlignment.start,
+                      ),
+                                      ),
+
+
+
+                    ],
+                  );
               }),
         );
       },

@@ -56,16 +56,46 @@ class _ZegoLiveAudioRoomSeatForegroundState
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap:onClicked ,
+      onTap: onClicked,
       onDoubleTap: onDoubleClicked,
-      child: Container(
-        color: Colors.transparent,
-        child: foreground(
-        context,
-        widget.size,
-        ZegoUIKit().getUser(widget.user?.id ?? ''),
-        widget.extraInfo,
-      ),
+      child: Stack(
+        children: [
+          Container(
+            color: Colors.transparent,
+            child: foreground(
+              context,
+              widget.size,
+              ZegoUIKit().getUser(widget.user?.id ?? ''),
+              widget.extraInfo,
+            ),
+          ),
+          if (widget.user != null)
+            Center(
+              child: ValueListenableBuilder<bool>(
+                valueListenable: ZegoUIKitPrebuiltLiveAudioRoomController()
+                    .seat
+                    .muteStateNotifier(
+                        ZegoUIKitPrebuiltLiveAudioRoomController()
+                            .seat
+                            .getSeatIndexByUserID(
+                              widget.user!.id!,
+                            ),
+                        isLocally: true),
+                builder: (context, isMuted, _) {
+                  return isMuted ? Container(
+                    width: seatIconWidth * 1.20,
+                    height: seatIconHeight * 1.15,
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle, color: Colors.black54),
+                    child: Icon(
+                      Icons.volume_off ,
+                      color: Colors.white,
+                    ),
+                  ):SizedBox();
+                },
+              ),
+            ),
+        ],
       ),
     );
   }
@@ -86,10 +116,7 @@ class _ZegoLiveAudioRoomSeatForegroundState
             ),
             if (widget.seatManager.isAttributeHost(user))
               Positioned(
-                top: seatItemHeight -
-                    seatUserNameFontSize -
-
-                    3.zR, //  spacing
+                top: seatItemHeight - seatUserNameFontSize - 3.zR, //  spacing
                 child: hostFlag(context, constraints.maxWidth),
               )
             else
@@ -254,8 +281,8 @@ class _ZegoLiveAudioRoomSeatForegroundState
       innerText: widget.config.innerText,
     );
   }
-  void onClicked() {
 
+  void onClicked() {
     final index =
         int.tryParse(widget.extraInfo[layoutGridItemIndexKey].toString()) ?? -1;
     if (-1 == index) {
@@ -267,17 +294,14 @@ class _ZegoLiveAudioRoomSeatForegroundState
       return;
     }
 
+    ZegoLoggerService.logInfo(
+      'ERROR!!! click seat event is deal outside',
+      tag: 'audio room',
+      subTag: 'foreground',
+    );
 
-      ZegoLoggerService.logInfo(
-        'ERROR!!! click seat event is deal outside',
-        tag: 'audio room',
-        subTag: 'foreground',
-      );
-
-      widget.events.seat.onClicked!.call(index, widget.user);
-      return;
-
-
+    widget.events.seat.onClicked!.call(index, widget.user);
+    return;
   }
 
   Widget hostFlag(BuildContext context, double maxWidth) {
@@ -315,7 +339,6 @@ class _ZegoLiveAudioRoomSeatForegroundState
             fontSize: seatUserNameFontSize,
             color: Colors.white,
             fontWeight: FontWeight.w900,
-
             decoration: TextDecoration.none,
           ),
         ),
@@ -326,30 +349,30 @@ class _ZegoLiveAudioRoomSeatForegroundState
   Widget microphoneOffFlag() {
     return widget.user?.microphone.value ?? false
         ? Positioned(
-      // top: avatarPosTop,
-      left: 0,
-      right: -90.zR,
-      bottom: 40.zR,
-      child: Container(
-        width: seatIconWidth/2.5,
-        height: seatIconWidth/2.5,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Color(0xFFB18A66).withOpacity(0.9),
-        ),
-        child: ZegoLiveAudioRoomImage.asset(
-          ZegoLiveAudioRoomIconUrls.seatMicrophoneOn,
-        ),
-      ),
-    )
+            // top: avatarPosTop,
+            left: 0,
+            right: -90.zR,
+            bottom: 40.zR,
+            child: Container(
+              width: seatIconWidth / 2.5,
+              height: seatIconWidth / 2.5,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color(0xFFB18A66).withOpacity(0.9),
+              ),
+              child: ZegoLiveAudioRoomImage.asset(
+                ZegoLiveAudioRoomIconUrls.seatMicrophoneOn,
+              ),
+            ),
+          )
         : Positioned(
             // top: avatarPosTop,
             left: 0,
             right: -90.zR,
             bottom: 40.zR,
             child: Container(
-              width: seatIconWidth/2.5,
-              height: seatIconWidth/2.5,
+              width: seatIconWidth / 2.5,
+              height: seatIconWidth / 2.5,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Color(0xFFB18A66).withOpacity(0.9),
