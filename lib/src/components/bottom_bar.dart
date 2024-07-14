@@ -119,8 +119,7 @@ class _ZegoLiveAudioRoomBottomBarState
                   ],
                 ),
               )
-            else
-              const SizedBox(),
+
           ],
         ),
       ),

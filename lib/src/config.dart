@@ -380,16 +380,16 @@ class ZegoLiveAudioRoomBottomMenuBarConfig {
     this.hostButtons = const [
       ZegoLiveAudioRoomMenuBarButtonName.soundEffectButton,
       ZegoLiveAudioRoomMenuBarButtonName.toggleMicrophoneButton,
-      ZegoLiveAudioRoomMenuBarButtonName.showMemberListButton,
+      // ZegoLiveAudioRoomMenuBarButtonName.showMemberListButton,
       ZegoLiveAudioRoomMenuBarButtonName.closeSeatButton,
     ],
     this.speakerButtons = const [
       ZegoLiveAudioRoomMenuBarButtonName.soundEffectButton,
       ZegoLiveAudioRoomMenuBarButtonName.toggleMicrophoneButton,
-      ZegoLiveAudioRoomMenuBarButtonName.showMemberListButton,
+      // ZegoLiveAudioRoomMenuBarButtonName.showMemberListButton,
     ],
     this.audienceButtons = const [
-      ZegoLiveAudioRoomMenuBarButtonName.showMemberListButton,
+      // ZegoLiveAudioRoomMenuBarButtonName.showMemberListButton,
       ZegoLiveAudioRoomMenuBarButtonName.applyToTakeSeatButton,
     ],
     this.hostExtendButtons = const [],
