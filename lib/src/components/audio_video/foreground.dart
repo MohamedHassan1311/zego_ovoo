@@ -69,7 +69,7 @@ class _ZegoLiveAudioRoomSeatForegroundState
               widget.extraInfo,
             ),
           ),
-          if (widget.user != null)
+          if (widget.user != null && widget.user!.microphone.value==true )
             Center(
               child: ValueListenableBuilder<bool>(
                 valueListenable: ZegoUIKitPrebuiltLiveAudioRoomController()
@@ -79,6 +79,7 @@ class _ZegoLiveAudioRoomSeatForegroundState
                             .seat
                             .getSeatIndexByUserID(
                               widget.user!.id!,
+
                             ),
                         isLocally: true),
                 builder: (context, isMuted, _) {
