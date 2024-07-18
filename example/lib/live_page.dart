@@ -1,4 +1,6 @@
 // Flutter imports:
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 // Package imports:
 import 'package:zego_uikit/zego_uikit.dart';
@@ -28,6 +30,7 @@ class LivePageState extends State<LivePage> {
   void initState() {
     super.initState();
   }
+  final streamController = StreamController<Map<String, dynamic>>();
 
   @override
   Widget build(BuildContext context) {
@@ -61,16 +64,16 @@ class LivePageState extends State<LivePage> {
 
           // ..coHostIDSList=[localUserID,]
           ..seat = (getSeatConfig()
-
-
             ..takeIndexWhenJoining = widget.isHost ? getHostSeatIndex() : -1
             ..hostIndexes = getLockSeatIndex()
             ..soundWaveColor = Colors.red
+            ..attractiveCount=streamController.stream
             ..showSoundWaveInAudioMode = true
             ..layout = getLayoutConfig())
           ..advanceConfigs = {"avtar": "xxx"}
           ..background = background()
           ..foreground = foreground()
+
 
 
           ..userInRoomAttributes = {"soundWave": ""}
@@ -83,8 +86,13 @@ class LivePageState extends State<LivePage> {
             ZegoLiveAudioRoomMenuBarButtonName.minimizingButton
           ]
           ..bottomMenuBar.hostExtendButtons = [
-            ///GiftButton
-            Icon(Icons.add),
+
+            InkWell(
+            onTap: (){
+              streamController.add({'id': "ds", 'count': "100"});
+print("sd");
+            },
+                child: Icon(Icons.abc_outlined)),
             Icon(Icons.add),
           ]
           ..topMenuBar.closeButtonTheme = ButtonIcon(
@@ -278,7 +286,6 @@ class LivePageState extends State<LivePage> {
         break;
       case LayoutMode.full:
         config.rowSpacing = 5;
-
         config.rowConfigs = List.generate(
           4,
           (index) => ZegoLiveAudioRoomLayoutRowConfig(
