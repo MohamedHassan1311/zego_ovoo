@@ -58,7 +58,7 @@ class _ZegoLiveAudioRoomSeatForegroundState
     return GestureDetector(
       onTap: onClicked,
       onDoubleTap: onDoubleClicked,
-      child: Stack(
+      child:widget.config.seat.foregroundCustomWidget??  Stack(
         children: [
           Container(
             color: Colors.transparent,

@@ -280,6 +280,7 @@ class ZegoLiveAudioRoomSeatConfig {
 
   /// Use this to customize the foreground view of the seat, and the `ZegoUIKitPrebuiltLiveAudioRoom` will returns the current user on the seat and the corresponding seat index.
   ZegoAudioVideoViewForegroundBuilder? foregroundBuilder;
+  Widget? foregroundCustomWidget;
 
 
   Stream? attractiveCount;
