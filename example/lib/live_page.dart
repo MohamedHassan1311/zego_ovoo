@@ -58,8 +58,11 @@ class LivePageState extends State<LivePage> {
     return (widget.isHost
             ? ZegoUIKitPrebuiltLiveAudioRoomConfig.host()
             : ZegoUIKitPrebuiltLiveAudioRoomConfig.audience())
+
           // ..coHostIDSList=[localUserID,]
           ..seat = (getSeatConfig()
+
+
             ..takeIndexWhenJoining = widget.isHost ? getHostSeatIndex() : -1
             ..hostIndexes = getLockSeatIndex()
             ..soundWaveColor = Colors.red
@@ -68,6 +71,8 @@ class LivePageState extends State<LivePage> {
           ..advanceConfigs = {"avtar": "xxx"}
           ..background = background()
           ..foreground = foreground()
+
+
           ..userInRoomAttributes = {"soundWave": ""}
           // ..coHostIDSList=[]
 
@@ -273,6 +278,7 @@ class LivePageState extends State<LivePage> {
         break;
       case LayoutMode.full:
         config.rowSpacing = 5;
+
         config.rowConfigs = List.generate(
           4,
           (index) => ZegoLiveAudioRoomLayoutRowConfig(

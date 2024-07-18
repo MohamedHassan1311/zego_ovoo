@@ -69,7 +69,7 @@ class _ZegoLiveAudioRoomSeatForegroundState
               widget.extraInfo,
             ),
           ),
-          if (widget.user != null && widget.user!.microphone.value==true )
+          if (widget.user != null && widget.user!.microphone.value == true)
             Center(
               child: ValueListenableBuilder<bool>(
                 valueListenable: ZegoUIKitPrebuiltLiveAudioRoomController()
@@ -79,20 +79,21 @@ class _ZegoLiveAudioRoomSeatForegroundState
                             .seat
                             .getSeatIndexByUserID(
                               widget.user!.id!,
-
                             ),
                         isLocally: true),
                 builder: (context, isMuted, _) {
-                  return isMuted ? Container(
-                    width: seatIconWidth * 1.20,
-                    height: seatIconHeight * 1.15,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.black54),
-                    child: Icon(
-                      Icons.volume_off ,
-                      color: Colors.white,
-                    ),
-                  ):SizedBox();
+                  return isMuted
+                      ? Container(
+                          width: seatIconWidth * 1.20,
+                          height: seatIconHeight * 1.15,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.black54),
+                          child: Icon(
+                            Icons.volume_off,
+                            color: Colors.white,
+                          ),
+                        )
+                      : SizedBox();
                 },
               ),
             ),
@@ -113,25 +114,47 @@ class _ZegoLiveAudioRoomSeatForegroundState
           children: [
             Positioned(
               bottom: 0,
-              child: userName(context, constraints.maxWidth),
+              child: Column
+                (
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  userName(context, constraints.maxWidth),
+                  if (widget.user != null)
+                    StreamBuilder(
+                        stream: widget.config.seat.attractiveCount,
+                        builder: (context, snap) {
+                          if (snap.hasData) {
+                            final data = snap.data as Map<String, dynamic>;
+                            if (snap.hasData && data["id"] == widget.user!.id) {
+                              return userAttractive(
+                                  data["count"], constraints.maxWidth);
+                            } else {
+                              return SizedBox();
+                            }
+                          } else {
+                            return userAttractive(
+                                null, constraints.maxWidth);
+                          }
+                        })
+                ],
+              ),
             ),
-            if (widget.seatManager.isAttributeHost(user))
-              Positioned(
-                top: seatItemHeight - seatUserNameFontSize - 3.zR, //  spacing
-                child: hostFlag(context, constraints.maxWidth),
-              )
-            else
-              Container(),
-            if (widget.seatManager.isCoHost(user))
-              Positioned(
-                top: seatItemHeight -
-                    seatUserNameFontSize -
-                    // seatHostFlagHeight -
-                    3.zR, //  spacing
-                child: coHostFlag(context, constraints.maxWidth),
-              )
-            else
-              Container(),
+            // if (widget.seatManager.isAttributeHost(user))
+            //   Positioned(
+            //     top: seatItemHeight - seatUserNameFontSize - 3.zR, //  spacing
+            //     child: hostFlag(context, constraints.maxWidth),
+            //   ),
+            //
+            // if (widget.seatManager.isCoHost(user))
+            //   Positioned(
+            //     top: seatItemHeight -
+            //         seatUserNameFontSize -
+            //         // seatHostFlagHeight -
+            //         3.zR, //  spacing
+            //     child: coHostFlag(context, constraints.maxWidth),
+            //   )
+            // ,
             ...null == widget.user ? [] : [microphoneOffFlag()],
           ],
         );
@@ -309,20 +332,19 @@ class _ZegoLiveAudioRoomSeatForegroundState
     return ConstrainedBox(
       constraints: BoxConstraints.loose(Size(maxWidth, seatHostFlagHeight)),
       child: Center(
-        child: ZegoLiveAudioRoomImage.asset(
-          ZegoLiveAudioRoomIconUrls.seatHost,
-        ),
+        child: ZegoLiveAudioRoomImage.asset(ZegoLiveAudioRoomIconUrls.seatHost,
+            color: Colors.amberAccent,
+            scale: .3),
       ),
     );
   }
 
   Widget coHostFlag(BuildContext context, double maxWidth) {
-    return ConstrainedBox(
-      constraints: BoxConstraints.loose(Size(maxWidth, seatHostFlagHeight)),
-      child: Center(
-        child: ZegoLiveAudioRoomImage.asset(
-          ZegoLiveAudioRoomIconUrls.seatCoHost,
-        ),
+    return Center(
+      child: ZegoLiveAudioRoomImage.asset(
+        ZegoLiveAudioRoomIconUrls.seatCoHost,
+          color: Colors.amberAccent,
+          scale: .3
       ),
     );
   }
@@ -332,16 +354,60 @@ class _ZegoLiveAudioRoomSeatForegroundState
       width: maxWidth,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 2),
-        child: Text(
-          widget.user?.name ?? '',
-          textAlign: TextAlign.center,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            fontSize: seatUserNameFontSize,
-            color: Colors.white,
-            fontWeight: FontWeight.w900,
-            decoration: TextDecoration.none,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            if (widget.seatManager.isAttributeHost(widget.user))
+              Expanded(child: hostFlag(context, maxWidth)),
+    if (widget.seatManager.isCoHost(widget.user))
+              Expanded(child: coHostFlag(context, maxWidth)),
+
+            Expanded(flex: 5,
+              child: Text(
+                widget.user?.name ?? '',
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: seatUserNameFontSize,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w900,
+                  decoration: TextDecoration.none,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget userAttractive(attractiveCount, double maxWidth) {
+    return SizedBox(
+      width: maxWidth,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 2),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.favorite,
+              size: 14,
+              color:attractiveCount==null?Colors.transparent: Colors.red,
+            ),
+            Text(
+              attractiveCount ?? '',
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: seatUserNameFontSize - 2,
+                color: Colors.white,
+                fontWeight: FontWeight.w900,
+                decoration: TextDecoration.none,
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -352,8 +418,8 @@ class _ZegoLiveAudioRoomSeatForegroundState
         ? Positioned(
             // top: avatarPosTop,
             left: 0,
-            right: -90.zR,
-            bottom: 40.zR,
+            right: -110.zR,
+            bottom: 50.zR,
             child: Container(
               width: seatIconWidth / 2.5,
               height: seatIconWidth / 2.5,

@@ -1,4 +1,6 @@
 // Flutter imports:
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -279,6 +281,9 @@ class ZegoLiveAudioRoomSeatConfig {
   /// Use this to customize the foreground view of the seat, and the `ZegoUIKitPrebuiltLiveAudioRoom` will returns the current user on the seat and the corresponding seat index.
   ZegoAudioVideoViewForegroundBuilder? foregroundBuilder;
 
+
+  Stream? attractiveCount;
+
   /// Use this to customize the background view of the seat, and the `ZegoUIKitPrebuiltLiveAudioRoom` returns the current user on the seat and the corresponding seat index.
   ZegoAudioVideoViewBackgroundBuilder? backgroundBuilder;
 
@@ -320,6 +325,7 @@ class ZegoLiveAudioRoomSeatConfig {
     this.soundWaveColor,
     this.avatarBuilder,
     this.foregroundBuilder,
+    this.attractiveCount,
     this.backgroundBuilder,
   }) : layout = layout ?? ZegoLiveAudioRoomLayoutConfig();
 }
