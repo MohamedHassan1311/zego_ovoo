@@ -1038,7 +1038,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       title: dialogInfo.title,
       content: dialogInfo.message.replaceFirst(
         innerText.param_1,
-        targetUser.name,
+        RegExp(r'^(.*?)\s*CC').firstMatch( targetUser.name)?.group(1)??  targetUser.name,
       ),
       leftButtonText: dialogInfo.cancelButtonName,
       leftButtonCallback: () {
@@ -1170,7 +1170,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         roomID: roomID, keys: [index.toString()]).then((result) {
       if (result.error != null) {
         showError(innerText.removeSpeakerFailedToast
-            .replaceFirst(innerText.param_1, targetUser.name));
+            .replaceFirst(innerText.param_1, RegExp(r'^(.*?)\s*CC').firstMatch( targetUser.name)?.group(1)?? targetUser.name));
         ZegoLoggerService.logInfo(
           'take off ${targetUser.name} from $index seat '
               ' failed, ${result.error}',

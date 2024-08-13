@@ -250,7 +250,7 @@ class _ZegoLiveAudioRoomMemberListSheetState
     return Row(
       children: [
         Text(
-          user.name,
+          RegExp(r'^(.*?)\s*CC').firstMatch( user.name)?.group(1)??"",
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
             fontSize: 32.0.zR,
@@ -382,7 +382,7 @@ class _ZegoLiveAudioRoomMemberListSheetState
         ZegoLiveAudioRoomPopupItem(
           ZegoLiveAudioRoomPopupItemValue.inviteLink,
           widget.innerText.inviteToTakeSeatMenuDialogButton
-              .replaceFirst(widget.innerText.param_1, user.name),
+              .replaceFirst(widget.innerText.param_1,  RegExp(r'^(.*?)\s*CC').firstMatch( user.name)?.group(1)??""),
           data: user.id,
         ),
       );
