@@ -234,7 +234,6 @@
           <value>
             <list>
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/file_picker-6.2.1/lib" />
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/file_picker-6.2.0/lib" />
             </list>
           </value>
         </entry>
@@ -502,7 +501,6 @@
           <value>
             <list>
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler-11.3.1/lib" />
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler-11.3.0/lib" />
             </list>
           </value>
         </entry>
@@ -517,7 +515,7 @@
           <value>
             <list>
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.4/lib" />
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.0/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/lib" />
             </list>
           </value>
         </entry>
@@ -785,21 +783,21 @@
         <entry key="zego_plugin_adapter">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_plugin_adapter-2.11.9/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_plugin_adapter-2.13.0/lib" />
             </list>
           </value>
         </entry>
         <entry key="zego_uikit">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit-2.24.2/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit-2.24.3/lib" />
             </list>
           </value>
         </entry>
         <entry key="zego_uikit_signaling_plugin">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit_signaling_plugin-2.7.14/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit_signaling_plugin-2.8.2/lib" />
             </list>
           </value>
         </entry>
@@ -856,7 +854,6 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/ffi-2.1.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/file-6.1.4/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/file-7.0.0/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/file_picker-6.2.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/file_picker-6.2.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/fixnum-1.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_cache_manager-3.3.1/lib" />
@@ -892,11 +889,10 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_platform_interface-2.1.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_provider_windows-2.2.1/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler-11.3.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler-11.3.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.5/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.4/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler_platform_interface-4.2.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler_platform_interface-4.2.1/lib" />
@@ -935,9 +931,9 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/yaml-3.1.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_callkit-1.0.0+4/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_express_engine-3.15.1+2/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_plugin_adapter-2.11.9/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit-2.24.2/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit_signaling_plugin-2.7.14/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_plugin_adapter-2.13.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit-2.24.3/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit_signaling_plugin-2.8.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_zim-2.16.0+4/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_zpns-2.6.0+3/lib" />
       <root url="file://$USER_HOME$/Developer/flutter/bin/cache/pkg/sky_engine/lib" />
