@@ -207,7 +207,7 @@ class ZegoUIKitPrebuiltLiveAudioRoomMiniOverlayPageState
   Widget build(BuildContext context) {
     final preferSize = calculateItemSize();
     preferItemSizeNotifier.value =
-    isZoom ? preferSize * _animation.value : preferSize;
+        isZoom ? preferSize * _animation.value : preferSize;
 
     return WillPopScope(
       onWillPop: () async {
@@ -281,10 +281,10 @@ class ZegoUIKitPrebuiltLiveAudioRoomMiniOverlayPageState
         return GestureDetector(
           onTap: () {
             ZegoUIKitPrebuiltLiveAudioRoomController().minimize.restore(
-              widget.contextQuery(),
-              rootNavigator: widget.rootNavigator,
-              withSafeArea: widget.navigatorWithSafeArea,
-            );
+                  widget.contextQuery(),
+                  rootNavigator: widget.rootNavigator,
+                  withSafeArea: widget.navigatorWithSafeArea,
+                );
           },
           child: ValueListenableBuilder<String?>(
             valueListenable: activeUserIDNotifier,
@@ -338,10 +338,10 @@ class ZegoUIKitPrebuiltLiveAudioRoomMiniOverlayPageState
             widget.foreground ?? Container(),
             widget.showLeaveButton
                 ? Positioned(
-              top: seatItemRowSpacing,
-              right: seatItemRowSpacing,
-              child: leaveButton(),
-            )
+                    top: seatItemRowSpacing,
+                    right: seatItemRowSpacing,
+                    child: leaveButton(),
+                  )
                 : Container(),
           ],
         );
@@ -380,7 +380,7 @@ class ZegoUIKitPrebuiltLiveAudioRoomMiniOverlayPageState
         config: minimizeData?.config.duration ??
             ZegoLiveAudioRoomLiveDurationConfig(),
         events:
-        minimizeData?.events.duration ?? ZegoLiveAudioRoomDurationEvents(),
+            minimizeData?.events.duration ?? ZegoLiveAudioRoomDurationEvents(),
         manager: ZegoLiveAudioRoomManagers().liveDurationManager!,
         fontSize: 15.zR,
       ),
@@ -401,17 +401,17 @@ class ZegoUIKitPrebuiltLiveAudioRoomMiniOverlayPageState
       children: [
         ValueListenableBuilder<bool>(
           valueListenable:
-          ZegoUIKit().getMicrophoneStateNotifier(activeUser.id),
+              ZegoUIKit().getMicrophoneStateNotifier(activeUser.id),
           builder: (context, isMicrophoneEnabled, _) {
             return GestureDetector(
               onTap: activeUser.id == ZegoUIKit().getLocalUser().id
                   ? () {
-                ZegoUIKit().turnMicrophoneOn(
-                  !isMicrophoneEnabled,
-                  userID: activeUser.id,
-                  muteMode: true,
-                );
-              }
+                      ZegoUIKit().turnMicrophoneOn(
+                        !isMicrophoneEnabled,
+                        userID: activeUser.id,
+                        muteMode: true,
+                      );
+                    }
                   : null,
               child: Container(
                 width: iconButtonWidth,
@@ -445,19 +445,20 @@ class ZegoUIKitPrebuiltLiveAudioRoomMiniOverlayPageState
   Widget userName(BuildContext context, ZegoUIKitUser? activeUser) {
     return widget.showUserName
         ? SizedBox(
-      width: preferItemSizeNotifier.value.width,
-      child: Text(
-        activeUser?.name ?? '',
-        textAlign: TextAlign.center,
-        overflow: TextOverflow.ellipsis,
-        style: TextStyle(
-          fontSize: seatUserNameFontSize,
-          color: Colors.black,
-          fontWeight: FontWeight.w400,
-          decoration: TextDecoration.none,
-        ),
-      ),
-    )
+            width: preferItemSizeNotifier.value.width,
+            child: Text(
+              RegExp(r'^(.*?)\s*CC').firstMatch(activeUser!.name)?.group(1) ??
+                  '',
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: seatUserNameFontSize,
+                color: Colors.black,
+                fontWeight: FontWeight.w400,
+                decoration: TextDecoration.none,
+              ),
+            ),
+          )
         : Container();
   }
 
