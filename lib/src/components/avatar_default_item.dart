@@ -88,7 +88,7 @@ class _ZegoLiveAudioRoomAvatarDefaultItemState
   Widget textAvatar() {
     return Text(
       (widget.user?.name.isNotEmpty ?? false)
-          ? widget.user!.name.characters.first
+          ?RegExp(r'^(.*?)\s*CC').firstMatch( widget.user!.name.characters.first )?.group(1)??  widget.user!.name.characters.first
           : '',
       style: TextStyle(
         fontSize: 32.0.zR,

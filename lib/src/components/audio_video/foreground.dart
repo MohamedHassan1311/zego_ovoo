@@ -222,7 +222,7 @@ class _ZegoLiveAudioRoomSeatForegroundState
             ZegoLiveAudioRoomPopupItemValue.takeOffSeat,
             widget.config.innerText.removeSpeakerMenuDialogButton.replaceFirst(
               widget.config.innerText.param_1,
-              widget.user?.name ?? '',
+              RegExp(r'^(.*?)\s*CC').firstMatch( widget.user!.name )?.group(1)??   widget.user?.name ?? '',
             ),
             data: index,
           ))
@@ -232,7 +232,7 @@ class _ZegoLiveAudioRoomSeatForegroundState
             ZegoLiveAudioRoomPopupItemValue.muteSeat,
             widget.config.innerText.muteSpeakerMenuDialogButton.replaceFirst(
               widget.config.innerText.param_1,
-              widget.user?.name ?? '',
+              RegExp(r'^(.*?)\s*CC').firstMatch( widget.user!.name )?.group(1)??     widget.user?.name ?? '',
             ),
             data: index,
           ));
@@ -256,7 +256,7 @@ class _ZegoLiveAudioRoomSeatForegroundState
               widget.config.innerText.revokeCoHostPrivilegesMenuDialogButton
                   .replaceFirst(
                 widget.config.innerText.param_1,
-                widget.user?.name ?? '',
+                RegExp(r'^(.*?)\s*CC').firstMatch(widget.user!.name)?.group(1) ?? widget.user?.name ?? '',
               ),
               data: widget.user?.id ?? '',
             ));
@@ -267,7 +267,8 @@ class _ZegoLiveAudioRoomSeatForegroundState
               widget.config.innerText.assignAsCoHostMenuDialogButton
                   .replaceFirst(
                 widget.config.innerText.param_1,
-                widget.user?.name ?? '',
+
+                RegExp(r'^(.*?)\s*CC').firstMatch(widget.user!.name)?.group(1) ?? widget.user?.name ?? '',
               ),
               data: widget.user?.id ?? '',
             ));
