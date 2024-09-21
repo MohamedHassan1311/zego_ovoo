@@ -26,7 +26,8 @@ class ZegoLiveAudioRoomLayout extends StatefulWidget {
     this.showSoundWavesInAudioMode = true,
     this.usersItemIndex = const {},
     this.foregroundBuilder,
-    this.backgroundBuilder, this.soundWaveColor,
+    this.backgroundBuilder,
+    this.soundWaveColor,
   }) : super(key: key);
 
   final List<ZegoUIKitUser> userList;
@@ -41,7 +42,6 @@ class ZegoLiveAudioRoomLayout extends StatefulWidget {
   final ZegoAudioVideoViewForegroundBuilder? foregroundBuilder;
   final ZegoAudioVideoViewBackgroundBuilder? backgroundBuilder;
   final ZegoAvatarBuilder? avatarBuilder;
-
 
   @override
   State<ZegoLiveAudioRoomLayout> createState() =>
@@ -123,16 +123,15 @@ class _ZegoLiveAudioRoomLayoutState extends State<ZegoLiveAudioRoomLayout> {
       (int index) {
         final targetUser = users.elementAt(index);
         return SizedBox(
-          width: seatItemWidth*1.1,
-          height: seatItemHeight*1.2,
+          width: seatItemWidth * 1.1,
+          height: seatItemHeight * 1.2,
           child: ValueListenableBuilder<bool>(
               valueListenable:
                   ZegoUIKit().getMicrophoneStateNotifier(targetUser?.id ?? ''),
               builder: (context, isMicrophoneEnabled, _) {
-                return
-                  Stack(
-                    children: [
-                      ZegoAudioVideoView(
+                return Stack(
+                  children: [
+                    ZegoAudioVideoView(
                       user: targetUser,
                       borderRadius: widget.borderRadius,
                       borderColor: Colors.transparent,
@@ -141,18 +140,17 @@ class _ZegoLiveAudioRoomLayoutState extends State<ZegoLiveAudioRoomLayout> {
                       backgroundBuilder: widget.backgroundBuilder,
                       avatarConfig: ZegoAvatarConfig(
                         showInAudioMode: true,
-                        showSoundWavesInAudioMode: widget.showSoundWavesInAudioMode,
+                        showSoundWavesInAudioMode:
+                            widget.showSoundWavesInAudioMode,
                         builder: widget.avatarBuilder,
-                        soundWaveColor:widget.soundWaveColor?? const Color(0xFFB18A66),
-                        size: Size(seatIconWidth*1.20, seatIconHeight*1.15),
+                        soundWaveColor:
+                            widget.soundWaveColor ?? const Color(0xFFB18A66),
+                        size: Size(seatIconWidth * 1.31, seatIconHeight * 1.31),
                         verticalAlignment: ZegoAvatarAlignment.start,
                       ),
-                                      ),
-
-
-
-                    ],
-                  );
+                    ),
+                  ],
+                );
               }),
         );
       },

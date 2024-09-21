@@ -24,7 +24,7 @@ dependencies:
   cached_network_image: ^3.3.0
   statemachine: ^3.3.1
 
-  permission_handler: ^11.0.1
+  permission_handler: ^11.3.1
   # 1.18.0
   collection: ^1.17.2
 
