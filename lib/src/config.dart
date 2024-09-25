@@ -388,7 +388,7 @@ class ZegoLiveAudioRoomBottomMenuBarConfig {
       ZegoLiveAudioRoomMenuBarButtonName.soundEffectButton,
       ZegoLiveAudioRoomMenuBarButtonName.toggleMicrophoneButton,
       // ZegoLiveAudioRoomMenuBarButtonName.showMemberListButton,
-      ZegoLiveAudioRoomMenuBarButtonName.closeSeatButton,
+      // ZegoLiveAudioRoomMenuBarButtonName.closeSeatButton,
     ],
     this.speakerButtons = const [
       ZegoLiveAudioRoomMenuBarButtonName.soundEffectButton,
