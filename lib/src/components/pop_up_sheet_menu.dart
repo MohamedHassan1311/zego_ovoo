@@ -169,18 +169,18 @@ void showPopUpSheet({
   popUpManager.addAPopUpSheet(key);
 
   seatManager.setPopUpSheetVisible(true);
-
-  final takeOffSeatItemIndex = popupItems.indexWhere((popupItem) =>
-      popupItem.value == ZegoLiveAudioRoomPopupItemValue.takeOffSeat);
-  if (-1 != takeOffSeatItemIndex) {
-    /// seat user leave, will auto pop this sheet
-    seatManager.setKickSeatDialogInfo(
-      KickSeatDialogInfo(
-        userIndex: popupItems[takeOffSeatItemIndex].data as int,
-        userID: userID,
-      ),
-    );
-  }
+  //
+  // final takeOffSeatItemIndex = popupItems.indexWhere((popupItem) =>
+  //     popupItem.value == ZegoLiveAudioRoomPopupItemValue.takeOffSeat);
+  // if (-1 != takeOffSeatItemIndex) {
+  //   /// seat user leave, will auto pop this sheet
+  //   seatManager.setKickSeatDialogInfo(
+  //     KickSeatDialogInfo(
+  //       userIndex: popupItems[takeOffSeatItemIndex].data as int,
+  //       userID: userID,
+  //     ),
+  //   );
+  // }
 
   showModalBottomSheet(
     barrierColor: ZegoUIKitDefaultTheme.viewBarrierColor,
