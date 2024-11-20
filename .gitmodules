@@ -1,0 +1,3 @@
+[submodule "modules/zego_uikit"]
+	path = modules/zego_uikit
+	url = https://github.com/ZEGOCLOUD/zego_uikit_prebuilt_live_audio_room_flutter.git

@@ -7,6 +7,8 @@ screenshots:
   - description: "Live Audio Room Kit for pub.dev preview"
     path: images/preview.jpg
 
+
+
 environment:
   sdk: ">=2.16.2 <4.0.0"
   flutter: ">=1.17.0"
@@ -14,9 +16,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  zego_uikit: ^2.27.16
-  zego_uikit_signaling_plugin: ^2.8.6
-  zego_plugin_adapter: ^2.13.4
+
+  zego_uikit: ^2.27.14
+  zego_uikit_signaling_plugin: ^2.8.5
+  zego_plugin_adapter: ^2.13.3
 
   file_picker: ^8.0.6
   flutter_styled_toast: ^2.2.1
@@ -34,7 +37,6 @@ dev_dependencies:
   import_sorter: ^4.6.0 # run 'flutter pub run import_sorter:main'
   dart_code_metrics: any
   lints: ^3.0.0
-
 
 flutter:
   assets:
