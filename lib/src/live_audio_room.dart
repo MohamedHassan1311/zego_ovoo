@@ -44,6 +44,7 @@ class ZegoUIKitPrebuiltLiveAudioRoom extends StatefulWidget {
     required this.userName,
     required this.roomID,
     required this.config,
+    this.token = '',
     this.events,
      this.topPaading, required this.icons, required this.userAvtarName,
   }) : super(key: key);
@@ -63,7 +64,8 @@ class ZegoUIKitPrebuiltLiveAudioRoom extends StatefulWidget {
   /// It can be any valid string.
   /// Typically, you would use the name from your own user system, such as Firebase.
   final String userName;
-
+  /// if appSign is not passed in or if appSign is empty, this parameter must be set for authentication when logging in to a room.
+  final String token;
   /// The ID of the audio chat room.
   /// This ID serves as a unique identifier for the room, so you need to ensure its uniqueness.
   /// It can be any valid string.
@@ -116,7 +118,7 @@ class _ZegoUIKitPrebuiltLiveAudioRoomState
       isPrebuiltFromMinimizing: ZegoLiveAudioRoomMiniOverlayPageState.idle !=
           ZegoLiveAudioRoomInternalMiniOverlayMachine().state(),
       userAvtarName: widget.userAvtarName,
-      icons: widget.icons, topPaading: widget.topPaading,
+      icons: widget.icons, topPaading: widget.topPaading, token: widget.token,
     );
 
     WidgetsBinding.instance.addObserver(this);

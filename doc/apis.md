@@ -1,86 +1,95 @@
 - [ZegoUIKitPrebuiltLiveAudioRoom](#zegouikitprebuiltliveaudioroom)
-- [ZegoUIKitPrebuiltLiveAudioRoomConfig](https://pub.dev/documentation/zego_uikit_prebuilt_live_audio_room/latest/zego_uikit_prebuilt_live_audio_room/ZegoUIKitPrebuiltLiveAudioRoomConfig-class.html)
 - [ZegoUIKitPrebuiltLiveAudioRoomController](#zegouikitprebuiltliveaudioroomcontroller)
-    - [leave](#leave)
-    - [hideInMemberList](#hideinmemberlist)
-    - [media](#media)
-        - [volume](#volume)
-        - [totalDuration](#totalduration)
-        - [currentProgress](#currentprogress)
-        - [type](#type)
-        - [volumeNotifier](#volumenotifier)
-        - [currentProgressNotifier](#currentprogressnotifier)
-        - [playStateNotifier](#playstatenotifier)
-        - [typeNotifier](#typenotifier)
-        - [muteNotifier](#mutenotifier)
-        - [info](#info)
-        - [play](#play)
-        - [stop](#stop)
-        - [destroy](#destroy)
-        - [pause](#pause)
-        - [resume](#resume)
-        - [seekTo](#seekto)
-        - [setVolume](#setvolume)
-        - [muteLocal](#mutelocal)
-        - [pickPureAudioFile](#pickpureaudiofile)
-        - [pickVideoFile](#pickvideofile)
-        - [pickFile](#pickfile)
-    - [message](#message)
-        - [send](#send)
-        - [list](#list)
-        - [stream](#stream)
-    - [minimizing](#minimizing)
-        - [state](#state)
-        - [isMinimizing](#isminimizing)
-        - [restore](#restore)
-        - [minimize](#minimize)
-        - [hide](#hide)
-    - [seat](#seat)
-        - [userMapNotifier](#usermapnotifier)
-        - [localIsHost](#localishost)
-        - [localIsAudience](#localisaudience)
-        - [localIsSpeaker](#localisspeaker)
-        - [localIsCoHost](#localiscohost)
-        - [localHasHostPermissions](#localhashostpermissions)
-        - [getUserByIndex](#getuserbyindex)
-        - [muteStateNotifier](#mutestatenotifier)
-        - [muteLocally](#mutelocally)
-        - [muteLocallyByUserID](#mutelocallybyuserid)
-        - [host](#host)
-            - [open](#open)
-            - [close](#close)
-            - [removeSpeaker](#removespeaker)
-            - [acceptTakingRequest](#accepttakingrequest)
-            - [rejectTakingRequest](#rejecttakingrequest)
-            - [inviteToTake](#invitetotake)
-            - [mute](#mute)
-            - [muteByUserID](#mutebyuserid)
-        - [audience](#audience)
-            - [take](#take)
-            - [applyToTake](#applytotake)
-            - [cancelTakingRequest](#canceltakingrequest)
-            - [acceptTakingInvitation](#accepttakinginvitation)
-        - [speaker](#speaker)
-            - [leave](#leave-2)
-    - [audioVideo](#audiovideo)
-        - [seiStream](#seistream)
-        - [sendSEI](#sendsei)
-        - [microphone](#microphone)
-            - [localState](#localstate)
-            - [localStateNotifier](#localstatenotifier)
-            - [state](#state)
-            - [stateNotifier](#statenotifier)
-            - [turnOn](#turnon)
-            - [switchState](#switchstate)
-    - [room](#room)
-        - [property](#property)
-            - [updateProperty/updateProperties](#updatepropertyupdateproperties)
-            - [deleteProperties](#deleteproperties)
-            - [queryProperties](#queryproperties)
-            - [propertiesStream](#propertiesstream)
-        - [command](#command)
-            - [sendCommand](#sendcommand)
-            - [commandReceivedStream](#commandreceivedstream)
+  - [leave](#leave)
+  - [hideInMemberList](#hideinmemberlist)
+  - [media](#media)
+    - [volume](#volume)
+    - [totalDuration](#totalduration)
+    - [currentProgress](#currentprogress)
+    - [type](#type)
+    - [volumeNotifier](#volumenotifier)
+    - [currentProgressNotifier](#currentprogressnotifier)
+    - [playStateNotifier](#playstatenotifier)
+    - [typeNotifier](#typenotifier)
+    - [muteNotifier](#mutenotifier)
+    - [info](#info)
+    - [play](#play)
+    - [stop](#stop)
+    - [destroy](#destroy)
+    - [pause](#pause)
+    - [resume](#resume)
+    - [seekTo](#seekto)
+    - [setVolume](#setvolume)
+    - [muteLocal](#mutelocal)
+    - [pickPureAudioFile](#pickpureaudiofile)
+    - [pickVideoFile](#pickvideofile)
+    - [pickFile](#pickfile)
+  - [message](#message)
+    - [send](#send)
+    - [list](#list)
+    - [stream](#stream)
+    - [clear](#clear)
+  - [minimizing](#minimizing)
+    - [state](#state)
+    - [isMinimizingNotifier(ValueNotifier)](#isminimizingnotifiervaluenotifier)
+    - [isMinimizing](#isminimizing)
+    - [restore](#restore)
+    - [minimize](#minimize)
+    - [hide](#hide)
+  - [pip](#pip)
+    - [enable](#enable)
+    - [enableWhenBackground](#enablewhenbackground)
+    - [cancelBackground](#cancelbackground)
+  - [seat](#seat)
+    - [userMapNotifier](#usermapnotifier)
+    - [localIsHost](#localishost)
+    - [localIsAudience](#localisaudience)
+    - [localIsSpeaker](#localisspeaker)
+    - [localIsCoHost](#localiscohost)
+    - [localHasHostPermissions](#localhashostpermissions)
+    - [isRoomSeatLocked](#isroomseatlocked)
+    - [isAHostSeatIndex](#isahostseatindex)
+    - [getUserByIndex](#getuserbyindex)
+    - [getEmptySeats](#getemptyseats)
+    - [getSeatIndexByUserID](#getseatindexbyuserid)
+    - [muteStateNotifier](#mutestatenotifier)
+    - [muteLocally](#mutelocally)
+    - [muteLocallyByUserID](#mutelocallybyuserid)
+    - [host](#host)
+      - [open](#open)
+      - [close](#close)
+      - [removeSpeaker](#removespeaker)
+      - [acceptTakingRequest](#accepttakingrequest)
+      - [rejectTakingRequest](#rejecttakingrequest)
+      - [inviteToTake](#invitetotake)
+      - [mute](#mute)
+      - [muteByUserID](#mutebyuserid)
+    - [audience](#audience)
+      - [take](#take)
+      - [applyToTake](#applytotake)
+      - [cancelTakingRequest](#canceltakingrequest)
+      - [acceptTakingInvitation](#accepttakinginvitation)
+    - [speaker](#speaker)
+      - [leave](#leave-1)
+  - [audio video](#audio-video)
+    - [microphone](#microphone)
+      - [localState](#localstate)
+      - [localStateNotifier](#localstatenotifier)
+      - [state](#state-1)
+      - [stateNotifier](#statenotifier)
+      - [turnOn](#turnon)
+      - [switchState](#switchstate)
+    - [seiStream](#seistream)
+    - [sendSEI](#sendsei)
+  - [room](#room)
+    - [property](#property)
+      - [updateProperty/updateProperties](#updatepropertyupdateproperties)
+      - [deleteProperties](#deleteproperties)
+      - [queryProperties](#queryproperties)
+      - [propertiesStream](#propertiesstream)
+    - [command](#command)
+      - [sendCommand](#sendcommand)
+      - [commandReceivedStream](#commandreceivedstream)
 
 ---
 
@@ -418,10 +427,14 @@ media series API
 > set media player volume. Both the local play volume and the publish volume are set.
 > the range is 0 ~ 100. The default is 30.
 >
+> set **isSyncToRemote** to be true if you want to sync both the local play volume
+> and the publish volume, if **isSyncToRemote** is false, that will only adjust the
+> local play volume.
+>
 > - function prototype:
 >
 > ```dart
-> Future<void> setVolume(int volume) async
+> Future<void> setVolume(int volume, {bool isSyncToRemote = false,}) async
 > ```
 
 ### muteLocal
@@ -537,7 +550,9 @@ media series API
 > - function prototype:
 >
 > ```dart
-> Future<bool> send(String message) async
+> Future<bool> send(String message, {
+>     ZegoInRoomMessageType type = ZegoInRoomMessageType.broadcastMessage,
+> }) async
 > ```
 
 ### list
@@ -550,7 +565,7 @@ media series API
 > - function prototype:
 >
 > ```dart
-> List<ZegoInRoomMessage> list()
+> List<ZegoInRoomMessage> list({ZegoInRoomMessageType type = ZegoInRoomMessageType.broadcastMessage})
 > ```
 
 ### stream
@@ -596,7 +611,21 @@ media series API
 > - function prototype:
 >
 > ```dart
-> Stream<List<ZegoInRoomMessage>> stream()
+> Stream<List<ZegoInRoomMessage>> stream({ZegoInRoomMessageType type = ZegoInRoomMessageType.broadcastMessage})
+> ```
+
+### clear
+
+> clear local messages and remote messages
+>
+>
+> - function prototype:
+>
+> ```dart
+> List<ZegoInRoomMessage> clear({
+>     ZegoInRoomMessageType type = ZegoInRoomMessageType.broadcastMessage,
+>     bool clearRemote = true,
+> })
 > ```
 
 ## minimizing
@@ -620,6 +649,22 @@ the APIs related to minimizing.
 >   minimizing,
 > }
 > 
+> ```
+
+### isMinimizingNotifier(ValueNotifier<bool>)
+
+> is it currently in the minimized state or not
+>
+> - example:
+>
+> ```dart
+> ValueListenableBuilder<bool>(
+>   valueListenable:
+>   ZegoUIKitPrebuiltLiveAudioRoomController().minimize.isMinimizingNotifier,
+>   builder: (context, isMinimized, _) {
+>     ...
+>   },
+> )
 > ```
 
 ### isMinimizing
@@ -672,6 +717,42 @@ the APIs related to minimizing.
 > ```dart
 > void hide()
 > ```
+
+## pip
+
+### enable
+
+>
+> - function prototype:
+>
+> ```dart
+> Future<PiPStatus> enable({
+>   int aspectWidth = 1,
+>   int aspectHeight = 1,
+> }) async
+> ```
+
+### enableWhenBackground
+
+>
+> - function prototype:
+>
+> ```dart
+> Future<PiPStatus> enableWhenBackground({
+>   int aspectWidth = 1,
+>   int aspectHeight = 1,
+> }) async
+> ```
+
+### cancelBackground
+
+>
+> - function prototype:
+>
+> ```dart
+> Future<PiPStatus> cancelBackground() async
+> ```
+
 
 ## seat
 
@@ -745,6 +826,26 @@ the APIs related to minimizing.
 > bool get localHasHostPermissions
 > ```
 
+### isRoomSeatLocked
+
+> is room seat locked or not
+> 
+> - function prototype:
+>
+> ```dart
+> bool get isRoomSeatLocked
+> ```
+
+### isAHostSeatIndex
+
+>  is a host seat index or not
+> 
+> - function prototype:
+>
+> ```dart
+> bool isAHostSeatIndex(int seatIndex)
+> ```
+
 ### getUserByIndex
 
 >
@@ -754,6 +855,30 @@ the APIs related to minimizing.
 >
 > ```dart
 > ZegoUIKitUser? getUserByIndex(int targetIndex)
+> ```
+
+### getEmptySeats
+
+>
+> get the currently empty seat
+> 
+> set [includeHostSeats] to true if [ZegoLiveAudioRoomSeatConfig.hostIndexes] is included, default does not include
+>
+> - function prototype:
+>
+> ```dart
+> List<int> getEmptySeats({bool includeHostSeats = false,})
+> ```
+
+### getSeatIndexByUserID
+
+>
+> get seat index of target user
+>
+> - function prototype:
+>
+> ```dart
+> int getSeatIndexByUserID(String targetUserID)
 > ```
 
 ### muteStateNotifier
@@ -856,7 +981,7 @@ the APIs related to minimizing.
 > - function prototype:
 >
 > ```dart
-> Future<void> removeSpeaker(String userID) async
+> Future<void> removeSpeaker(String userID, {bool showDialogConfirm = true,}) async
 > ```
 
 #### acceptTakingRequest

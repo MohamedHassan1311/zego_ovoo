@@ -22,6 +22,7 @@ class ZegoUIKitPrebuiltLiveAudioRoomMinimizeData {
     required this.topPaading,
     required this.isPrebuiltFromMinimizing,
     this.controller,
+    required this.token,
   });
 
   /// you need to fill in the appID you obtained from console.zegocloud.com
@@ -34,7 +35,7 @@ class ZegoUIKitPrebuiltLiveAudioRoomMinimizeData {
   /// local user info
   final String userID;
   final String userName;
-
+  final String token;
   /// You can customize the liveName arbitrarily,
   /// just need to know: users who use the same liveName can talk with each other.
   final String roomID;

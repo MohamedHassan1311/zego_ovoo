@@ -1,6 +1,7 @@
-// Flutter imports:
-import 'dart:async';
+// Dart imports:
+import 'dart:math';
 
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -36,6 +37,8 @@ class ZegoUIKitPrebuiltLiveAudioRoomConfig {
 
   /// Live audio room timing configuration.
   ZegoLiveAudioRoomLiveDurationConfig duration;
+  ValueChanged<bool?>? isRoomStart;
+  ZegoLiveAudioRoomPIPConfig pip;
 
   /// the config of media player
   ZegoLiveAudioRoomMediaPlayerConfig mediaPlayer;
@@ -45,6 +48,9 @@ class ZegoUIKitPrebuiltLiveAudioRoomConfig {
 
   /// Configuration related to the bottom member list, including displaying the member list, member list styles, and more.
   ZegoLiveAudioRoomMemberListConfig memberList;
+
+  ///  config of menus
+  ZegoLiveAudioRoomPopUpMenuConfig popUpMenu;
 
   /// Specifies the initial role when joining the live audio room.
   /// The role change after joining is not constrained by this property.
@@ -120,10 +126,7 @@ class ZegoUIKitPrebuiltLiveAudioRoomConfig {
   /// subsequent instances of [Navigator].
   bool rootNavigator;
 
-   List<String>? coHostIDSList;
-
-
-   ValueChanged<bool?>? isRoomStart;
+  List<String>? coHostIDSList;
 
   /// Set advanced engine configuration, Used to enable advanced functions.
   /// For details, please consult ZEGO technical support.
@@ -148,6 +151,7 @@ class ZegoUIKitPrebuiltLiveAudioRoomConfig {
         rootNavigator = false,
         userInRoomAttributes = const {},
         advanceConfigs = const {},
+
         seat = ZegoLiveAudioRoomSeatConfig(
           layout: ZegoLiveAudioRoomLayoutConfig(),
           takeIndexWhenJoining: 0,
@@ -157,9 +161,11 @@ class ZegoUIKitPrebuiltLiveAudioRoomConfig {
         topMenuBar = ZegoLiveAudioRoomTopMenuBarConfig(),
         bottomMenuBar = ZegoLiveAudioRoomBottomMenuBarConfig(),
         inRoomMessage = ZegoLiveAudioRoomInRoomMessageConfig(),
+        popUpMenu = ZegoLiveAudioRoomPopUpMenuConfig(),
         memberList = ZegoLiveAudioRoomMemberListConfig(),
         audioEffect = ZegoLiveAudioRoomAudioEffectConfig(),
         duration = ZegoLiveAudioRoomLiveDurationConfig(),
+        pip = ZegoLiveAudioRoomPIPConfig(),
         mediaPlayer = ZegoLiveAudioRoomMediaPlayerConfig(),
         backgroundMedia = ZegoLiveAudioRoomBackgroundMediaConfig(),
         innerText = ZegoUIKitPrebuiltLiveAudioRoomInnerText(),
@@ -194,9 +200,11 @@ class ZegoUIKitPrebuiltLiveAudioRoomConfig {
         topMenuBar = ZegoLiveAudioRoomTopMenuBarConfig(),
         bottomMenuBar = ZegoLiveAudioRoomBottomMenuBarConfig(),
         inRoomMessage = ZegoLiveAudioRoomInRoomMessageConfig(),
+        popUpMenu = ZegoLiveAudioRoomPopUpMenuConfig(),
         memberList = ZegoLiveAudioRoomMemberListConfig(),
         audioEffect = ZegoLiveAudioRoomAudioEffectConfig(),
         duration = ZegoLiveAudioRoomLiveDurationConfig(),
+        pip = ZegoLiveAudioRoomPIPConfig(),
         mediaPlayer = ZegoLiveAudioRoomMediaPlayerConfig(),
         backgroundMedia = ZegoLiveAudioRoomBackgroundMediaConfig(),
         innerText = ZegoUIKitPrebuiltLiveAudioRoomInnerText();
@@ -208,39 +216,72 @@ class ZegoUIKitPrebuiltLiveAudioRoomConfig {
     this.rootNavigator = false,
     this.foreground,
     this.background,
+    this.coHostIDSList,
+
     this.userAvatarUrl,
-     this.coHostIDSList,
     this.userInRoomAttributes = const {},
     this.advanceConfigs = const {},
-
     ZegoUIKitPrebuiltLiveAudioRoomInnerText? translationText,
     ZegoLiveAudioRoomSeatConfig? seat,
     ZegoLiveAudioRoomTopMenuBarConfig? topMenuBar,
     ZegoLiveAudioRoomBottomMenuBarConfig? bottomMenuBar,
     ZegoLiveAudioRoomLayoutConfig? layout,
     ZegoLiveAudioRoomInRoomMessageConfig? message,
+    ZegoLiveAudioRoomPopUpMenuConfig? popUpMenu,
     ZegoLiveAudioRoomMemberListConfig? memberList,
     ZegoLiveAudioRoomAudioEffectConfig? effect,
     ZegoLiveAudioRoomLiveDurationConfig? duration,
+    ZegoLiveAudioRoomPIPConfig? pip,
     ZegoLiveAudioRoomMediaPlayerConfig? mediaPlayer,
     ZegoLiveAudioRoomBackgroundMediaConfig? backgroundMedia,
   })  : seat = seat ??
-            ZegoLiveAudioRoomSeatConfig(
-              layout: ZegoLiveAudioRoomLayoutConfig(),
-              closeWhenJoining: true,
-              hostIndexes: const [0],
-            ),
+      ZegoLiveAudioRoomSeatConfig(
+        layout: ZegoLiveAudioRoomLayoutConfig(),
+        closeWhenJoining: true,
+        hostIndexes: const [0],
+      ),
         topMenuBar = topMenuBar ?? ZegoLiveAudioRoomTopMenuBarConfig(),
         bottomMenuBar = bottomMenuBar ?? ZegoLiveAudioRoomBottomMenuBarConfig(),
         inRoomMessage = message ?? ZegoLiveAudioRoomInRoomMessageConfig(),
         memberList = memberList ?? ZegoLiveAudioRoomMemberListConfig(),
+        popUpMenu = popUpMenu ?? ZegoLiveAudioRoomPopUpMenuConfig(),
         audioEffect = effect ?? ZegoLiveAudioRoomAudioEffectConfig(),
         duration = duration ?? ZegoLiveAudioRoomLiveDurationConfig(),
+        pip = pip ?? ZegoLiveAudioRoomPIPConfig(),
         mediaPlayer = mediaPlayer ?? ZegoLiveAudioRoomMediaPlayerConfig(),
         backgroundMedia =
             backgroundMedia ?? ZegoLiveAudioRoomBackgroundMediaConfig(),
         innerText =
             translationText ?? ZegoUIKitPrebuiltLiveAudioRoomInnerText();
+
+  @override
+  String toString() {
+    return 'ZegoUIKitPrebuiltLiveAudioRoomConfig:{'
+        'seat:$seat, '
+        'topMenuBar:$topMenuBar, '
+        'bottomMenuBar:$bottomMenuBar, '
+        'inRoomMessage:$inRoomMessage, '
+        'audioEffect:$audioEffect, '
+        'duration:$duration, '
+        'pip:$pip, '
+        'mediaPlayer:$mediaPlayer, '
+        'backgroundMedia:$backgroundMedia, '
+        'memberList:$memberList, '
+        'popUpMenu:$popUpMenu, '
+        'role:$role, '
+        'turnOnMicrophoneWhenJoining:$turnOnMicrophoneWhenJoining, '
+        'useSpeakerWhenJoining:$useSpeakerWhenJoining, '
+        'foreground:$foreground, '
+        'background:$background, '
+        'innerText:$innerText, '
+        'userAvatarUrl:$userAvatarUrl, '
+        'userInRoomAttributes:$userInRoomAttributes, '
+        'confirmDialogInfo:$confirmDialogInfo, '
+        'rootNavigator:$rootNavigator, '
+        'advanceConfigs:$advanceConfigs, '
+        'emptyAreaBuilder:$emptyAreaBuilder, '
+        '}';
+  }
 }
 
 /// Configuration options for controlling seat behavior and style.
@@ -249,10 +290,21 @@ class ZegoLiveAudioRoomSeatConfig {
   /// The default layout of the audio chat room supports free layout with multiple rows and columns of seats.
   /// You can use this parameter to control the specific style of each row and column.
   ZegoLiveAudioRoomLayoutConfig layout;
+  Widget? foregroundCustomWidget;
+
+  Stream? attractiveCount;
+  /// the topLeft point of seat
+  Point<double>? topLeft;
 
   /// Specifies the seat to occupy when joining the live audio room.
   /// This is only valid when the role is set to host or speaker.
   int takeIndexWhenJoining;
+
+  /// By default, the speaker will auto switch seat when click the seat that
+  /// can be take on(the room is not locked the seats, and the seat is empty)
+  ///
+  /// If you don't want to switch automatically, return false.
+  bool Function(int seatIndex)? canAutoSwitchOnClicked;
 
   /// When the audience take on seat, do you want specify a seat? If so,
   /// return to the seat you want to specify
@@ -270,6 +322,8 @@ class ZegoLiveAudioRoomSeatConfig {
 
   /// Whether to display a wave indicator around the avatar.
   bool showSoundWaveInAudioMode;
+
+  ///  sound wave color
   Color? soundWaveColor;
 
   /// The icon displayed for empty seats when all seats are open (seats in the audio chat room are not locked).
@@ -278,12 +332,23 @@ class ZegoLiveAudioRoomSeatConfig {
   /// The icon displayed for empty seats when all seats are closed (seats in the audio chat room are locked).
   Image? closeIcon;
 
+  /// icon for host
+  Image? hostRoleIcon;
+
+  /// icon for co-host
+  Image? coHostRoleIcon;
+
+  /// icon when speaker's microphone off
+  Image? microphoneOffIcon;
+
+  /// Whether to retain the original foreground
+  bool keepOriginalForeground;
+
   /// Use this to customize the foreground view of the seat, and the `ZegoUIKitPrebuiltLiveAudioRoom` will returns the current user on the seat and the corresponding seat index.
+  ///
+  /// Please note that this will overwrite the original foreground(user name, host flag, co-host flag, mic-off flag).
+  /// If you want to keep the original foreground, please set [keepOriginalForeground] be true.
   ZegoAudioVideoViewForegroundBuilder? foregroundBuilder;
-  Widget? foregroundCustomWidget;
-
-
-  Stream? attractiveCount;
 
   /// Use this to customize the background view of the seat, and the `ZegoUIKitPrebuiltLiveAudioRoom` returns the current user on the seat and the corresponding seat index.
   ZegoAudioVideoViewBackgroundBuilder? backgroundBuilder;
@@ -316,7 +381,9 @@ class ZegoLiveAudioRoomSeatConfig {
 
   ZegoLiveAudioRoomSeatConfig({
     ZegoLiveAudioRoomLayoutConfig? layout,
+    this.topLeft,
     this.takeIndexWhenJoining = -1,
+    this.canAutoSwitchOnClicked,
     this.takeIndexWhenAudienceRequesting,
     this.closeWhenJoining = true,
     this.hostIndexes = const [0],
@@ -325,39 +392,77 @@ class ZegoLiveAudioRoomSeatConfig {
     this.showSoundWaveInAudioMode = true,
     this.soundWaveColor,
     this.avatarBuilder,
+    this.keepOriginalForeground = false,
     this.foregroundBuilder,
-    this.attractiveCount,
     this.backgroundBuilder,
+    this.hostRoleIcon,
+    this.coHostRoleIcon,
+    this.microphoneOffIcon,
   }) : layout = layout ?? ZegoLiveAudioRoomLayoutConfig();
+
+  @override
+  String toString() {
+    return 'ZegoLiveAudioRoomSeatConfig:{'
+        'layout:$layout, '
+        'takeIndexWhenJoining:$takeIndexWhenJoining, '
+        'canSwitchOnEmptySeatClicked:$canAutoSwitchOnClicked, '
+        'takeIndexWhenAudienceRequesting:$takeIndexWhenAudienceRequesting, '
+        'closeWhenJoining:$closeWhenJoining, '
+        'hostIndexes:$hostIndexes, '
+        'openIcon:$openIcon, '
+        'closeIcon:$closeIcon, '
+        'showSoundWaveInAudioMode:$showSoundWaveInAudioMode, '
+        'avatarBuilder:$avatarBuilder, '
+        'keepOriginalForeground:$keepOriginalForeground, '
+        'foregroundBuilder:$foregroundBuilder, '
+        'backgroundBuilder:$backgroundBuilder, '
+        'hostRoleIcon:$hostRoleIcon, '
+        'coHostRoleIcon:$coHostRoleIcon, '
+        'microphoneOffIcon:$microphoneOffIcon, '
+        '}';
+  }
 }
 
 /// Configuration options for the top menu bar (toolbar).
 class ZegoLiveAudioRoomTopMenuBarConfig {
   /// These buttons will displayed on the menu bar, order by the list
-  /// only support [minimizingButton] right now
+  /// only support: showMemberListButton/leaveButton/minimizingButton/pipButton
   List<ZegoLiveAudioRoomMenuBarButtonName> buttons;
   bool showCloseButton ;
-   VoidCallback? onCloseButtonPressed;
+  VoidCallback? onCloseButtonPressed;
   ButtonIcon closeButtonTheme =ButtonIcon(
     icon: ZegoLiveAudioRoomImage.asset(ZegoLiveAudioRoomIconUrls.topQuit),
     backgroundColor: Colors.white,
   );
-
   ZegoLiveAudioRoomTopMenuBarConfig({
     this.onCloseButtonPressed,
     this.buttons = const [],
     this.showCloseButton = true,
 
-
   });
+
+  @override
+  String toString() {
+    return 'ZegoLiveAudioRoomTopMenuBarConfig:{'
+        'buttons:$buttons, '
+        '}';
+  }
 }
 
 /// Configuration options for the bottom menu bar (toolbar).
 /// You can set the properties of this class through the [ZegoUIKitPrebuiltLiveAudioRoomConfig.bottomMenuBar] attribute.
 class ZegoLiveAudioRoomBottomMenuBarConfig {
+  /// If set to `false`, the bottom bar will be hidden. The default value is `true`.
+  bool visible;
+
   /// When set to `true`, the button for sending messages will be displayed.
   /// If you want to disable text messaging in the live audio room, set it to `false`.
   bool showInRoomMessageButton;
+
+  /// Controls the maximum number of buttons (including predefined and custom buttons) to be displayed in the menu bar (toolbar).
+  /// When the number of buttons exceeds the `maxCount` limit, a "More" button will appear.
+  /// Clicking on it will display a panel showing other buttons that cannot be displayed in the menu bar (toolbar).
+  int maxCount;
 
   /// The list of predefined buttons to be displayed when the user role is set to host.
   List<ZegoLiveAudioRoomMenuBarButtonName> hostButtons = [];
@@ -377,26 +482,22 @@ class ZegoLiveAudioRoomBottomMenuBarConfig {
   /// The list of custom buttons to be displayed when the user role is set to audience.
   List<Widget> audienceExtendButtons = [];
 
-  /// Controls the maximum number of buttons (including predefined and custom buttons) to be displayed in the menu bar (toolbar).
-  /// When the number of buttons exceeds the `maxCount` limit, a "More" button will appear.
-  /// Clicking on it will display a panel showing other buttons that cannot be displayed in the menu bar (toolbar).
-  int maxCount;
-
   ZegoLiveAudioRoomBottomMenuBarConfig({
+    this.visible = true,
     this.showInRoomMessageButton = true,
     this.hostButtons = const [
       ZegoLiveAudioRoomMenuBarButtonName.soundEffectButton,
       ZegoLiveAudioRoomMenuBarButtonName.toggleMicrophoneButton,
-      // ZegoLiveAudioRoomMenuBarButtonName.showMemberListButton,
-      // ZegoLiveAudioRoomMenuBarButtonName.closeSeatButton,
+      ZegoLiveAudioRoomMenuBarButtonName.showMemberListButton,
+      ZegoLiveAudioRoomMenuBarButtonName.closeSeatButton,
     ],
     this.speakerButtons = const [
       ZegoLiveAudioRoomMenuBarButtonName.soundEffectButton,
       ZegoLiveAudioRoomMenuBarButtonName.toggleMicrophoneButton,
-      // ZegoLiveAudioRoomMenuBarButtonName.showMemberListButton,
+      ZegoLiveAudioRoomMenuBarButtonName.showMemberListButton,
     ],
     this.audienceButtons = const [
-      // ZegoLiveAudioRoomMenuBarButtonName.showMemberListButton,
+      ZegoLiveAudioRoomMenuBarButtonName.showMemberListButton,
       ZegoLiveAudioRoomMenuBarButtonName.applyToTakeSeatButton,
     ],
     this.hostExtendButtons = const [],
@@ -404,6 +505,21 @@ class ZegoLiveAudioRoomBottomMenuBarConfig {
     this.audienceExtendButtons = const [],
     this.maxCount = 5,
   });
+
+  @override
+  String toString() {
+    return 'ZegoLiveAudioRoomBottomMenuBarConfig:{'
+        'visible:$visible, '
+        'showInRoomMessageButton:$showInRoomMessageButton, '
+        'maxCount:$maxCount, '
+        'hostButtons:$hostButtons, '
+        'speakerButtons:$speakerButtons, '
+        'audienceButtons:$audienceButtons, '
+        'hostExtendButtons:$hostExtendButtons, '
+        'speakerExtendButtons:$speakerExtendButtons, '
+        'audienceExtendButtons:$audienceExtendButtons, '
+        '}';
+  }
 }
 
 /// Control options for the bottom-left message list.
@@ -492,6 +608,28 @@ class ZegoLiveAudioRoomInRoomMessageConfig {
     this.showName = true,
     this.showAvatar = true,
   });
+
+  @override
+  String toString() {
+    return 'ZegoLiveAudioRoomInRoomMessageConfig:{'
+        'visible:$visible, '
+        'width:$width, '
+        'height:$height, '
+        'bottomLeft:$bottomLeft, '
+        'opacity:$opacity, '
+        'maxLines:$maxLines, '
+        'nameTextStyle:$nameTextStyle, '
+        'messageTextStyle:$messageTextStyle, '
+        'backgroundColor:$backgroundColor, '
+        'borderRadius:$borderRadius, '
+        'paddings:$paddings, '
+        'resendIcon:$resendIcon, '
+        'background:$background, '
+        'itemBuilder:$itemBuilder, '
+        'showName:$showName, '
+        'showAvatar:$showAvatar, '
+        '}';
+  }
 }
 
 /// Configuration for the member list.
@@ -500,7 +638,7 @@ class ZegoLiveAudioRoomInRoomMessageConfig {
 ///
 /// If you want to use a custom member list item view, you can set the [ZegoLiveAudioRoomMemberListConfig.itemBuilder] property, and pass your custom view's builder function to it.
 ///
-/// In addition, you can listen for item click events through [onDoubleClicked].
+/// In addition, you can listen for item click events through [onClicked].
 class ZegoLiveAudioRoomMemberListConfig {
   /// Custom member list item view.
   ///
@@ -520,6 +658,74 @@ class ZegoLiveAudioRoomMemberListConfig {
   ZegoLiveAudioRoomMemberListConfig({
     this.itemBuilder,
   });
+
+  @override
+  String toString() {
+    return 'ZegoLiveAudioRoomMemberListConfig:{'
+        'itemBuilder:$itemBuilder, '
+        '}';
+  }
+}
+
+/// pop up menu config
+class ZegoLiveAudioRoomPopUpMenuConfig {
+  /// pop up menu when on seat clicked
+  ZegoLiveAudioRoomPopUpSeatClickedMenuConfig seatClicked;
+
+  ZegoLiveAudioRoomPopUpMenuConfig(
+      {ZegoLiveAudioRoomPopUpSeatClickedMenuConfig? seatClicked})
+      : seatClicked =
+      seatClicked ?? ZegoLiveAudioRoomPopUpSeatClickedMenuConfig();
+
+  @override
+  String toString() {
+    return 'ZegoLiveAudioRoomPopUpMenuConfig:{'
+        'seatClicked:$seatClicked, '
+        '}';
+  }
+}
+
+/// pop up menu when on seat clicked
+class ZegoLiveAudioRoomPopUpSeatClickedMenuConfig {
+  /// If you don't want some system menus (except cancel, customStartIndex)
+  /// to appear, specify to hide them here
+  List hiddenMenus = [];
+
+  /// The custom menus to be displayed when the seat's user is host.
+  List<ZegoLiveAudioRoomPopUpSeatClickedMenuInfo> hostExtendMenus;
+
+  /// The custom menus to be displayed when the seat's user is co-host.
+  List<ZegoLiveAudioRoomPopUpSeatClickedMenuInfo> coHostExtendMenus;
+
+  /// The custom menus to be displayed when the seat's user is speaker.
+  List<ZegoLiveAudioRoomPopUpSeatClickedMenuInfo> speakerExtendMenus;
+
+  /// The custom menus to be displayed when the seat's user is audience.
+  List<ZegoLiveAudioRoomPopUpSeatClickedMenuInfo> audienceExtendMenus;
+
+  /// The custom menus to be displayed when seat is empty.
+  List<ZegoLiveAudioRoomPopUpSeatClickedMenuInfo> emptyExtendMenus;
+
+  ZegoLiveAudioRoomPopUpSeatClickedMenuConfig({
+    this.hiddenMenus = const [],
+    this.hostExtendMenus = const [],
+    this.coHostExtendMenus = const [],
+    this.speakerExtendMenus = const [],
+    this.audienceExtendMenus = const [],
+    this.emptyExtendMenus = const [],
+  });
+
+  @override
+  String toString() {
+    return 'ZegoLiveAudioRoomPopUpSeatClickedMenuConfig:{'
+        'hiddenMenus:$hiddenMenus, '
+        'hostExtendMenus:$hostExtendMenus, '
+        'coHostExtendMenus:$coHostExtendMenus, '
+        'speakerExtendMenus:$speakerExtendMenus, '
+        'audienceExtendMenus:$audienceExtendMenus, '
+        'emptyExtendMenus:$emptyExtendMenus, '
+        '}';
+  }
 }
 
 /// Configuration options for voice changer and reverberation effects.
@@ -571,6 +777,14 @@ class ZegoLiveAudioRoomAudioEffectConfig {
   bool get isSupportVoiceChange => voiceChangeEffect.isNotEmpty;
 
   bool get isSupportReverb => reverbEffect.isNotEmpty;
+
+  @override
+  String toString() {
+    return 'ZegoLiveAudioRoomAudioEffectConfig:{'
+        'voiceChangeEffect:$voiceChangeEffect, '
+        'reverbEffect:$reverbEffect, '
+        '}';
+  }
 }
 
 /// Live Audio Room timing configuration.
@@ -581,6 +795,12 @@ class ZegoLiveAudioRoomLiveDurationConfig {
   ZegoLiveAudioRoomLiveDurationConfig({
     this.isVisible = true,
   });
+  @override
+  String toString() {
+    return 'ZegoLiveAudioRoomLiveDurationConfig:{'
+        'isVisible:$isVisible, '
+        '}';
+  }
 }
 
 /// Live Audio Room background media configuration.
@@ -596,6 +816,13 @@ class ZegoLiveAudioRoomBackgroundMediaConfig {
     this.path,
     this.enableRepeat = true,
   });
+  @override
+  String toString() {
+    return 'ZegoLiveAudioRoomBackgroundMediaConfig:{'
+        'path:$path, '
+        'enableRepeat:$enableRepeat, '
+        '}';
+  }
 }
 
 /// media player config
@@ -606,4 +833,70 @@ class ZegoLiveAudioRoomMediaPlayerConfig {
   ZegoLiveAudioRoomMediaPlayerConfig({
     this.supportTransparent = false,
   });
+  @override
+  String toString() {
+    return 'ZegoLiveAudioRoomMediaPlayerConfig:{'
+        'supportTransparent:$supportTransparent, '
+        '}';
+  }
+}
+
+/// pip config
+class ZegoLiveAudioRoomPIPConfig {
+  ZegoLiveAudioRoomPIPConfig({
+    this.aspectWidth = 1,
+    this.aspectHeight = 1,
+    this.enableWhenBackground = true,
+    ZegoLiveAudioRoomPIPAndroidConfig? android,
+  }) : android = android ?? ZegoLiveAudioRoomPIPAndroidConfig();
+
+  /// android config
+  ZegoLiveAudioRoomPIPAndroidConfig android;
+
+  /// aspect width
+  int aspectWidth;
+
+  /// aspect height
+  int aspectHeight;
+
+  /// android: only available on SDK higher than 31(>=31)
+  /// iOS: not limit
+  bool enableWhenBackground;
+
+  @override
+  String toString() {
+    return 'ZegoLiveAudioRoomPIPConfig:{'
+        'android:$android, '
+        'aspectWidth:$aspectWidth, '
+        'aspectHeight:$aspectHeight, '
+        'enableWhenAppBackToDesktop:$enableWhenBackground, '
+        '}';
+  }
+}
+
+/// android pip
+/// only available on SDK higher than 26(>=26)
+class ZegoLiveAudioRoomPIPAndroidConfig {
+  ZegoLiveAudioRoomPIPAndroidConfig({
+    this.background,
+    this.userNameTextColor,
+    this.showUserName = true,
+  });
+
+  /// default is black
+  Widget? background;
+
+  ///  show user name or not
+  bool showUserName;
+
+  /// default is white
+  Color? userNameTextColor;
+
+  @override
+  String toString() {
+    return 'ZegoLiveAudioRoomPIPAndroidConfig:{'
+        'showUserName:$showUserName, '
+        'userNameTextColor:$userNameTextColor, '
+        '}';
+  }
 }

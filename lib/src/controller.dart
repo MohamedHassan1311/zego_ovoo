@@ -1,4 +1,7 @@
 // Dart imports:
+import 'dart:async';
+import 'dart:io' show Platform;
+import 'dart:math';
 import 'dart:typed_data';
 
 // Flutter imports:
@@ -6,14 +9,17 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:file_picker/file_picker.dart';
+import 'package:floating/floating.dart';
 import 'package:zego_uikit/zego_uikit.dart';
 
 // Project imports:
+import 'package:zego_uikit_prebuilt_live_audio_room/src/components/dialogs.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/components/permissions.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/config.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/core/connect/connect_manager.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/core/connect/defines.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/core/core_managers.dart';
+import 'package:zego_uikit_prebuilt_live_audio_room/src/core/protocol.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/core/seat/seat_manager.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/defines.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/events.dart';
@@ -23,8 +29,6 @@ import 'package:zego_uikit_prebuilt_live_audio_room/src/live_audio_room.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/minimizing/data.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/minimizing/defines.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/src/minimizing/overlay_machine.dart';
-import 'components/dialogs.dart';
-import 'core/protocol.dart';
 
 part 'controller/media.dart';
 
@@ -35,6 +39,8 @@ part 'controller/seat.dart';
 part 'controller/audio_video.dart';
 
 part 'controller/minimize.dart';
+
+part 'controller/pip.dart';
 
 part 'controller/room.dart';
 
@@ -47,6 +53,8 @@ part 'controller/private/private.dart';
 part 'controller/private/audio_video.dart';
 
 part 'controller/private/minimize.dart';
+
+part 'controller/private/pip.dart';
 
 part 'controller/private/seat.dart';
 
@@ -65,6 +73,7 @@ class ZegoUIKitPrebuiltLiveAudioRoomController
         ZegoLiveAudioRoomControllerMedia,
         ZegoLiveAudioRoomControllerMessage,
         ZegoLiveAudioRoomControllerMinimizing,
+        ZegoLiveAudioRoomControllerPIP,
         ZegoLiveAudioRoomControllerSeat,
         ZegoLiveAudioRoomControllerAudioVideo,
         ZegoLiveAudioRoomControllerRoom,
@@ -84,22 +93,30 @@ class ZegoUIKitPrebuiltLiveAudioRoomController
       BuildContext context, {
         bool showConfirmation = true,
       }) async {
+    ZegoLoggerService.logInfo(
+      'leave',
+      tag: 'audio-room',
+      subTag: 'controller',
+    );
+
     final result = await room.private._leave(
       context,
       showConfirmation: showConfirmation,
     );
-    if (result) {
-      private.uninitByPrebuilt();
-      seat.private.uninitByPrebuilt();
-      room.private.uninitByPrebuilt();
-      user.private.uninitByPrebuilt();
-      minimize.private.uninitByPrebuilt();
-      audioVideo.private.uninitByPrebuilt();
-    }
+
+    await ZegoUIKitPrebuiltLiveAudioRoomController().pip.cancelBackground();
+
+    private.uninitByPrebuilt();
+    seat.private.uninitByPrebuilt();
+    room.private.uninitByPrebuilt();
+    user.private.uninitByPrebuilt();
+    minimize.private.uninitByPrebuilt();
+    pip.private.uninitByPrebuilt();
+    audioVideo.private.uninitByPrebuilt();
 
     ZegoLoggerService.logInfo(
       'leave, finished',
-      tag: 'audio room',
+      tag: 'audio-room',
       subTag: 'controller',
     );
 
@@ -108,6 +125,12 @@ class ZegoUIKitPrebuiltLiveAudioRoomController
 
   /// hide some user in member list
   void hideInMemberList(List<String> userIDs) {
+    ZegoLoggerService.logInfo(
+      'hideInMemberList',
+      tag: 'audio-room',
+      subTag: 'controller',
+    );
+
     private.hiddenUsersOfMemberListNotifier.value = List<String>.from(userIDs);
   }
 

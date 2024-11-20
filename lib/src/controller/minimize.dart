@@ -15,19 +15,19 @@ class ZegoLiveAudioRoomControllerMinimizingImpl
       ZegoLiveAudioRoomInternalMiniOverlayMachine().state();
 
   /// is it currently in the minimized state or not
-  bool get isMinimizing =>
-      ZegoLiveAudioRoomInternalMiniOverlayMachine().isMinimizing;
+  bool get isMinimizing => isMinimizingNotifier.value;
+  ValueNotifier<bool> get isMinimizingNotifier => _private.isMinimizingNotifier;
 
   /// restore the [ZegoUIKitPrebuiltLiveAudioRoom] from minimize
   bool restore(
-    BuildContext context, {
-    bool rootNavigator = true,
-    bool withSafeArea = false,
-  }) {
+      BuildContext context, {
+        bool rootNavigator = true,
+        bool withSafeArea = false,
+      }) {
     if (ZegoLiveAudioRoomMiniOverlayPageState.minimizing != state) {
       ZegoLoggerService.logInfo(
-        'is not minimizing, ignore',
-        tag: 'audio room',
+        'restore, is not minimizing, ignore',
+        tag: 'audio-room',
         subTag: 'controller.minimize',
       );
 
@@ -37,8 +37,8 @@ class ZegoLiveAudioRoomControllerMinimizingImpl
     final minimizeData = private.minimizeData;
     if (null == minimizeData) {
       ZegoLoggerService.logError(
-        'prebuiltData is null',
-        tag: 'audio room',
+        'restore, prebuiltData is null',
+        tag: 'audio-room',
         subTag: 'controller.minimize',
       );
 
@@ -47,10 +47,10 @@ class ZegoLiveAudioRoomControllerMinimizingImpl
 
     ZegoLoggerService.logInfo(
       'restore, '
-      'context:$context, '
-      'rootNavigator:$rootNavigator, '
-      'withSafeArea:$withSafeArea, ',
-      tag: 'audio room',
+          'context:$context, '
+          'rootNavigator:$rootNavigator, '
+          'withSafeArea:$withSafeArea, ',
+      tag: 'audio-room',
       subTag: 'controller.minimize',
     );
 
@@ -65,26 +65,24 @@ class ZegoLiveAudioRoomControllerMinimizingImpl
           final prebuiltAudioRoom = ZegoUIKitPrebuiltLiveAudioRoom(
             appID: minimizeData.appID,
             appSign: minimizeData.appSign,
+            token: minimizeData.token,
             userID: minimizeData.userID,
             userName: minimizeData.userName,
             roomID: minimizeData.roomID,
             config: minimizeData.config,
-            topPaading: minimizeData.topPaading,
-            events: minimizeData.events,
-            icons: minimizeData.icons,
-            userAvtarName: minimizeData.userAvtarName,
+            events: minimizeData.events, icons: minimizeData.icons, userAvtarName: minimizeData.userAvtarName,
           );
           return withSafeArea
               ? SafeArea(
-                  child: prebuiltAudioRoom,
-                )
+            child: prebuiltAudioRoom,
+          )
               : prebuiltAudioRoom;
         }),
       );
     } catch (e) {
       ZegoLoggerService.logError(
-        'navigator push to call page exception:$e',
-        tag: 'audio room',
+        'restore, navigator push to call page exception:$e',
+        tag: 'audio-room',
         subTag: 'controller.minimize',
       );
 
@@ -96,14 +94,14 @@ class ZegoLiveAudioRoomControllerMinimizingImpl
 
   /// minimize the [ZegoUIKitPrebuiltLiveAudioRoom]
   bool minimize(
-    BuildContext context, {
-    bool rootNavigator = true,
-  }) {
+      BuildContext context, {
+        bool rootNavigator = true,
+      }) {
     if (ZegoLiveAudioRoomMiniOverlayPageState.minimizing ==
         ZegoLiveAudioRoomInternalMiniOverlayMachine().state()) {
       ZegoLoggerService.logInfo(
-        'is minimizing, ignore',
-        tag: 'audio room',
+        'minimize, is minimizing, ignore',
+        tag: 'audio-room',
         subTag: 'controller.minimize',
       );
 
@@ -112,9 +110,9 @@ class ZegoLiveAudioRoomControllerMinimizingImpl
 
     ZegoLoggerService.logInfo(
       'minimize, '
-      'context:$context, '
-      'rootNavigator:$rootNavigator, ',
-      tag: 'audio room',
+          'context:$context, '
+          'rootNavigator:$rootNavigator, ',
+      tag: 'audio-room',
       subTag: 'controller.minimize',
     );
 
@@ -130,8 +128,8 @@ class ZegoLiveAudioRoomControllerMinimizingImpl
       ).pop();
     } catch (e) {
       ZegoLoggerService.logError(
-        'navigator pop exception:$e',
-        tag: 'audio room',
+        'minimize, navigator pop exception:$e',
+        tag: 'audio-room',
         subTag: 'controller.minimize',
       );
 
@@ -145,7 +143,7 @@ class ZegoLiveAudioRoomControllerMinimizingImpl
   void hide() {
     ZegoLoggerService.logInfo(
       'hide, ',
-      tag: 'audio room',
+      tag: 'audio-room',
       subTag: 'controller.minimize',
     );
 
