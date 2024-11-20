@@ -91,6 +91,25 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
   final Map<String, Map<String, String>> _pendingUserRoomAttributes = {};
   final List<StreamSubscription<dynamic>?> _subscriptions = [];
 
+  ZegoLiveAudioRoomRole getRole(ZegoUIKitUser? user) {
+    if (null == user) {
+      return ZegoLiveAudioRoomRole.audience;
+    }
+
+    if (ZegoUIKit().getLocalUser().id == user.id) {
+      return localRole.value;
+    }
+
+    /// remote user
+    if (isAttributeHost(user)) {
+      return ZegoLiveAudioRoomRole.host;
+    }
+    if (isSpeaker(user)) {
+      return ZegoLiveAudioRoomRole.speaker;
+    }
+    return ZegoLiveAudioRoomRole.audience;
+  }
+
   bool get localIsAHost => ZegoLiveAudioRoomRole.host == localRole.value;
 
   bool get localIsAAudience =>
@@ -1038,7 +1057,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
       title: dialogInfo.title,
       content: dialogInfo.message.replaceFirst(
         innerText.param_1,
-        RegExp(r'^(.*?)\s*CC').firstMatch( targetUser.name)?.group(1)??  targetUser.name,
+        targetUser.name,
       ),
       leftButtonText: dialogInfo.cancelButtonName,
       leftButtonCallback: () {
@@ -1170,7 +1189,7 @@ class ZegoLiveAudioRoomSeatManager with ZegoLiveSeatCoHost {
         roomID: roomID, keys: [index.toString()]).then((result) {
       if (result.error != null) {
         showError(innerText.removeSpeakerFailedToast
-            .replaceFirst(innerText.param_1, RegExp(r'^(.*?)\s*CC').firstMatch( targetUser.name)?.group(1)?? targetUser.name));
+            .replaceFirst(innerText.param_1, targetUser.name));
         ZegoLoggerService.logInfo(
           'take off ${targetUser.name} from $index seat '
               ' failed, ${result.error}',
