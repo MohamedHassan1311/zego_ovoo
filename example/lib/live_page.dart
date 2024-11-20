@@ -35,9 +35,9 @@ class LivePageState extends State<LivePage> {
   @override
   Widget build(BuildContext context) {
     return ZegoUIKitPrebuiltLiveAudioRoom(
-      appID: 112409251 /*input your AppID*/,
+      appID: 1767602075 /*input your AppID*/,
       appSign:
-          "df31dc0bd3d2fb20c5a19cd123d8bdb71117409da8b06b2eccf2d63ea0551eac" /*input your AppSign*/,
+          "f92ab7708c0f167f24ec9af43f2701c4ecda5b9379fb634d40fbfa036b72ba36" /*input your AppSign*/,
       userID: localUserID,
       topPaading: 90,
       userName: 'user_$localUserID',
@@ -76,7 +76,7 @@ class LivePageState extends State<LivePage> {
 
 
 
-          ..userInRoomAttributes = {"soundWave": ""}
+          ..userInRoomAttributes = {"s": "s"}
           // ..coHostIDSList=[]
 
           ..topMenuBar.onCloseButtonPressed = () {

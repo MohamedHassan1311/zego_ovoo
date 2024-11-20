@@ -488,7 +488,7 @@ class _ZegoUIKitPrebuiltLiveAudioRoomState
   }
 
   Future<void> onRoomLogin(ZegoRoomLoginResult result) async {
-    assert(result.errorCode == 0);
+
     if (result.errorCode != 0) {
       ZegoLoggerService.logError(
         'failed to login room:${result.errorCode},${result.extendedData}',
@@ -496,7 +496,7 @@ class _ZegoUIKitPrebuiltLiveAudioRoomState
         subTag: 'prebuilt',
       );
     }
-
+    assert(result.errorCode == 0);
     await ZegoLiveAudioRoomManagers().liveDurationManager!.init();
 
     initBackgroundMedia();
