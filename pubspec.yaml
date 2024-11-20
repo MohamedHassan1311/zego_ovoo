@@ -18,15 +18,14 @@ dependencies:
   zego_uikit: ^2.27.16
   zego_uikit_signaling_plugin: ^2.8.6
   zego_plugin_adapter: ^2.13.4
-  file_picker:
 
+  file_picker: ^8.0.6
   flutter_styled_toast: ^2.2.1
   cached_network_image: ^3.3.0
   statemachine: ^3.3.1
-
   permission_handler: ^11.3.1
-  # 1.18.0
-  collection: ^1.17.2
+  collection: ^1.18.0
+  floating: ^4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -36,6 +35,7 @@ dev_dependencies:
   import_sorter: ^4.6.0 # run 'flutter pub run import_sorter:main'
   dart_code_metrics: any
   lints: ^3.0.0
+
 
 flutter:
   assets:
