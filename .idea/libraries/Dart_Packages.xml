@@ -283,7 +283,7 @@
         <entry key="flutter_logs">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_logs-2.1.11/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_logs-2.2.1/lib" />
             </list>
           </value>
         </entry>
@@ -374,14 +374,14 @@
         <entry key="leak_tracker">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/leak_tracker-10.0.4/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/leak_tracker-10.0.5/lib" />
             </list>
           </value>
         </entry>
         <entry key="leak_tracker_flutter_testing">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.3/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.5/lib" />
             </list>
           </value>
         </entry>
@@ -409,14 +409,14 @@
         <entry key="material_color_utilities">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/material_color_utilities-0.8.0/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/material_color_utilities-0.11.1/lib" />
             </list>
           </value>
         </entry>
         <entry key="meta">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/meta-1.12.0/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/meta-1.15.0/lib" />
             </list>
           </value>
         </entry>
@@ -671,7 +671,7 @@
         <entry key="test_api">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/test_api-0.7.0/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/test_api-0.7.2/lib" />
             </list>
           </value>
         </entry>
@@ -720,7 +720,7 @@
         <entry key="vm_service">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/vm_service-14.2.1/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/vm_service-14.2.5/lib" />
             </list>
           </value>
         </entry>
@@ -790,35 +790,35 @@
         <entry key="zego_express_engine">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_express_engine-3.15.1+2/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_express_engine-3.17.1/lib" />
             </list>
           </value>
         </entry>
         <entry key="zego_plugin_adapter">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_plugin_adapter-2.13.0/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_plugin_adapter-2.13.4/lib" />
             </list>
           </value>
         </entry>
         <entry key="zego_uikit">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit-2.27.2/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit-2.27.16/lib" />
             </list>
           </value>
         </entry>
         <entry key="zego_uikit_signaling_plugin">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit_signaling_plugin-2.8.2/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit_signaling_plugin-2.8.6/lib" />
             </list>
           </value>
         </entry>
         <entry key="zego_zim">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_zim-2.16.0+4/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_zim-2.17.1+1/lib" />
             </list>
           </value>
         </entry>
@@ -874,7 +874,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_cache_manager-3.3.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_lints-3.0.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_lints-3.0.2/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_logs-2.1.11/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_logs-2.2.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.17/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_screenutil-5.6.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_styled_toast-2.2.1/lib" />
@@ -885,13 +885,13 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/import_sorter-4.6.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/intl-0.19.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/js-0.6.7/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/leak_tracker-10.0.4/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.3/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/leak_tracker-10.0.5/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.5/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/leak_tracker_testing-3.0.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/lints-3.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/matcher-0.12.16+1/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/material_color_utilities-0.8.0/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/meta-1.12.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/material_color_utilities-0.11.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/meta-1.15.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/native_device_orientation-2.0.3/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/octo_image-2.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/package_config-2.1.0/lib" />
@@ -929,14 +929,14 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/string_scanner-1.2.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/synchronized-3.1.0+1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/term_glyph-1.2.1/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/test_api-0.7.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/test_api-0.7.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/tint-2.0.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/typed_data-1.3.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/universal_io-2.2.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/uuid-4.3.3/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/vector_math-2.1.4/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/visibility_detector-0.4.0+2/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/vm_service-14.2.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/vm_service-14.2.5/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/wakelock_plus-1.2.5/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/wakelock_plus_platform_interface-1.2.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/watcher-1.1.0/lib" />
@@ -946,11 +946,11 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/xml-6.5.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/yaml-3.1.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_callkit-1.0.0+4/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_express_engine-3.15.1+2/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_plugin_adapter-2.13.0/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit-2.27.2/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit_signaling_plugin-2.8.2/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_zim-2.16.0+4/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_express_engine-3.17.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_plugin_adapter-2.13.4/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit-2.27.16/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit_signaling_plugin-2.8.6/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_zim-2.17.1+1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_zpns-2.6.0+3/lib" />
       <root url="file://$USER_HOME$/Developer/flutter/bin/cache/pkg/sky_engine/lib" />
       <root url="file://$USER_HOME$/Developer/flutter/packages/flutter/lib" />
