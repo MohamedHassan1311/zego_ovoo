@@ -804,21 +804,21 @@
         <entry key="zego_plugin_adapter">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_plugin_adapter-2.13.4/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_plugin_adapter-2.13.0/lib" />
             </list>
           </value>
         </entry>
         <entry key="zego_uikit">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit-2.27.16/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit-2.27.2/lib" />
             </list>
           </value>
         </entry>
         <entry key="zego_uikit_signaling_plugin">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit_signaling_plugin-2.8.6/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit_signaling_plugin-2.8.2/lib" />
             </list>
           </value>
         </entry>
@@ -955,9 +955,9 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/yaml-3.1.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_callkit-1.0.0+4/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_express_engine-3.17.1/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_plugin_adapter-2.13.4/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit-2.27.16/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit_signaling_plugin-2.8.6/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_plugin_adapter-2.13.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit-2.27.2/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_uikit_signaling_plugin-2.8.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_zim-2.17.1+1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/zego_zpns-2.6.0+3/lib" />
       <root url="file://$USER_HOME$/Developer/flutter/bin/cache/pkg/sky_engine/lib" />
