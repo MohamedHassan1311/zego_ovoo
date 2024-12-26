@@ -352,7 +352,7 @@ class ZegoLiveAudioRoomPlugins {
     ));
   }
 
-  void onNetworkModeChanged(ZegoNetworkMode networkMode) {
+  void onNetworkModeChanged(ZegoUIKitNetworkState networkMode) {
     ZegoLoggerService.logInfo(
       'onNetworkModeChanged $networkMode, previous network state: $networkState',
       tag: 'audio-room',
@@ -360,16 +360,16 @@ class ZegoLiveAudioRoomPlugins {
     );
 
     switch (networkMode) {
-      case ZegoNetworkMode.Offline:
-      case ZegoNetworkMode.Unknown:
+      case ZegoUIKitNetworkState.offline:
+      case ZegoUIKitNetworkState.unknown:
         networkState = ZegoLiveAudioRoomPluginNetworkState.offline;
         break;
-      case ZegoNetworkMode.Ethernet:
-      case ZegoNetworkMode.WiFi:
-      case ZegoNetworkMode.Mode2G:
-      case ZegoNetworkMode.Mode3G:
-      case ZegoNetworkMode.Mode4G:
-      case ZegoNetworkMode.Mode5G:
+      // case ZegoNetworkMode.e:
+      // case ZegoNetworkMode.WiFi:
+      // case ZegoNetworkMode.Mode2G:
+      // case ZegoNetworkMode.Mode3G:
+      // case ZegoNetworkMode.Mode4G:
+      case ZegoUIKitNetworkState.online:
         if (ZegoLiveAudioRoomPluginNetworkState.offline == networkState) {
           tryReLogin();
         }
